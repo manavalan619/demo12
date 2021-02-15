@@ -17,8 +17,8 @@ module.exports = {
                     "hostPort": "27017"
                 }
             ],
-            "environment": null,
-            "environmentFiles": [      {
+            "environmentFiles": null,
+            "environment": [{
                 "name": "MONGO_INITDB_ROOT_PASSWORD",
                 "value": "password"
               },
