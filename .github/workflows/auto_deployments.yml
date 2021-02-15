@@ -1,4 +1,4 @@
- name: aws_ec2_deployments_for_newdb
+name: aws_ec2_deployments_for_newdb
 on:
   push:
     branches: 
