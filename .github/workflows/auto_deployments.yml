@@ -88,9 +88,6 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 10
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
       - name: Convert the task_defination.ts to json
         working-directory: .github/workflows
         run: |
