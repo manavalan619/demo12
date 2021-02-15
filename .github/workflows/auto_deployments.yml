@@ -45,8 +45,8 @@ jobs:
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
           task-definition: /home/runner/work/demo12/demo12/.github/workflows/configuration.json
-          container-name: apigateway-8442
-          image: harishsundhar/fargate:apigateway-8442
+          container-name: mongo-2000
+          image: geppettotest/mongo-local:april2020
       - name: Deploy Amazon ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:

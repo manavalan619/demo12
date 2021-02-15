@@ -5,22 +5,35 @@ module.exports = {
     "inferenceAccelerators": [],
     "containerDefinitions": [
         {
-            "name": "apigateway-8442",
-            "image": "harishsundhar/fargate:apigateway-8442",
+            "name": "mongo-2000",
+            "image": "geppettotest/mongo-local:april2020",
             "memoryReservation": "300",
             "resourceRequirements": null,
             "essential": true,
             "portMappings": [
                 {
-                    "containerPort": "8000",
+                    "containerPort": "27017",
                     "protocol": "tcp",
-                    "hostPort": "8000"
+                    "hostPort": "27017"
                 }
             ],
             "environment": null,
-            "environmentFiles": [],
+            "environmentFiles": [      {
+                "name": "MONGO_INITDB_ROOT_PASSWORD",
+                "value": "password"
+              },
+              {
+                "name": "MONGO_INITDB_ROOT_USERNAME",
+                "value": "admin"
+              }],
             "secrets": null,
-            "mountPoints": null,
+            "mountPoints": [
+                {
+                  "readOnly": null,
+                  "containerPath": "/data/db",
+                  "sourceVolume": "newtesting"
+                }
+              ],
             "volumesFrom": null,
             "hostname": null,
             "user": null,
