@@ -40,11 +40,11 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
       - name: Fill in the new image ID in the Amazon ECS task definition
-        # working-directory: .github/workflows
+        working-directory: .github/workflows
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
-          task-definition: /home/runner/work/demo12/demo12/.github/workflows/configuration.json
+          task-definition: configuration.json
           container-name: mongo-4179
           image: geppettotest/mongo-local:april2020
       - name: Deploy Amazon ECS task definition
