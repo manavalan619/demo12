@@ -92,51 +92,6 @@ module.exports = {
             "repositoryCredentials": {
                 "credentialsParameter": ""
             }
-        },
-        {
-            "name": "camundaservice-3611",
-            "image": "geppettodistribution/camunda-local:Jan2021",
-            "memoryReservation": "300",
-            "resourceRequirements": null,
-            "essential": true,
-            "portMappings": [
-                {
-                    "containerPort": "8001",
-                    "protocol": "tcp",
-                    "hostPort": "8001"
-                }
-            ],
-            "environmentFiles": null,
-            "environment": [{
-                "name": "CAMUNDAURL",
-                "value": "http://127.0.0.1:8002"
-              },
-              {
-                "name": "MONGO_DB_URL",
-                "value": "mongodb://admin:password@127.0.0.1:27017/testticketone_3611?authSource=admin"
-              }],
-            "secrets": null,
-            "mountPoints": [],
-            "volumesFrom": null,
-            "hostname": null,
-            "user": null,
-            "workingDirectory": null,
-            "extraHosts": null,
-            "logConfiguration": {
-                "logDriver": "awslogs",
-                "options": {
-                    "awslogs-group": "/ecs/APIFargate",
-                    "awslogs-region": "us-east-1",
-                    "awslogs-stream-prefix": "ecs",
-                    "awslogs-create-group": "true"
-                }
-            },
-            "ulimits": null,
-            "dockerLabels": null,
-            "dependsOn": null,
-            "repositoryCredentials": {
-                "credentialsParameter": ""
-            }
         }
     ],
     "volumes": [
