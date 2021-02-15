@@ -141,19 +141,19 @@ module.exports = {
             "environment": [{
                 "name": "MONGO_INITDB_ROOT_PASSWORD",
                 "value": "password"
-              },
-              {
+            },
+            {
                 "name": "MONGO_INITDB_ROOT_USERNAME",
                 "value": "admin"
-              }],
+            }],
             "secrets": null,
             "mountPoints": [
                 {
-                  "readOnly": null,
-                  "containerPath": "/data/db",
-                  "sourceVolume": "neownnk"
+                    "readOnly": null,
+                    "containerPath": "/data/db",
+                    "sourceVolume": "neownnk"
                 }
-              ],
+            ],
             "volumesFrom": null,
             "hostname": null,
             "user": null,
@@ -217,17 +217,17 @@ module.exports = {
     "volumes": [
         {
             "host": {},
-            "name": "neownnk"
+            "name": "neownnk`"
         }
     ],
     "networkMode": "awsvpc",
     "memory": "2048",
     "cpu": "1024",
-    "executionRoleArn": `arn:aws:iam::${process.env.Accout_no}:role/${process.env.role_name}`,
+    "executionRoleArn": `arn:aws:iam::${process.env.AWS_ACCOUNT_ID}:role/${process.env.AWS_ROLE_FOR_FARGATE}`,
     "family": "neownnk",
     "tags": [],
     "placementConstraints": [],
-    "taskRoleArn": `arn:aws:iam::${process.env.Accout_no}:role/${process.env.role_name}`
+    "taskRoleArn": `arn:aws:iam::${process.env.AWS_ACCOUNT_ID}:role/${process.env.AWS_ROLE_FOR_FARGATE}`
 
 };
 var ConfigurationJSON = JSON.stringify(module.exports);

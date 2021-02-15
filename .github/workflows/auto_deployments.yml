@@ -1,55 +1,117 @@
-name: aws_ec2_deployments_for_newdb
+# name: aws_ec2_deployments_for_newdb
+# on:
+#   push:
+#     branches: 
+#       - master
+#       - main
+#   pull_request:
+#     branches: 
+#       - master
+#       - main
+# env:
+#   AWS_ACCOUNT_ID: ${{ secrets.ACCOUNT_NO }}
+#   # AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#   # AWS_REGION: ${{ secrets.AWS_REGION }}
+#   # PROJECT_NAME: 
+#   AWS_S3_BUCKET_NAME: newdb-7837
+
+
+# jobs:
+#   Prerequisites:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Check the  branch
+#         uses: actions/checkout@v2
+#       - name: Installing the Node and its dependencies
+#         uses: actions/setup-node@v1
+#         with:
+#           node-version: 10
+#       - name: Convert the node.ts to json
+#         working-directory: .github/workflows
+#         run: |
+#           Accout_no="${{env.AWS_ACCOUNT_ID}}" role_name="ecsTaskExecutionRole" node faragte.ts >> configuration.json
+#           ls
+#           cat configuration.json
+#           pwd
+#       - name: Configure AWS credentials
+#         uses: aws-actions/configure-aws-credentials@v1
+#         with:
+#           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#           aws-region: us-east-1
+#       - name: Fill in the new image ID in the Amazon ECS task definition
+#         # working-directory: .github/workflows
+#         id: task-def
+#         uses: aws-actions/amazon-ecs-render-task-definition@v1
+#         with:
+#           task-definition: /home/runner/work/demo12/demo12/.github/workflows/configuration.json
+#           container-name: mongo-4179
+#           image: geppettotest/mongo-local:april2020
+#       - name: Deploy Amazon ECS task definition
+#         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+#         with:
+#           task-definition: ${{ steps.task-def.outputs.task-definition }}
+#           cluster: deployment-of-generated-code
+#           wait-for-service-stability: true
+
+name: aws_ec2_deployments_for_neownnk
 on:
   push:
     branches: 
       - master
+      - geppetto
       - main
   pull_request:
     branches: 
       - master
+      - geppetto
       - main
 env:
   AWS_ACCOUNT_ID: ${{ secrets.ACCOUNT_NO }}
-  # AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  # AWS_REGION: ${{ secrets.AWS_REGION }}
-  # PROJECT_NAME: 
-  AWS_S3_BUCKET_NAME: newdb-7837
-
+  AWS_ROLE_FOR_FARGATE: ${{  secrets.AWS_ROLE_FOR_FARGATE  }}
+  AWS_ACCESS_KEY_ID: ${{  secrets.AWS_ACCESS_KEY_ID  }}
+  AWS_SECRET_ACCESS_KEY: ${{  secrets.AWS_SECRET_ACCESS_KEY  }}
+  AWS_REGION: ${{  secrets.AWS_REGION  }}
+  AWS_ECS_CLUSTER_NAME: ${{  secrets.AWS_ECS_CLUSTER_NAME  }}
+  PROJECT_NAME: neownnk-4179
+  AWS_S3_BUCKET_NAME: neownnk-4179
 
 jobs:
-  Prerequisites:
+ 
+
+  Deploy_backend:
     runs-on: ubuntu-latest
     steps:
       - name: Check the  branch
         uses: actions/checkout@v2
-      - name: Installing the Node and its dependencies
+      - name: Installing the Node
         uses: actions/setup-node@v1
         with:
           node-version: 10
-      - name: Convert the node.ts to json
-        working-directory: .github/workflows
-        run: |
-          Accout_no="${{env.AWS_ACCOUNT_ID}}" role_name="ecsTaskExecutionRole" node faragte.ts >> configuration.json
-          ls
-          cat configuration.json
-          pwd
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1
+      - name: Convert the task_defination.ts to json
+        working-directory: .github/workflows
+        run: |
+          AWS_ACCOUNT_ID="${{ env.AWS_ACCOUNT_ID }}" AWS_ROLE_FOR_FARGATE="${{ env.AWS_ROLE_FOR_FARGATE }}" node task-definition.ts >> task-definition.json
+
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{  env.AWS_ACCESS_KEY_ID  }}
+          aws-secret-access-key: ${{  env.AWS_SECRET_ACCESS_KEY  }}
+          aws-region: ${{  env.AWS_REGION  }}
       - name: Fill in the new image ID in the Amazon ECS task definition
-        # working-directory: .github/workflows
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
-          task-definition: /home/runner/work/demo12/demo12/.github/workflows/configuration.json
+          task-definition: /home/runner/work/demo12/demo12/.github/workflows/task-definition.json
           container-name: mongo-4179
           image: geppettotest/mongo-local:april2020
       - name: Deploy Amazon ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
           task-definition: ${{ steps.task-def.outputs.task-definition }}
-          cluster: deployment-of-generated-code
+          cluster: ${{  env.AWS_ECS_CLUSTER_NAME  }}
           wait-for-service-stability: true
+
