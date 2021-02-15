@@ -52,11 +52,11 @@ module.exports = {
     "networkMode": "awsvpc",
     "memory": "512",
     "cpu": "256",
-    "executionRoleArn": "arn:aws:iam::967636366309:role/ecsTaskExecutionRole",
+    "executionRoleArn": `arn:aws:iam::${process.env.Accout_no}:role/${process.env.role_name}`,
     "family": "APIFargate",
     "tags": [],
     "placementConstraints": [],
-    "taskRoleArn": "arn:aws:iam::967636366309:role/ecsTaskExecutionRole"
+    "taskRoleArn": `arn:aws:iam::${{secrets.ACCOUNT_NO}}:role/${process.env.role_name}`
 
 };
 var myJSON = JSON.stringify(module.exports);
