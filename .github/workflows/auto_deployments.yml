@@ -9,7 +9,7 @@ on:
       - master
       - main
 env:
-  # AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_ACCOUNT_ID: ${{ secrets.ACCOUNT_NO }}
   # AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   # AWS_REGION: ${{ secrets.AWS_REGION }}
   # PROJECT_NAME: 
@@ -29,7 +29,7 @@ jobs:
       - name: Convert the node.ts to json
         working-directory: .github/workflows
         run: |
-          Accout_no="${{secrets.ACCOUNT_NO}}" role_name="ecsTaskExecutionRole" node faragte.ts >> configuration.json
+          Accout_no="${{env.AWS_ACCOUNT_ID}}" role_name="ecsTaskExecutionRole" node faragte.ts >> configuration.json
           ls
           cat configuration.json
  
