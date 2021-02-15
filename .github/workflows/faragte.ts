@@ -146,7 +146,7 @@ module.exports = {
         }
     ],
     "networkMode": "awsvpc",
-    "memory": "2,048",
+    "memory": "2048",
     "cpu": "1024",
     "executionRoleArn": `arn:aws:iam::${process.env.Accout_no}:role/${process.env.role_name}`,
     "family": "APIFargate",
