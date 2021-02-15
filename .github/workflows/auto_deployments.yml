@@ -44,7 +44,7 @@ jobs:
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
-          task-definition: configuration.json
+          task-definition: /home/runner/work/demo12/demo12/.github/workflows/configuration.json
           container-name: apigateway-8442
           image: harishsundhar/fargate:apigateway-8442
       - name: Deploy Amazon ECS task definition
