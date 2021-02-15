@@ -29,7 +29,7 @@ jobs:
       - name: Convert the node.ts to json
         working-directory: .github/workflows
         run: |
-          Accout_no="$env.AWS_ACCOUNT_ID" role_name="ecsTaskExecutionRole" node faragte.ts >> configuration.json
+          Accout_no="${AWS_ACCOUNT_ID}" role_name="ecsTaskExecutionRole" node faragte.ts >> configuration.json
           ls
           cat configuration.json
  
