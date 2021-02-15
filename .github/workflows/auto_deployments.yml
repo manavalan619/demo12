@@ -28,7 +28,8 @@ jobs:
           node-version: 10
       - name: Convert the node.ts to json
         run: |
-          API_URL=manavalan  node faragte.ts >> configuration.json
+          pwd
+          node faragte.ts >> configuration.json
           ls
           cat configuration.json
  
