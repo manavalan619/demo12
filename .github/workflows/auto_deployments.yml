@@ -32,6 +32,7 @@ jobs:
           Accout_no="${{env.AWS_ACCOUNT_ID}}" role_name="ecsTaskExecutionRole" node faragte.ts >> configuration.json
           ls
           cat configuration.json
+          pwd
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -39,7 +40,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
       - name: Fill in the new image ID in the Amazon ECS task definition
-        working-directory: .github/workflows
+        # working-directory: .github/workflows
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
