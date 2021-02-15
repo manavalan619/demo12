@@ -5,7 +5,7 @@ module.exports = {
     "inferenceAccelerators": [],
     "containerDefinitions": [
         {
-            name: process.env.API_URL,
+            "name": "apigateway-8442",
             "image": "harishsundhar/fargate:apigateway-8442",
             "memoryReservation": "300",
             "resourceRequirements": null,
