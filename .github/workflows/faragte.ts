@@ -56,7 +56,7 @@ module.exports = {
     "family": "APIFargate",
     "tags": [],
     "placementConstraints": [],
-    "taskRoleArn": `arn:aws:iam::${{secrets.ACCOUNT_NO}}:role/${process.env.role_name}`
+    "taskRoleArn": `arn:aws:iam::${process.env.Accout_no}:role/${process.env.role_name}`
 
 };
 var myJSON = JSON.stringify(module.exports);
