@@ -217,7 +217,7 @@ module.exports = {
     "volumes": [
         {
             "host": {},
-            "name": "neownnk`"
+            "name": "neownnk"
         }
     ],
     "networkMode": "awsvpc",
