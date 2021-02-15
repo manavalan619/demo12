@@ -1,0 +1,34 @@
+ name: aws_ec2_deployments_for_newdb
+on:
+  push:
+    branches: 
+      - master
+      - main
+  pull_request:
+    branches: 
+      - master
+      - main
+env:
+  # AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  # AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  # AWS_REGION: ${{ secrets.AWS_REGION }}
+  # PROJECT_NAME: 
+  AWS_S3_BUCKET_NAME: newdb-7837
+
+
+jobs:
+  Prerequisites:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check the  branch
+        uses: actions/checkout@v2
+      - name: Installing the Node and its dependencies
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10
+      - name: Convert the node.ts to json
+        run: |
+          API_URL=manavalan  node faragte.ts >> configuration.json
+          ls
+          cat configuration.json
+ 
