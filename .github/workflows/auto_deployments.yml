@@ -27,8 +27,8 @@ jobs:
         with:
           node-version: 10
       - name: Convert the node.ts to json
+        working-directory: .github/workflows
         run: |
-          pwd
           node faragte.ts >> configuration.json
           ls
           cat configuration.json
