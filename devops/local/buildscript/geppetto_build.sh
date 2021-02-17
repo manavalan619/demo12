@@ -1,14 +1,14 @@
 #!bin/bash
 
-APPLICATION='/newhptemplate'
+APPLICATION='/lastone'
 
 CUSTOMSERVICEPATH='../../../services/custom_services'
 
 HELMPATH='../devops/local'
 
 
-DESKTOPCODE='../../../application/client/desktop/newhptemplate'
-DESKTOPIMAGENAME='geppettotest/newhptemplate-desktop:1.0'
+DESKTOPCODE='../../../application/client/desktop/lastone'
+DESKTOPIMAGENAME='geppettotest/lastone-desktop:1.0'
 
 echo "Started to build docker images for pod...."
 
@@ -76,7 +76,7 @@ helm_install () {
 
 cd $HELMPATH
 helm install --dry-run --debug ./helm
-helm install --name newhptemplate-9490 ./helm
+helm install --name lastone-8521 ./helm
 if [ $? -eq 0 ]; then
     echo "App Deployment is Done"
 else
