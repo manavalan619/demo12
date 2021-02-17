@@ -61,7 +61,7 @@ jobs:
           IMAGE_TAG: 1.0
         run: |
      
-          cd application/services/custom_services/authproxy
+          cd application/services/default_services/authproxy
           docker build -t $ECR_REGISTRY/geppetto-generatedcode-manoonw-3931-authproxy:$IMAGE_TAG .
           docker push $ECR_REGISTRY/geppetto-generatedcode-manoonw-3931-authproxy:$IMAGE_TAG
           echo "Successfully build the docker image for authproxy  and pushed to aws ecr"
