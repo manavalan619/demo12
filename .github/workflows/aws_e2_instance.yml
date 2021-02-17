@@ -15,7 +15,7 @@ env:
   AWS_ROLE_FOR_FARGATE: ${{  secrets.AWS_ROLE_FOR_FARGATE  }}
   AWS_ACCESS_KEY_ID: ${{  secrets.AWS_ACCESS_KEY_ID  }}
   AWS_SECRET_ACCESS_KEY: ${{  secrets.AWS_SECRET_ACCESS_KEY  }}
-  AWS_REGION: ${{  secrets.AWS_REGION  }}
+  AWS_REGION: us-east-1
   AWS_ECS_CLUSTER_NAME: ${{  secrets.AWS_ECS_CLUSTER_NAME  }}
   PROJECT_NAME: manoonw-3931
   AWS_S3_BUCKET_NAME: manoonw-3931
