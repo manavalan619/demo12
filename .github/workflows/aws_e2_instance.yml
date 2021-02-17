@@ -15,7 +15,7 @@ env:
   AWS_ROLE_FOR_FARGATE: ${{  secrets.AWS_ROLE_FOR_FARGATE  }}
   AWS_ACCESS_KEY_ID: ${{  secrets.AWS_ACCESS_KEY_ID  }}
   AWS_SECRET_ACCESS_KEY: ${{  secrets.AWS_SECRET_ACCESS_KEY  }}
-  AWS_REGION: ${{  secrets.AWS_REGION  }}
+  AWS_REGION: us-east-1
   AWS_ECS_CLUSTER_NAME: ${{  secrets.AWS_ECS_CLUSTER_NAME  }}
   PROJECT_NAME: newhptemplate-9490
   AWS_S3_BUCKET_NAME: newhptemplate-9490
@@ -104,7 +104,7 @@ jobs:
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
-          task-definition: ./.github/workflows/task-definition.json
+          task-definition: /.github/workflows/task-definition.json
           container-name: mongo-9490
           image: geppettotest/mongo-local:april2020
       - name: Deploy Amazon ECS task definition
