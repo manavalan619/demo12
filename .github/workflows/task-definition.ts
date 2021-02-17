@@ -93,120 +93,120 @@ module.exports = {
                 "credentialsParameter": ""
             }
         },
-        // {
-        //     "name": "apigateway-3931",
-        //     "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-manoonw-3931-apigateway:1`,
-        //     "memoryReservation": "300",
-        //     "resourceRequirements": null,
-        //     "essential": true,
-        //     "portMappings": [
-        //         {
-        //             "containerPort": "8000",
-        //             "protocol": "tcp",
-        //             "hostPort": "8000"
-        //         }
-        //     ],
-        //     "environmentFiles": null,
-        //     "environment": [{"name":"CAMUNDAPOD_URL","value":"http://127.0.0.1:8080"},{"name":"SECURITYURL","value":"http://127.0.0.1:8003"},{"name":"AUTHPROXYURL","value":"http://127.0.0.1:8001"},{"name":"ADMINURL","value":"http://127.0.0.1:8004"},{"name":"CAMUNDAURL","value":"http://127.0.0.1:8002"},{"name":"APIGATEWAY","value":"http://127.0.0.1:8000"},{"name":"SCHOOLURL","value":"http://127.0.0.1:8012"}],
-        //     "secrets": null,
-        //     "mountPoints": [],
-        //     "volumesFrom": null,
-        //     "hostname": null,
-        //     "user": null,
-        //     "workingDirectory": null,
-        //     "extraHosts": null,
-        //     "logConfiguration": {
-        //         "logDriver": "awslogs",
-        //         "options": {
-        //             "awslogs-group": "/ecs/manoonw",
-        //             "awslogs-region": "us-east-1",
-        //             "awslogs-stream-prefix": "ecs",
-        //             "awslogs-create-group": "true"
-        //         }
-        //     },
-        //     "ulimits": null,
-        //     "dockerLabels": null,
-        //     "dependsOn": null,
-        //     "repositoryCredentials": {
-        //         "credentialsParameter": ""
-        //     }
-        // },        
-        // {
-        //     "name": "authproxy-3931",
-        //     "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-manoonw-3931-authproxy:1`,
-        //     "memoryReservation": "300",
-        //     "resourceRequirements": null,
-        //     "essential": true,
-        //     "portMappings": [
-        //         {
-        //             "containerPort": "8001",
-        //             "protocol": "tcp",
-        //             "hostPort": "8001"
-        //         }
-        //     ],
-        //     "environmentFiles": null,
-        //     "environment": [{"name":"MONGO_DB_URL","value":"mongodb://admin:password@127.0.0.1:27017/manoonw_3931?authSource=admin"},{"name":"CAMUNDAPOD_URL","value":"http://127.0.0.1:8080"},{"name":"SECURITYURL","value":"http://127.0.0.1:8003"},{"name":"AUTHPROXYURL","value":"http://127.0.0.1:8001"},{"name":"ADMINURL","value":"http://127.0.0.1:8004"},{"name":"CAMUNDAURL","value":"http://127.0.0.1:8002"},{"name":"APIGATEWAY","value":"http://127.0.0.1:8000"},{"name":"SCHOOLURL","value":"http://127.0.0.1:8012"}],
-        //     "secrets": null,
-        //     "mountPoints": [],
-        //     "volumesFrom": null,
-        //     "hostname": null,
-        //     "user": null,
-        //     "workingDirectory": null,
-        //     "extraHosts": null,
-        //     "logConfiguration": {
-        //         "logDriver": "awslogs",
-        //         "options": {
-        //             "awslogs-group": "/ecs/manoonw",
-        //             "awslogs-region": "us-east-1",
-        //             "awslogs-stream-prefix": "ecs",
-        //             "awslogs-create-group": "true"
-        //         }
-        //     },
-        //     "ulimits": null,
-        //     "dockerLabels": null,
-        //     "dependsOn": null,
-        //     "repositoryCredentials": {
-        //         "credentialsParameter": ""
-        //     }
-        // },
-        // {
-        //     "name": "camundasvc-3931",
-        //     "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-manoonw-3931-camunda:1`,
-        //     "memoryReservation": "300",
-        //     "resourceRequirements": null,
-        //     "essential": true,
-        //     "portMappings": [
-        //         {
-        //             "containerPort": "8002",
-        //             "protocol": "tcp",
-        //             "hostPort": "8002"
-        //         }
-        //     ],
-        //     "environmentFiles": null,
-        //     "environment": null,
-        //     "secrets": null,
-        //     "mountPoints": [],
-        //     "volumesFrom": null,
-        //     "hostname": null,
-        //     "user": null,
-        //     "workingDirectory": null,
-        //     "extraHosts": null,
-        //     "logConfiguration": {
-        //         "logDriver": "awslogs",
-        //         "options": {
-        //             "awslogs-group": "/ecs/manoonw",
-        //             "awslogs-region": "us-east-1",
-        //             "awslogs-stream-prefix": "ecs",
-        //             "awslogs-create-group": "true"
-        //         }
-        //     },
-        //     "ulimits": null,
-        //     "dockerLabels": null,
-        //     "dependsOn": null,
-        //     "repositoryCredentials": {
-        //         "credentialsParameter": ""
-        //     }
-        // },
+        {
+            "name": "apigateway-3931",
+            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-manoonw-3931-apigateway:1`,
+            "memoryReservation": "300",
+            "resourceRequirements": null,
+            "essential": true,
+            "portMappings": [
+                {
+                    "containerPort": "8000",
+                    "protocol": "tcp",
+                    "hostPort": "8000"
+                }
+            ],
+            "environmentFiles": null,
+            "environment": [{"name":"CAMUNDAPOD_URL","value":"http://127.0.0.1:8080"},{"name":"SECURITYURL","value":"http://127.0.0.1:8003"},{"name":"AUTHPROXYURL","value":"http://127.0.0.1:8001"},{"name":"ADMINURL","value":"http://127.0.0.1:8004"},{"name":"CAMUNDAURL","value":"http://127.0.0.1:8002"},{"name":"APIGATEWAY","value":"http://127.0.0.1:8000"},{"name":"SCHOOLURL","value":"http://127.0.0.1:8012"}],
+            "secrets": null,
+            "mountPoints": [],
+            "volumesFrom": null,
+            "hostname": null,
+            "user": null,
+            "workingDirectory": null,
+            "extraHosts": null,
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/ecs/manoonw",
+                    "awslogs-region": "us-east-1",
+                    "awslogs-stream-prefix": "ecs",
+                    "awslogs-create-group": "true"
+                }
+            },
+            "ulimits": null,
+            "dockerLabels": null,
+            "dependsOn": null,
+            "repositoryCredentials": {
+                "credentialsParameter": ""
+            }
+        },        
+        {
+            "name": "authproxy-3931",
+            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-manoonw-3931-authproxy:1`,
+            "memoryReservation": "300",
+            "resourceRequirements": null,
+            "essential": true,
+            "portMappings": [
+                {
+                    "containerPort": "8001",
+                    "protocol": "tcp",
+                    "hostPort": "8001"
+                }
+            ],
+            "environmentFiles": null,
+            "environment": [{"name":"MONGO_DB_URL","value":"mongodb://admin:password@127.0.0.1:27017/manoonw_3931?authSource=admin"},{"name":"CAMUNDAPOD_URL","value":"http://127.0.0.1:8080"},{"name":"SECURITYURL","value":"http://127.0.0.1:8003"},{"name":"AUTHPROXYURL","value":"http://127.0.0.1:8001"},{"name":"ADMINURL","value":"http://127.0.0.1:8004"},{"name":"CAMUNDAURL","value":"http://127.0.0.1:8002"},{"name":"APIGATEWAY","value":"http://127.0.0.1:8000"},{"name":"SCHOOLURL","value":"http://127.0.0.1:8012"}],
+            "secrets": null,
+            "mountPoints": [],
+            "volumesFrom": null,
+            "hostname": null,
+            "user": null,
+            "workingDirectory": null,
+            "extraHosts": null,
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/ecs/manoonw",
+                    "awslogs-region": "us-east-1",
+                    "awslogs-stream-prefix": "ecs",
+                    "awslogs-create-group": "true"
+                }
+            },
+            "ulimits": null,
+            "dockerLabels": null,
+            "dependsOn": null,
+            "repositoryCredentials": {
+                "credentialsParameter": ""
+            }
+        },
+        {
+            "name": "camundasvc-3931",
+            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-manoonw-3931-camunda:1`,
+            "memoryReservation": "300",
+            "resourceRequirements": null,
+            "essential": true,
+            "portMappings": [
+                {
+                    "containerPort": "8002",
+                    "protocol": "tcp",
+                    "hostPort": "8002"
+                }
+            ],
+            "environmentFiles": null,
+            "environment": null,
+            "secrets": null,
+            "mountPoints": [],
+            "volumesFrom": null,
+            "hostname": null,
+            "user": null,
+            "workingDirectory": null,
+            "extraHosts": null,
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/ecs/manoonw",
+                    "awslogs-region": "us-east-1",
+                    "awslogs-stream-prefix": "ecs",
+                    "awslogs-create-group": "true"
+                }
+            },
+            "ulimits": null,
+            "dockerLabels": null,
+            "dependsOn": null,
+            "repositoryCredentials": {
+                "credentialsParameter": ""
+            }
+        },
         {
             "name": "securitymanager-3931",
             "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-manoonw-3931-securitymanager:1`,
@@ -249,83 +249,83 @@ module.exports = {
             "repositoryCredentials": {
                 "credentialsParameter": ""
             }
-        }
-        // {
-        //     "name": "adminmanager-3931",
-        //     "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-manoonw-3931-adminmanager:1`,
-        //     "memoryReservation": "300",
-        //     "resourceRequirements": null,
-        //     "essential": true,
-        //     "portMappings": [
-        //         {
-        //             "containerPort": "8004",
-        //             "protocol": "tcp",
-        //             "hostPort": "8004"
-        //         }
-        //     ],
-        //     "environmentFiles": null,
-        //     "environment": null,
-        //     "secrets": null,
-        //     "mountPoints": [],
-        //     "volumesFrom": null,
-        //     "hostname": null,
-        //     "user": null,
-        //     "workingDirectory": null,
-        //     "extraHosts": null,
-        //     "logConfiguration": {
-        //         "logDriver": "awslogs",
-        //         "options": {
-        //             "awslogs-group": "/ecs/manoonw",
-        //             "awslogs-region": "us-east-1",
-        //             "awslogs-stream-prefix": "ecs",
-        //             "awslogs-create-group": "true"
-        //         }
-        //     },
-        //     "ulimits": null,
-        //     "dockerLabels": null,
-        //     "dependsOn": null,
-        //     "repositoryCredentials": {
-        //         "credentialsParameter": ""
-        //     }
-        // },
-        // {
-        //     "name": "school-3931",
-        //     "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-manoonw-3931-school:1`,
-        //     "memoryReservation": "300",
-        //     "resourceRequirements": null,
-        //     "essential": true,
-        //     "portMappings": [
-        //         {
-        //             "containerPort": "8012",
-        //             "protocol": "tcp",
-        //             "hostPort": "8012"
-        //         }
-        //     ],
-        //     "environmentFiles": null,
-        //     "environment": [{"name":"MONGO_DB_URL","value":"mongodb://admin:password@127.0.0.1:27017/manoonw_3931?authSource=admin"},{"name":"CAMUNDAPOD_URL","value":"http://127.0.0.1:8080"},{"name":"SECURITYURL","value":"http://127.0.0.1:8003"},{"name":"AUTHPROXYURL","value":"http://127.0.0.1:8001"},{"name":"ADMINURL","value":"http://127.0.0.1:8004"},{"name":"CAMUNDAURL","value":"http://127.0.0.1:8002"},{"name":"APIGATEWAY","value":"http://127.0.0.1:8000"},{"name":"SCHOOLURL","value":"http://127.0.0.1:8012"}],
-        //     "secrets": null,
-        //     "mountPoints": [],
-        //     "volumesFrom": null,
-        //     "hostname": null,
-        //     "user": null,
-        //     "workingDirectory": null,
-        //     "extraHosts": null,
-        //     "logConfiguration": {
-        //         "logDriver": "awslogs",
-        //         "options": {
-        //             "awslogs-group": "/ecs/",
-        //             "awslogs-region": "us-east-1",
-        //             "awslogs-stream-prefix": "ecs",
-        //             "awslogs-create-group": "true"
-        //         }
-        //     },
-        //     "ulimits": null,
-        //     "dockerLabels": null,
-        //     "dependsOn": null,
-        //     "repositoryCredentials": {
-        //         "credentialsParameter": ""
-        //     }
-        // },          
+        },
+        {
+            "name": "adminmanager-3931",
+            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-manoonw-3931-adminmanager:1`,
+            "memoryReservation": "300",
+            "resourceRequirements": null,
+            "essential": true,
+            "portMappings": [
+                {
+                    "containerPort": "8004",
+                    "protocol": "tcp",
+                    "hostPort": "8004"
+                }
+            ],
+            "environmentFiles": null,
+            "environment": null,
+            "secrets": null,
+            "mountPoints": [],
+            "volumesFrom": null,
+            "hostname": null,
+            "user": null,
+            "workingDirectory": null,
+            "extraHosts": null,
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/ecs/manoonw",
+                    "awslogs-region": "us-east-1",
+                    "awslogs-stream-prefix": "ecs",
+                    "awslogs-create-group": "true"
+                }
+            },
+            "ulimits": null,
+            "dockerLabels": null,
+            "dependsOn": null,
+            "repositoryCredentials": {
+                "credentialsParameter": ""
+            }
+        },
+        {
+            "name": "school-3931",
+            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-manoonw-3931-school:1`,
+            "memoryReservation": "300",
+            "resourceRequirements": null,
+            "essential": true,
+            "portMappings": [
+                {
+                    "containerPort": "8012",
+                    "protocol": "tcp",
+                    "hostPort": "8012"
+                }
+            ],
+            "environmentFiles": null,
+            "environment": [{"name":"MONGO_DB_URL","value":"mongodb://admin:password@127.0.0.1:27017/manoonw_3931?authSource=admin"},{"name":"CAMUNDAPOD_URL","value":"http://127.0.0.1:8080"},{"name":"SECURITYURL","value":"http://127.0.0.1:8003"},{"name":"AUTHPROXYURL","value":"http://127.0.0.1:8001"},{"name":"ADMINURL","value":"http://127.0.0.1:8004"},{"name":"CAMUNDAURL","value":"http://127.0.0.1:8002"},{"name":"APIGATEWAY","value":"http://127.0.0.1:8000"},{"name":"SCHOOLURL","value":"http://127.0.0.1:8012"}],
+            "secrets": null,
+            "mountPoints": [],
+            "volumesFrom": null,
+            "hostname": null,
+            "user": null,
+            "workingDirectory": null,
+            "extraHosts": null,
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/ecs/",
+                    "awslogs-region": "us-east-1",
+                    "awslogs-stream-prefix": "ecs",
+                    "awslogs-create-group": "true"
+                }
+            },
+            "ulimits": null,
+            "dockerLabels": null,
+            "dependsOn": null,
+            "repositoryCredentials": {
+                "credentialsParameter": ""
+            }
+        },          
     ],
     "volumes": [
         {
