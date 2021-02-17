@@ -95,7 +95,7 @@ module.exports = {
         },
         {
             "name": "apigateway-3931",
-            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-manoonw-3931-apigateway:1.0`,
+            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-manoonw-3931-apigateway:1`,
             "memoryReservation": "300",
             "resourceRequirements": null,
             "essential": true,
@@ -133,7 +133,7 @@ module.exports = {
         },        
         {
             "name": "authproxy-3931",
-            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-manoonw-3931-authproxy:1.0`,
+            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-manoonw-3931-authproxy:1`,
             "memoryReservation": "300",
             "resourceRequirements": null,
             "essential": true,
@@ -171,7 +171,7 @@ module.exports = {
         },
         {
             "name": "camundasvc-3931",
-            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-manoonw-3931-camunda:1.0`,
+            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-manoonw-3931-camunda:1`,
             "memoryReservation": "300",
             "resourceRequirements": null,
             "essential": true,
@@ -209,7 +209,7 @@ module.exports = {
         },
         {
             "name": "securitymanager-3931",
-            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-manoonw-3931-securitymanager:1.0`,
+            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-manoonw-3931-securitymanager:1`,
             "memoryReservation": "300",
             "resourceRequirements": null,
             "essential": true,
@@ -247,7 +247,7 @@ module.exports = {
         },
         {
             "name": "adminmanager-3931",
-            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-manoonw-3931-adminmanager:1.0`,
+            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-manoonw-3931-adminmanager:1`,
             "memoryReservation": "300",
             "resourceRequirements": null,
             "essential": true,
@@ -285,7 +285,7 @@ module.exports = {
         },
         {
             "name": "school-3931",
-            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-manoonw-3931-school:1.0`,
+            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-manoonw-3931-school:1`,
             "memoryReservation": "300",
             "resourceRequirements": null,
             "essential": true,
