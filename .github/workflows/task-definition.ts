@@ -107,7 +107,7 @@ module.exports = {
                 }
             ],
             "environmentFiles": null,
-            "environment": null,
+            "environment": [{"name":"CAMUNDAPOD_URL","value":"http://127.0.0.1:8080"},{"name":"SECURITYURL","value":"http://127.0.0.1:8003"},{"name":"AUTHPROXYURL","value":"http://127.0.0.1:8001"},{"name":"ADMINURL","value":"http://127.0.0.1:8004"},{"name":"CAMUNDAURL","value":"http://127.0.0.1:8002"},{"name":"APIGATEWAY","value":"http://127.0.0.1:8000"},{"name":"SCHOOLURL","value":"http://127.0.0.1:8012"}],
             "secrets": null,
             "mountPoints": [],
             "volumesFrom": null,
@@ -145,7 +145,7 @@ module.exports = {
                 }
             ],
             "environmentFiles": null,
-            "environment": null,
+            "environment": [{"name":"MONGO_DB_URL","value":"mongodb://admin:password@127.0.0.1:27017/manoonw_3931?authSource=admin"},{"name":"CAMUNDAPOD_URL","value":"http://127.0.0.1:8080"},{"name":"SECURITYURL","value":"http://127.0.0.1:8003"},{"name":"AUTHPROXYURL","value":"http://127.0.0.1:8001"},{"name":"ADMINURL","value":"http://127.0.0.1:8004"},{"name":"CAMUNDAURL","value":"http://127.0.0.1:8002"},{"name":"APIGATEWAY","value":"http://127.0.0.1:8000"},{"name":"SCHOOLURL","value":"http://127.0.0.1:8012"}],
             "secrets": null,
             "mountPoints": [],
             "volumesFrom": null,
@@ -221,7 +221,7 @@ module.exports = {
                 }
             ],
             "environmentFiles": null,
-            "environment": null,
+            "environment": [{"name":"MONGO_DB_URL","value":"mongodb://admin:password@127.0.0.1:27017/manoonw_3931?authSource=admin"},{"name":"CAMUNDAPOD_URL","value":"http://127.0.0.1:8080"},{"name":"SECURITYURL","value":"http://127.0.0.1:8003"},{"name":"AUTHPROXYURL","value":"http://127.0.0.1:8001"},{"name":"ADMINURL","value":"http://127.0.0.1:8004"},{"name":"CAMUNDAURL","value":"http://127.0.0.1:8002"},{"name":"APIGATEWAY","value":"http://127.0.0.1:8000"},{"name":"SCHOOLURL","value":"http://127.0.0.1:8012"}],
             "secrets": null,
             "mountPoints": [],
             "volumesFrom": null,
@@ -297,7 +297,7 @@ module.exports = {
                 }
             ],
             "environmentFiles": null,
-            "environment": null,
+            "environment": [{"name":"MONGO_DB_URL","value":"mongodb://admin:password@127.0.0.1:27017/manoonw_3931?authSource=admin"},{"name":"CAMUNDAPOD_URL","value":"http://127.0.0.1:8080"},{"name":"SECURITYURL","value":"http://127.0.0.1:8003"},{"name":"AUTHPROXYURL","value":"http://127.0.0.1:8001"},{"name":"ADMINURL","value":"http://127.0.0.1:8004"},{"name":"CAMUNDAURL","value":"http://127.0.0.1:8002"},{"name":"APIGATEWAY","value":"http://127.0.0.1:8000"},{"name":"SCHOOLURL","value":"http://127.0.0.1:8012"}],
             "secrets": null,
             "mountPoints": [],
             "volumesFrom": null,
