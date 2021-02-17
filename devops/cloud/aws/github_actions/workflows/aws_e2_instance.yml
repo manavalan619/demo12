@@ -1,4 +1,4 @@
-name: aws_ec2_deployments_for_testinggithubaction
+name: aws_ec2_deployments_for_manoonw
 on:
   push:
     branches: 
@@ -17,8 +17,8 @@ env:
   AWS_SECRET_ACCESS_KEY: ${{  secrets.AWS_SECRET_ACCESS_KEY  }}
   AWS_REGION: ${{  secrets.AWS_REGION  }}
   AWS_ECS_CLUSTER_NAME: ${{  secrets.AWS_ECS_CLUSTER_NAME  }}
-  PROJECT_NAME: testinggithubaction-6526
-  AWS_S3_BUCKET_NAME: testinggithubaction-6526
+  PROJECT_NAME: manoonw-3931
+  AWS_S3_BUCKET_NAME: manoonw-3931
 
 jobs:
   Prerequisites:
@@ -34,12 +34,12 @@ jobs:
         run: aws s3api create-bucket --bucket ${{ env.AWS_S3_BUCKET_NAME }} --region us-east-1
       - name: Creating the aws ECR for each micro service
         run: |
-          aws ecr create-repository --repository-name geppetto-generatedcode-testinggithubaction-6526-apigateway  --image-scanning-configuration scanOnPush=true  --region us-east-1
-          aws ecr create-repository --repository-name geppetto-generatedcode-testinggithubaction-6526-authproxy  --image-scanning-configuration scanOnPush=true  --region us-east-1
-          aws ecr create-repository --repository-name geppetto-generatedcode-testinggithubaction-6526-camunda  --image-scanning-configuration scanOnPush=true  --region us-east-1
-          aws ecr create-repository --repository-name geppetto-generatedcode-testinggithubaction-6526-securitymanager  --image-scanning-configuration scanOnPush=true  --region us-east-1
-          aws ecr create-repository --repository-name geppetto-generatedcode-testinggithubaction-6526-adminmanager  --image-scanning-configuration scanOnPush=true  --region us-east-1
-          aws ecr create-repository --repository-name geppetto-generatedcode-testinggithubaction-6526-demoone  --image-scanning-configuration scanOnPush=true  --region us-east-1
+          aws ecr create-repository --repository-name geppetto-generatedcode-manoonw-3931-apigateway  --image-scanning-configuration scanOnPush=true  --region us-east-1
+          aws ecr create-repository --repository-name geppetto-generatedcode-manoonw-3931-authproxy  --image-scanning-configuration scanOnPush=true  --region us-east-1
+          aws ecr create-repository --repository-name geppetto-generatedcode-manoonw-3931-camunda  --image-scanning-configuration scanOnPush=true  --region us-east-1
+          aws ecr create-repository --repository-name geppetto-generatedcode-manoonw-3931-securitymanager  --image-scanning-configuration scanOnPush=true  --region us-east-1
+          aws ecr create-repository --repository-name geppetto-generatedcode-manoonw-3931-adminmanager  --image-scanning-configuration scanOnPush=true  --region us-east-1
+          aws ecr create-repository --repository-name geppetto-generatedcode-manoonw-3931-school  --image-scanning-configuration scanOnPush=true  --region us-east-1
   Build_and_upload_docker_iamges_to_ECR:
     needs: Prerequisites
     runs-on: ubuntu-latest
@@ -62,34 +62,34 @@ jobs:
         run: |
      
           cd application/services/custom_services/authproxy
-          docker build -t $ECR_REGISTRY/geppetto-generatedcode-testinggithubaction-6526-authproxy:$IMAGE_TAG .
-          docker push $ECR_REGISTRY/geppetto-generatedcode-testinggithubaction-6526-authproxy:$IMAGE_TAG
+          docker build -t $ECR_REGISTRY/geppetto-generatedcode-manoonw-3931-authproxy:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/geppetto-generatedcode-manoonw-3931-authproxy:$IMAGE_TAG
           echo "Successfully build the docker image for authproxy  and pushed to aws ecr"
 
           cd ../camunda
-          docker build -t $ECR_REGISTRY/geppetto-generatedcode-testinggithubaction-6526-camunda:$IMAGE_TAG .
-          docker push $ECR_REGISTRY/geppetto-generatedcode-testinggithubaction-6526-camunda:$IMAGE_TAG
+          docker build -t $ECR_REGISTRY/geppetto-generatedcode-manoonw-3931-camunda:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/geppetto-generatedcode-manoonw-3931-camunda:$IMAGE_TAG
           echo "Successfully build the docker image for camunda  and pushed to aws ecr"
 
           cd ../securitymanager
-          docker build -t $ECR_REGISTRY/geppetto-generatedcode-testinggithubaction-6526-securitymanager:$IMAGE_TAG .
-          docker push $ECR_REGISTRY/geppetto-generatedcode-testinggithubaction-6526-securitymanager:$IMAGE_TAG
+          docker build -t $ECR_REGISTRY/geppetto-generatedcode-manoonw-3931-securitymanager:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/geppetto-generatedcode-manoonw-3931-securitymanager:$IMAGE_TAG
           echo "Successfully build the  docker image for securitymanager and pushed to aws ecr"
 
           cd ../adminmanager
-          docker build -t $ECR_REGISTRY/geppetto-generatedcode-testinggithubaction-6526-adminmanager:$IMAGE_TAG .
-          docker push $ECR_REGISTRY/geppetto-generatedcode-testinggithubaction-6526-adminmanager:$IMAGE_TAG
+          docker build -t $ECR_REGISTRY/geppetto-generatedcode-manoonw-3931-adminmanager:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/geppetto-generatedcode-manoonw-3931-adminmanager:$IMAGE_TAG
           echo "Successfully build the  docker image for adminmanager and pushed to aws ecr"
 
           cd ../../custom_services/apigateway
-          docker build -t $ECR_REGISTRY/geppetto-generatedcode-testinggithubaction-6526-apigateway:$IMAGE_TAG .
-          docker push $ECR_REGISTRY/geppetto-generatedcode-testinggithubaction-6526-apigateway:$IMAGE_TAG
+          docker build -t $ECR_REGISTRY/geppetto-generatedcode-manoonw-3931-apigateway:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/geppetto-generatedcode-manoonw-3931-apigateway:$IMAGE_TAG
           echo "Successfully build the docker image for apigateway and pushed to aws ecr"
 
-          cd ../demoone
-          docker build -t $ECR_REGISTRY/geppetto-generatedcode-testinggithubaction-6526-demoone:$IMAGE_TAG .
-          docker push $ECR_REGISTRY/geppetto-generatedcode-testinggithubaction-6526-demoone:$IMAGE_TAG
-          echo "Successfully build the docker image for demoone and pushed to aws ecr"
+          cd ../school
+          docker build -t $ECR_REGISTRY/geppetto-generatedcode-manoonw-3931-school:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/geppetto-generatedcode-manoonw-3931-school:$IMAGE_TAG
+          echo "Successfully build the docker image for school and pushed to aws ecr"
 
   Deploy_backend:
     needs: Build_and_upload_docker_iamges_to_ECR
@@ -116,7 +116,7 @@ jobs:
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
           task-definition: /home/runner/work/demo12/demo12/.github/workflows/task-definition.json
-          container-name: mongo-6526
+          container-name: mongo-3931
           image: geppettotest/mongo-local:april2020
       - name: Deploy Amazon ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
@@ -138,10 +138,10 @@ jobs:
       - name: Installing angular/cli
         run: npm install -g @angular/cli
       - name: Installing the node modules
-        working-directory: ./application/client/desktop/testinggithubaction
+        working-directory: ./application/client/desktop/manoonw
         run: npm install
       - name: Production build
-        working-directory: ./application/client/desktop/testinggithubaction
+        working-directory: ./application/client/desktop/manoonw
         run: ng build --configuration=production
       - uses: jakejarvis/s3-sync-action@v0.5.1
         with:
@@ -150,6 +150,6 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{  env.AWS_ACCESS_KEY_ID  }}
           AWS_SECRET_ACCESS_KEY: ${{  env.AWS_SECRET_ACCESS_KEY  }}
           AWS_REGION: ${{  env.AWS_REGION  }}
-          SOURCE_DIR: "application/client/desktop/testinggithubaction/dist/testinggithubaction"
+          SOURCE_DIR: "application/client/desktop/manoonw/dist/manoonw"
       - name: Enable the static webhosting
         run: aws s3 website s3://${{ env.AWS_S3_BUCKET_NAME }}/ --index-document index.html --error-document error.html

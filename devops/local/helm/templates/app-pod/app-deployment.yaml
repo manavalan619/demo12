@@ -64,12 +64,12 @@ spec:
               value: {{ .Values.app.prefix }}-app-db
             - name: MONGO_DB_URL
               value: "mongodb://{{ .Values.app.prefix }}-app-db.{{ .Values.app.prefix }}.svc.cluster.local:27017/{{ .Values.app.prefix }}"
-        - name: {{ .Values.deployment.demoone.name }}-container
+        - name: {{ .Values.deployment.school.name }}-container
           imagePullPolicy: {{ .Values.deployment.defaultImagePullPolicy }}
-          image: {{ .Values.deployment.demoone.image }}
+          image: {{ .Values.deployment.school.image }}
           ports:
             - name: http-port
-              containerPort: 8011
+              containerPort: 8012
           env:
             - name: {{ .Values.app.prefix }}-app-db
               value: {{ .Values.app.prefix }}-app-db

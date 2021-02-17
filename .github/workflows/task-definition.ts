@@ -5,7 +5,7 @@ module.exports = {
     "inferenceAccelerators": [],
     "containerDefinitions": [
         {
-            "name": "mongo-6526",
+            "name": "mongo-3931",
             "image": "geppettotest/mongo-local:april2020",
             "memoryReservation": "300",
             "resourceRequirements": null,
@@ -31,7 +31,7 @@ module.exports = {
                 {
                   "readOnly": null,
                   "containerPath": "/data/db",
-                  "sourceVolume": "testinggithubaction"
+                  "sourceVolume": "manoonw"
                 }
               ],
             "volumesFrom": null,
@@ -42,7 +42,7 @@ module.exports = {
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "/ecs/testinggithubaction",
+                    "awslogs-group": "/ecs/manoonw",
                     "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs",
                     "awslogs-create-group": "true"
@@ -56,7 +56,7 @@ module.exports = {
             }
         },
         {
-            "name": "camunda-6526",
+            "name": "camunda-3931",
             "image": "geppettodistribution/camunda-local:Jan2021",
             "memoryReservation": "300",
             "resourceRequirements": null,
@@ -80,7 +80,7 @@ module.exports = {
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "/ecs/testinggithubaction",
+                    "awslogs-group": "/ecs/manoonw",
                     "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs",
                     "awslogs-create-group": "true"
@@ -94,8 +94,8 @@ module.exports = {
             }
         },
         {
-            "name": "apigateway-6526",
-            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-testinggithubaction-6526-apigateway:1.0`,
+            "name": "apigateway-3931",
+            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-manoonw-3931-apigateway:1.0`,
             "memoryReservation": "300",
             "resourceRequirements": null,
             "essential": true,
@@ -118,7 +118,7 @@ module.exports = {
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "/ecs/testinggithubaction",
+                    "awslogs-group": "/ecs/manoonw",
                     "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs",
                     "awslogs-create-group": "true"
@@ -132,8 +132,8 @@ module.exports = {
             }
         },        
         {
-            "name": "authproxy-6526",
-            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-testinggithubaction-6526-authproxy:1.0`,
+            "name": "authproxy-3931",
+            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-manoonw-3931-authproxy:1.0`,
             "memoryReservation": "300",
             "resourceRequirements": null,
             "essential": true,
@@ -156,7 +156,7 @@ module.exports = {
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "/ecs/testinggithubaction",
+                    "awslogs-group": "/ecs/manoonw",
                     "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs",
                     "awslogs-create-group": "true"
@@ -170,8 +170,8 @@ module.exports = {
             }
         },
         {
-            "name": "camunda-6526",
-            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-testinggithubaction-6526-camunda:1.0`,
+            "name": "camunda-3931",
+            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-manoonw-3931-camunda:1.0`,
             "memoryReservation": "300",
             "resourceRequirements": null,
             "essential": true,
@@ -194,7 +194,7 @@ module.exports = {
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "/ecs/testinggithubaction",
+                    "awslogs-group": "/ecs/manoonw",
                     "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs",
                     "awslogs-create-group": "true"
@@ -208,8 +208,8 @@ module.exports = {
             }
         },
         {
-            "name": "securitymanager-6526",
-            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-testinggithubaction-6526-securitymanager:1.0`,
+            "name": "securitymanager-3931",
+            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-manoonw-3931-securitymanager:1.0`,
             "memoryReservation": "300",
             "resourceRequirements": null,
             "essential": true,
@@ -232,7 +232,7 @@ module.exports = {
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "/ecs/testinggithubaction",
+                    "awslogs-group": "/ecs/manoonw",
                     "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs",
                     "awslogs-create-group": "true"
@@ -246,8 +246,8 @@ module.exports = {
             }
         },
         {
-            "name": "adminmanager-6526",
-            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-testinggithubaction-6526-adminmanager:1.0`,
+            "name": "adminmanager-3931",
+            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-manoonw-3931-adminmanager:1.0`,
             "memoryReservation": "300",
             "resourceRequirements": null,
             "essential": true,
@@ -270,7 +270,7 @@ module.exports = {
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "/ecs/testinggithubaction",
+                    "awslogs-group": "/ecs/manoonw",
                     "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs",
                     "awslogs-create-group": "true"
@@ -284,16 +284,16 @@ module.exports = {
             }
         },
         {
-            "name": "demoone-6526",
-            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-testinggithubaction-6526-demoone:1.0`,
+            "name": "school-3931",
+            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-manoonw-3931-school:1.0`,
             "memoryReservation": "300",
             "resourceRequirements": null,
             "essential": true,
             "portMappings": [
                 {
-                    "containerPort": "8011",
+                    "containerPort": "8012",
                     "protocol": "tcp",
-                    "hostPort": "8011"
+                    "hostPort": "8012"
                 }
             ],
             "environmentFiles": null,
@@ -325,14 +325,14 @@ module.exports = {
     "volumes": [
         {
             "host": {},
-            "name": "testinggithubaction"
+            "name": "manoonw"
         }
     ],
     "networkMode": "awsvpc",
     "memory": "2048",
     "cpu": "1024",
     "executionRoleArn": `arn:aws:iam::${process.env.AWS_ACCOUNT_ID}:role/${process.env.AWS_ROLE_FOR_FARGATE}`,
-    "family": "testinggithubaction",
+    "family": "manoonw",
     "tags": [],
     "placementConstraints": [],
     "taskRoleArn": `arn:aws:iam::${process.env.AWS_ACCOUNT_ID}:role/${process.env.AWS_ROLE_FOR_FARGATE}`
