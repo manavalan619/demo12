@@ -1,13 +1,13 @@
-# Default values for nothing.
+# Default values for testtwo.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 app:
-  prefix: nothing
-  namespace: nothing
+  prefix: testtwo
+  namespace: testtwo
 
 logging:
-  namespace: nothing-logging
+  namespace: testtwo-logging
 
 service:
   type: NodePort
@@ -61,7 +61,7 @@ deployment:
   customImagePullPolicy: Always
   apigateway:
      name: apigateway
-     image: geppettotest/nothing-apigateway:1.0
+     image: geppettotest/testtwo-apigateway:1.0
   mongo:
      name: mongo
      image: mongo:3.2   
@@ -79,7 +79,7 @@ deployment:
      image: geppettodistribution/default-adminmanager:2.0
   desktop:
      name: desktop
-     image: geppettotest/nothing-desktop:1.0
+     image: geppettotest/testtwo-desktop:1.0
 
   camundapod:
      name: camundapod
@@ -87,7 +87,7 @@ deployment:
 
 config:
   vault:
-    rootToken: vault-nothing-2019
+    rootToken: vault-testtwo-2019
 
 persistentVolume:
   mongo:
