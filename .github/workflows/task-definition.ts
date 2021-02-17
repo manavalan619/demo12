@@ -170,7 +170,7 @@ module.exports = {
             }
         },
         {
-            "name": "camunda-3931",
+            "name": "camundasvc-3931",
             "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-manoonw-3931-camunda:1.0`,
             "memoryReservation": "300",
             "resourceRequirements": null,
