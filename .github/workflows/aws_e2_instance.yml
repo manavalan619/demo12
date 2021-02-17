@@ -32,13 +32,13 @@ jobs:
           aws-region: ${{  env.AWS_REGION  }}
       - name: Creating the S3 bucket
         run: aws s3api create-bucket --bucket ${{ env.AWS_S3_BUCKET_NAME }} --region us-east-1
-      - name: Creating the aws ECR for each micro service
-        run: |
-          aws ecr create-repository --repository-name geppetto-generatedcode-nothing-0535-apigateway  --image-scanning-configuration scanOnPush=true  --region us-east-1
-          aws ecr create-repository --repository-name geppetto-generatedcode-nothing-0535-authproxy  --image-scanning-configuration scanOnPush=true  --region us-east-1
-          aws ecr create-repository --repository-name geppetto-generatedcode-nothing-0535-camunda  --image-scanning-configuration scanOnPush=true  --region us-east-1
-          aws ecr create-repository --repository-name geppetto-generatedcode-nothing-0535-securitymanager  --image-scanning-configuration scanOnPush=true  --region us-east-1
-          aws ecr create-repository --repository-name geppetto-generatedcode-nothing-0535-adminmanager  --image-scanning-configuration scanOnPush=true  --region us-east-1
+      # - name: Creating the aws ECR for each micro service
+      #   run: |
+      #     aws ecr create-repository --repository-name geppetto-generatedcode-nothing-0535-apigateway  --image-scanning-configuration scanOnPush=true  --region us-east-1
+      #     aws ecr create-repository --repository-name geppetto-generatedcode-nothing-0535-authproxy  --image-scanning-configuration scanOnPush=true  --region us-east-1
+      #     aws ecr create-repository --repository-name geppetto-generatedcode-nothing-0535-camunda  --image-scanning-configuration scanOnPush=true  --region us-east-1
+      #     aws ecr create-repository --repository-name geppetto-generatedcode-nothing-0535-securitymanager  --image-scanning-configuration scanOnPush=true  --region us-east-1
+      #     aws ecr create-repository --repository-name geppetto-generatedcode-nothing-0535-adminmanager  --image-scanning-configuration scanOnPush=true  --region us-east-1
   Build_and_upload_docker_iamges_to_ECR:
     needs: Prerequisites
     runs-on: ubuntu-latest
@@ -60,7 +60,7 @@ jobs:
           IMAGE_TAG: 1
         run: |
      
-          cd application/services/custom_services/authproxy
+          cd application/services/default_services/authproxy
           docker build -t $ECR_REGISTRY/geppetto-generatedcode-nothing-0535-authproxy:$IMAGE_TAG .
           docker push $ECR_REGISTRY/geppetto-generatedcode-nothing-0535-authproxy:$IMAGE_TAG
           echo "Successfully build the docker image for authproxy  and pushed to aws ecr"
