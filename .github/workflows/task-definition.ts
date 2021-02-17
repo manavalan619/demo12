@@ -221,10 +221,12 @@ module.exports = {
                 }
             ],
             "environmentFiles": null,
-            "environment": [{
-                "name": "MONGO_DB_URL",
-                "value": "mongodb://admin:password@127.0.0.1:27017/manoonw_3931?authSource=admin"
-              }],
+            "environment": [{"name":"MONGO_DB_URL","value":"mongodb://admin:password@127.0.0.1:27017/manoonw_3931?authSource=admin"}],
+
+            // "environment": [{
+            //     "name": "MONGO_DB_URL",
+            //     "value": "mongodb://admin:password@127.0.0.1:27017/manoonw_3931?authSource=admin"
+            //   }],
             "secrets": null,
             "mountPoints": [],
             "volumesFrom": null,
