@@ -329,7 +329,7 @@ module.exports = {
         }
     ],
     "networkMode": "awsvpc",
-    "memory": "2048",
+    "memory": "3072",
     "cpu": "1024",
     "executionRoleArn": `arn:aws:iam::${process.env.AWS_ACCOUNT_ID}:role/${process.env.AWS_ROLE_FOR_FARGATE}`,
     "family": "manoonw",
