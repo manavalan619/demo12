@@ -2,13 +2,13 @@ version: "3.8"
 services:
   mongo:
     image: geppettotest/mongo-local:april2020
-    container_name: mongo-3611
+    container_name: mongo-9490
     restart: unless-stopped
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=password
     volumes:
-      - testtwo_3611-volume:/data/db
+      - newhptemplate_9490-volume:/data/db
     ports:
       - "27018:27017"
     healthcheck:
@@ -20,14 +20,14 @@ services:
 
   camunda:
     image: geppettodistribution/camunda-local:Jan2021
-    container_name: camunda-3611
+    container_name: camunda-9490
     ports:
       - "0000:8080"
 
   authproxy:
     build: ../../../application/services/default_services/authproxy
-    image: authproxy-3611
-    container_name: authproxy-3611
+    image: authproxy-9490
+    container_name: authproxy-9490
     ports:
       - "0000:8001"
     env_file: .env
@@ -37,8 +37,8 @@ services:
 
   camundaservice:
     build: ../../../application/services/default_services/camunda
-    image: camundaservice-3611
-    container_name: camundasvc-3611
+    image: camundaservice-9490
+    container_name: camundasvc-9490
     ports:
       - "8002:8002"
     env_file: .env
@@ -48,8 +48,8 @@ services:
 
   securitymanager:
     build: ../../../application/services/default_services/securitymanager
-    image: securitymanager-3611
-    container_name: securitymanager-3611
+    image: securitymanager-9490
+    container_name: securitymanager-9490
     ports:
       - "0000:8003"
     env_file: .env
@@ -59,8 +59,8 @@ services:
 
   apigateway:
     build: ../../../application/services/custom_services/apigateway
-    image: apigateway-3611
-    container_name: apigateway-3611
+    image: apigateway-9490
+    container_name: apigateway-9490
     ports:
       - "8000:8000"
     env_file: .env
@@ -75,5 +75,5 @@ services:
 
 
 volumes:
-  testtwo_3611-volume:
+  newhptemplate_9490-volume:
     driver: local

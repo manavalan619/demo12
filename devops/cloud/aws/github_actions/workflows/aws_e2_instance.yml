@@ -1,4 +1,4 @@
-name: aws_ec2_deployments_for_testtwo
+name: aws_ec2_deployments_for_newhptemplate
 on:
   push:
     branches: 
@@ -17,8 +17,8 @@ env:
   AWS_SECRET_ACCESS_KEY: ${{  secrets.AWS_SECRET_ACCESS_KEY  }}
   AWS_REGION: ${{  secrets.AWS_REGION  }}
   AWS_ECS_CLUSTER_NAME: ${{  secrets.AWS_ECS_CLUSTER_NAME  }}
-  PROJECT_NAME: testtwo-3611
-  AWS_S3_BUCKET_NAME: testtwo-3611
+  PROJECT_NAME: newhptemplate-9490
+  AWS_S3_BUCKET_NAME: newhptemplate-9490
 
 jobs:
   Prerequisites:
@@ -34,10 +34,10 @@ jobs:
         run: aws s3api create-bucket --bucket ${{ env.AWS_S3_BUCKET_NAME }} --region us-east-1
       - name: Creating the aws ECR for each micro service
         run: |
-          aws ecr create-repository --repository-name geppetto-generatedcode-testtwo-3611-apigateway  --image-scanning-configuration scanOnPush=true  --region us-east-1
-          aws ecr create-repository --repository-name geppetto-generatedcode-testtwo-3611-authproxy  --image-scanning-configuration scanOnPush=true  --region us-east-1
-          aws ecr create-repository --repository-name geppetto-generatedcode-testtwo-3611-camunda  --image-scanning-configuration scanOnPush=true  --region us-east-1
-          aws ecr create-repository --repository-name geppetto-generatedcode-testtwo-3611-securitymanager  --image-scanning-configuration scanOnPush=true  --region us-east-1
+          aws ecr create-repository --repository-name geppetto-generatedcode-newhptemplate-9490-apigateway  --image-scanning-configuration scanOnPush=true  --region us-east-1
+          aws ecr create-repository --repository-name geppetto-generatedcode-newhptemplate-9490-authproxy  --image-scanning-configuration scanOnPush=true  --region us-east-1
+          aws ecr create-repository --repository-name geppetto-generatedcode-newhptemplate-9490-camunda  --image-scanning-configuration scanOnPush=true  --region us-east-1
+          aws ecr create-repository --repository-name geppetto-generatedcode-newhptemplate-9490-securitymanager  --image-scanning-configuration scanOnPush=true  --region us-east-1
   Build_and_upload_docker_iamges_to_ECR:
     needs: Prerequisites
     runs-on: ubuntu-latest
@@ -60,23 +60,23 @@ jobs:
         run: |
      
           cd application/services/default_services/authproxy
-          docker build -t $ECR_REGISTRY/geppetto-generatedcode-testtwo-3611-authproxy:$IMAGE_TAG .
-          docker push $ECR_REGISTRY/geppetto-generatedcode-testtwo-3611-authproxy:$IMAGE_TAG
+          docker build -t $ECR_REGISTRY/geppetto-generatedcode-newhptemplate-9490-authproxy:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/geppetto-generatedcode-newhptemplate-9490-authproxy:$IMAGE_TAG
           echo "Successfully build the docker image for authproxy  and pushed to aws ecr"
 
           cd ../camunda
-          docker build -t $ECR_REGISTRY/geppetto-generatedcode-testtwo-3611-camunda:$IMAGE_TAG .
-          docker push $ECR_REGISTRY/geppetto-generatedcode-testtwo-3611-camunda:$IMAGE_TAG
+          docker build -t $ECR_REGISTRY/geppetto-generatedcode-newhptemplate-9490-camunda:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/geppetto-generatedcode-newhptemplate-9490-camunda:$IMAGE_TAG
           echo "Successfully build the docker image for camunda  and pushed to aws ecr"
 
           cd ../securitymanager
-          docker build -t $ECR_REGISTRY/geppetto-generatedcode-testtwo-3611-securitymanager:$IMAGE_TAG .
-          docker push $ECR_REGISTRY/geppetto-generatedcode-testtwo-3611-securitymanager:$IMAGE_TAG
+          docker build -t $ECR_REGISTRY/geppetto-generatedcode-newhptemplate-9490-securitymanager:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/geppetto-generatedcode-newhptemplate-9490-securitymanager:$IMAGE_TAG
           echo "Successfully build the  docker image for securitymanager and pushed to aws ecr"
 
           cd ../../custom_services/apigateway
-          docker build -t $ECR_REGISTRY/geppetto-generatedcode-testtwo-3611-apigateway:$IMAGE_TAG .
-          docker push $ECR_REGISTRY/geppetto-generatedcode-testtwo-3611-apigateway:$IMAGE_TAG
+          docker build -t $ECR_REGISTRY/geppetto-generatedcode-newhptemplate-9490-apigateway:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/geppetto-generatedcode-newhptemplate-9490-apigateway:$IMAGE_TAG
           echo "Successfully build the docker image for apigateway and pushed to aws ecr"
 
      
@@ -105,7 +105,7 @@ jobs:
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
           task-definition: /home/runner/work/demo12/demo12/.github/workflows/task-definition.json
-          container-name: mongo-3611
+          container-name: mongo-9490
           image: geppettotest/mongo-local:april2020
       - name: Deploy Amazon ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
@@ -127,10 +127,12 @@ jobs:
       - name: Installing angular/cli
         run: npm install -g @angular/cli
       - name: Installing the node modules
-        working-directory: ./application/client/desktop/testtwo
-        run: npm install
+        working-directory: ./application/client/desktop/newhptemplate
+        run: |
+          npm install
+          npm i @ng-select/ng-select
       - name: Production build
-        working-directory: ./application/client/desktop/testtwo
+        working-directory: ./application/client/desktop/newhptemplate
         run: ng build --configuration=production
       - uses: jakejarvis/s3-sync-action@v0.5.1
         with:
@@ -139,6 +141,6 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{  env.AWS_ACCESS_KEY_ID  }}
           AWS_SECRET_ACCESS_KEY: ${{  env.AWS_SECRET_ACCESS_KEY  }}
           AWS_REGION: ${{  env.AWS_REGION  }}
-          SOURCE_DIR: "application/client/desktop/testtwo/dist/testtwo"
+          SOURCE_DIR: "application/client/desktop/newhptemplate/dist/newhptemplate"
       - name: Enable the static webhosting
         run: aws s3 website s3://${{ env.AWS_S3_BUCKET_NAME }}/ --index-document index.html --error-document error.html

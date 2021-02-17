@@ -1,6 +1,6 @@
 #!bin/bash
 
-DESKTOPCODE='../../../application/client/desktop/testtwo'
+DESKTOPCODE='../../../application/client/desktop/newhptemplate'
 
 COMPOSEPATH='../../../../devops/local/docker/'
 
@@ -13,8 +13,8 @@ do
     c)  
          echo "Creating new docker images and containers"
          cd $DESKTOPCODE
-         docker build -t testtwoui-3611 .
-         docker run --name testtwoui-3611 --restart=unless-stopped -d -p 5055:5000 testtwoui-3611
+         docker build -t newhptemplateui-9490 .
+         docker run --name newhptemplateui-9490 --restart=unless-stopped -d -p 5055:5000 newhptemplateui-9490
          sleep 15
          echo "UI build is done..."
 
@@ -22,8 +22,8 @@ do
          docker-compose up -d --build
          echo "uploading the mongo script..."
          sleep 50
-         docker cp mongo.js mongo-3611:/data/db/
-         docker exec -ti mongo-3611 mongo -u admin -p 'password' --authenticationDatabase 'admin' testtwo_3611 /data/db/mongo.js
+         docker cp mongo.js mongo-9490:/data/db/
+         docker exec -ti mongo-9490 mongo -u admin -p 'password' --authenticationDatabase 'admin' newhptemplate_9490 /data/db/mongo.js
          sleep 10
          echo "Process completed"
          echo " Your application is deployed here the link, http://localhost:5055 "
@@ -31,21 +31,21 @@ do
     d)
          echo "Now Deleting all containers and images"
          docker-compose down -v --rmi all 
-         docker rm -f testtwoui-3611
-         docker rmi testtwoui-3611
+         docker rm -f newhptemplateui-9490
+         docker rmi newhptemplateui-9490
          echo "Process completed"
          ;;
     r)
          echo "Now Re-starting the stopped containers"
          docker-compose start
-         docker restart testtwoui-3611
+         docker restart newhptemplateui-9490
          sleep 35
          echo "Process completed"
          ;;
     s)
          echo "Now stopping the running containers"
          docker-compose stop
-         docker stop testtwoui-3611
+         docker stop newhptemplateui-9490
          echo "Process completed"
          ;;
     *)
