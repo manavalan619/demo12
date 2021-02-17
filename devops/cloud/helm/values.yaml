@@ -1,13 +1,13 @@
-# Default values for manoonw.
+# Default values for nothing.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 app:
-  prefix: manoonw
-  namespace: manoonw
+  prefix: nothing
+  namespace: nothing
 
 logging:
-  namespace: manoonw-logging
+  namespace: nothing-logging
 
 service:
   type: NodePort
@@ -54,11 +54,6 @@ service:
     type: NodePort
     port: 8080
     targetPort: 8080
-  school: 
-    name: school
-    type: NodePort
-    port: 8012
-    targetPort: 8012
 
 
 deployment:
@@ -66,7 +61,7 @@ deployment:
   customImagePullPolicy: Always
   apigateway:
      name: apigateway
-     image: geppettotest/manoonw-apigateway:1.0
+     image: geppettotest/nothing-apigateway:1.0
   mongo:
      name: mongo
      image: mongo:3.2   
@@ -84,10 +79,7 @@ deployment:
      image: geppettodistribution/default-adminmanager:2.0
   desktop:
      name: desktop
-     image: geppettotest/manoonw-desktop:1.0
-  school: 
-    name: school
-    image: geppettotest/manoonw-school:1.0
+     image: geppettotest/nothing-desktop:1.0
 
   camundapod:
      name: camundapod
@@ -95,7 +87,7 @@ deployment:
 
 config:
   vault:
-    rootToken: vault-manoonw-2019
+    rootToken: vault-nothing-2019
 
 persistentVolume:
   mongo:

@@ -1,14 +1,14 @@
 #!bin/bash
 
-APPLICATION='/manoonw'
+APPLICATION='/nothing'
 
 CUSTOMSERVICEPATH='../../../services/custom_services'
 
 HELMPATH='../devops/local'
 
 
-DESKTOPCODE='../../../application/client/desktop/manoonw'
-DESKTOPIMAGENAME='geppettotest/manoonw-desktop:1.0'
+DESKTOPCODE='../../../application/client/desktop/nothing'
+DESKTOPIMAGENAME='geppettotest/nothing-desktop:1.0'
 
 echo "Started to build docker images for pod...."
 
@@ -76,7 +76,7 @@ helm_install () {
 
 cd $HELMPATH
 helm install --dry-run --debug ./helm
-helm install --name manoonw-3931 ./helm
+helm install --name nothing-0535 ./helm
 if [ $? -eq 0 ]; then
     echo "App Deployment is Done"
 else
