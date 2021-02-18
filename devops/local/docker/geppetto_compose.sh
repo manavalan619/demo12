@@ -1,6 +1,6 @@
 #!bin/bash
 
-DESKTOPCODE='../../../application/client/desktop/lastone'
+DESKTOPCODE='../../../application/client/desktop/runtask'
 
 COMPOSEPATH='../../../../devops/local/docker/'
 
@@ -13,8 +13,8 @@ do
     c)  
          echo "Creating new docker images and containers"
          cd $DESKTOPCODE
-         docker build -t lastoneui-8521 .
-         docker run --name lastoneui-8521 --restart=unless-stopped -d -p 5055:5000 lastoneui-8521
+         docker build -t runtaskui-6105 .
+         docker run --name runtaskui-6105 --restart=unless-stopped -d -p 5055:5000 runtaskui-6105
          sleep 15
          echo "UI build is done..."
 
@@ -22,8 +22,8 @@ do
          docker-compose up -d --build
          echo "uploading the mongo script..."
          sleep 50
-         docker cp mongo.js mongo-8521:/data/db/
-         docker exec -ti mongo-8521 mongo -u admin -p 'password' --authenticationDatabase 'admin' lastone_8521 /data/db/mongo.js
+         docker cp mongo.js mongo-6105:/data/db/
+         docker exec -ti mongo-6105 mongo -u admin -p 'password' --authenticationDatabase 'admin' runtask_6105 /data/db/mongo.js
          sleep 10
          echo "Process completed"
          echo " Your application is deployed here the link, http://localhost:5055 "
@@ -31,21 +31,21 @@ do
     d)
          echo "Now Deleting all containers and images"
          docker-compose down -v --rmi all 
-         docker rm -f lastoneui-8521
-         docker rmi lastoneui-8521
+         docker rm -f runtaskui-6105
+         docker rmi runtaskui-6105
          echo "Process completed"
          ;;
     r)
          echo "Now Re-starting the stopped containers"
          docker-compose start
-         docker restart lastoneui-8521
+         docker restart runtaskui-6105
          sleep 35
          echo "Process completed"
          ;;
     s)
          echo "Now stopping the running containers"
          docker-compose stop
-         docker stop lastoneui-8521
+         docker stop runtaskui-6105
          echo "Process completed"
          ;;
     *)

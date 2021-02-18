@@ -1,13 +1,13 @@
-# Default values for lastone.
+# Default values for runtask.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 app:
-  prefix: lastone
-  namespace: lastone
+  prefix: runtask
+  namespace: runtask
 
 logging:
-  namespace: lastone-logging
+  namespace: runtask-logging
 
 service:
   type: NodePort
@@ -61,7 +61,7 @@ deployment:
   customImagePullPolicy: Always
   apigateway:
      name: apigateway
-     image: geppettotest/lastone-apigateway:1.0
+     image: geppettotest/runtask-apigateway:1.0
   mongo:
      name: mongo
      image: mongo:3.2   
@@ -79,7 +79,7 @@ deployment:
      image: geppettodistribution/default-adminmanager:2.0
   desktop:
      name: desktop
-     image: geppettotest/lastone-desktop:1.0
+     image: geppettotest/runtask-desktop:1.0
 
   camundapod:
      name: camundapod
@@ -87,7 +87,7 @@ deployment:
 
 config:
   vault:
-    rootToken: vault-lastone-2019
+    rootToken: vault-runtask-2019
 
 persistentVolume:
   mongo:
