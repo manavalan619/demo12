@@ -117,7 +117,7 @@ jobs:
       #     cluster: ${{  env.AWS_ECS_CLUSTER_NAME  }}
       #     wait-for-service-stability: true
       - name: Run the ECS task definition
-        run: aws ecs run-task --cluster Cost-Estimation-Testing --task-definition Ticketapp --launch-type FARGATE --network-configuration "awsvpcConfiguration={subnets=[subnet-51cbee09],securityGroups=[sg-0be12e6ecdad0e56b],assignPublicIp=ENABLED}"
+        run: aws ecs run-task --cluster ${{env.AWS_ECS_CLUSTER_NAME}}  --task-definition Ticketapp --launch-type FARGATE --network-configuration "awsvpcConfiguration={subnets=[${{env.AWS_VPC_SUBNET}}],securityGroups=[${{env.AWS_VPC_SECURITY_GROUP}}],assignPublicIp=ENABLED}"
 
   # Upload_S3_Bucket:
   #   needs: Prerequisites
