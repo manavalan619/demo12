@@ -85,7 +85,6 @@ jobs:
 
      
   Deploy_backend:
-    needs: Build_and_upload_docker_iamges_to_ECR
     runs-on: ubuntu-latest
     steps:
       - name: Check the  branch
