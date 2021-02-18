@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  DESKTOP_API: 'http://'+window.location.hostname+':8000/desktop',
+  DESKTOP_API: 'http://54.86.243.148:8000/desktop',
   MOBILE_API: '/api/mobile',
   production: false
 };
