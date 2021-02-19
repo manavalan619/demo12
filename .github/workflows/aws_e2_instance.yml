@@ -130,10 +130,12 @@ jobs:
       - name: Installing angular/cli
         run: npm install -g @angular/cli
       - name: Just for the testing
-        # working-directory: ./application/client/desktop/frontfend/src/environments
+        working-directory: ./application/client/desktop/frontfend/src/environments
         run: |
-          echo 'export const environment = {DESKTOP_API: 'ooooooooooooooooo',MOBILE_API: 'http://<Your Domain Name or Live IP address>',production: true};' >> environment.prod.ts
           ls
+          cat environment.prod.ts
+          echo 'export const environment = {DESKTOP_API: 'ooooooooooooooooo',MOBILE_API: 'http://<Your Domain Name or Live IP address>',production: true};' >> environment.prod.ts
+          
       - name: Installing the node modules
         working-directory: ./application/client/desktop/frontfend
         run: |
