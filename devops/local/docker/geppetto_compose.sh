@@ -1,6 +1,6 @@
 #!bin/bash
 
-DESKTOPCODE='../../../application/client/desktop/fordevcheck'
+DESKTOPCODE='../../../application/client/desktop/devcheckforcustom'
 
 COMPOSEPATH='../../../../devops/local/docker/'
 
@@ -13,8 +13,8 @@ do
     c)  
          echo "Creating new docker images and containers"
          cd $DESKTOPCODE
-         docker build -t fordevcheckui-0279 .
-         docker run --name fordevcheckui-0279 --restart=unless-stopped -d -p 5055:5000 fordevcheckui-0279
+         docker build -t devcheckforcustomui-1808 .
+         docker run --name devcheckforcustomui-1808 --restart=unless-stopped -d -p 5055:5000 devcheckforcustomui-1808
          sleep 15
          echo "UI build is done..."
 
@@ -22,8 +22,8 @@ do
          docker-compose up -d --build
          echo "uploading the mongo script..."
          sleep 50
-         docker cp mongo.js mongo-0279:/data/db/
-         docker exec -ti mongo-0279 mongo -u admin -p 'password' --authenticationDatabase 'admin' fordevcheck_0279 /data/db/mongo.js
+         docker cp mongo.js mongo-1808:/data/db/
+         docker exec -ti mongo-1808 mongo -u admin -p 'password' --authenticationDatabase 'admin' devcheckforcustom_1808 /data/db/mongo.js
          sleep 10
          echo "Process completed"
          echo " Your application is deployed here the link, http://localhost:5055 "
@@ -31,21 +31,21 @@ do
     d)
          echo "Now Deleting all containers and images"
          docker-compose down -v --rmi all 
-         docker rm -f fordevcheckui-0279
-         docker rmi fordevcheckui-0279
+         docker rm -f devcheckforcustomui-1808
+         docker rmi devcheckforcustomui-1808
          echo "Process completed"
          ;;
     r)
          echo "Now Re-starting the stopped containers"
          docker-compose start
-         docker restart fordevcheckui-0279
+         docker restart devcheckforcustomui-1808
          sleep 35
          echo "Process completed"
          ;;
     s)
          echo "Now stopping the running containers"
          docker-compose stop
-         docker stop fordevcheckui-0279
+         docker stop devcheckforcustomui-1808
          echo "Process completed"
          ;;
     *)

@@ -1,0 +1,7 @@
+{
+  "name": "devcheckforcustom",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
