@@ -21,7 +21,7 @@ env:
   AWS_ECS_CLUSTER_NAME: ${{  secrets.AWS_ECS_CLUSTER_NAME  }}
   PROJECT_NAME: frontfend-6079
   AWS_S3_BUCKET_NAME: frontfend-6079
-  BACKEND_URL: 54.173.12.94
+  BACKEND_URL: 11.11.11.11
 
 jobs:
   # Prerequisites:
