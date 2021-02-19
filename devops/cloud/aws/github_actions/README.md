@@ -1,12 +1,7 @@
-# Deploy the your frontfend-6079 applicaton by using github actions
+# Deploy the your forlocal-4353 applicaton by using github actions
 ![Github Actions](https://readmegeppetto.s3.amazonaws.com/githubactions.jpeg)
 
 ### Deploy the your generated application in aws by using github actions.
-
-- Clone the  repo and paste the all folders and files to your own repo.
-```sh
-$ git clone https://github.com/gepinfo/frontfend-6079
-```
 
 - First copy the github action folder in the below path and paste in root directory, by using the below commands in the terminal .
 ```sh
@@ -28,7 +23,7 @@ $ mkdir ../../../../.github && cp -r * ../../../../.github/
 | 05 | [AWS_ECS_CLUSTER_NAME](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/create_cluster.html)      |    The name of the ECS cluster (up to 255 letters, numbers, hyphens, and underscores) |
 | 06 | [AWS_ROLE_FOR_FARGATE](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_execution_IAM_role.html)     |    The task execution role grants the Amazon ECS container and Fargate agents permission to make AWS API calls on your behalf. |
 | 07 | [AWS_VPC_NAME](https://docs.aws.amazon.com/vpc/latest/userguide/working-with-vpcs.html)      |   The name of the VPC cluster. |
-| 08 | [AWS_VPC_SUBNET](https://docs.aws.amazon.com/vpc/latest/userguide/working-with-vpcs.html)      |    The name of the subnet created on the above AWS_VPC_NAME. |
+| 08 | [AWS_VPC_PUBLIC_SUBNET](https://docs.aws.amazon.com/vpc/latest/userguide/working-with-vpcs.html)      |    The name of the subnet created on the above AWS_VPC_NAME. |
 | 09 | [AWS_VPC_SECURITY_GROUP](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html)     |    The name of the security name. |
 
 - Make sure Your IAM user have the following roles,
@@ -37,3 +32,7 @@ $ mkdir ../../../../.github && cp -r * ../../../../.github/
 3. [AmazonECR_Access](https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-policies.html)
 
 - If all is done then push the your code to your own private repo in this branch(master, main and geppetto). Now click the  `Actions`  button and see the jobs are running. Once all is jobs is completed successfully your application is deployed.
+
+- Here the URL for your application,
+
+http://forlocal-4353.s3-website-us-east-1.amazonaws.com/

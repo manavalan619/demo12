@@ -1,10 +1,10 @@
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { UserModule } from './user/user.module';
 import { AuthorizationComponent } from './authorization/authorization.component';
 import { HomeModule } from './home/home.module';
 import { SignupModule } from './signup/signup.module';
 import { LoginModule } from './login/login.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
@@ -20,15 +20,16 @@ import { AdminModule } from './admin/admin.module';
 @NgModule({
   declarations: [
   AuthorizationComponent,
-      AppComponent
+  AuthorizationComponent,
+        AppComponent
 ],
   imports: [
-  FormsModule,
-HttpClientModule,
-UserModule,
+  UserModule,
 HomeModule,
 SignupModule,
 LoginModule,
+  FormsModule,
+HttpClientModule,
 TemplateModule,
 FooterModule,
 HeaderModule,
@@ -36,10 +37,10 @@ TranslatorModule,
 AppRoutingModule,
 BrowserAnimationsModule,
       BrowserModule,
-AdminModule
+  AdminModule
 ],
   providers: [
-    	SharedService
+        	SharedService
 ],
   bootstrap: [AppComponent]
 })

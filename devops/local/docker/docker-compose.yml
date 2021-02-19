@@ -2,13 +2,13 @@ version: "3.8"
 services:
   mongo:
     image: geppettotest/mongo-local:april2020
-    container_name: mongo-6079
+    container_name: mongo-4353
     restart: unless-stopped
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=password
     volumes:
-      - frontfend_6079-volume:/data/db
+      - forlocal_4353-volume:/data/db
     ports:
       - "27018:27017"
     healthcheck:
@@ -20,14 +20,14 @@ services:
 
   camunda:
     image: geppettodistribution/camunda-local:Jan2021
-    container_name: camunda-6079
+    container_name: camunda-4353
     ports:
       - "0000:8080"
 
   authproxy:
     build: ../../../application/services/default_services/authproxy
-    image: authproxy-6079
-    container_name: authproxy-6079
+    image: authproxy-4353
+    container_name: authproxy-4353
     ports:
       - "0000:8001"
     env_file: .env
@@ -37,8 +37,8 @@ services:
 
   camundaservice:
     build: ../../../application/services/default_services/camunda
-    image: camundaservice-6079
-    container_name: camundasvc-6079
+    image: camundaservice-4353
+    container_name: camundasvc-4353
     ports:
       - "8002:8002"
     env_file: .env
@@ -48,8 +48,8 @@ services:
 
   securitymanager:
     build: ../../../application/services/default_services/securitymanager
-    image: securitymanager-6079
-    container_name: securitymanager-6079
+    image: securitymanager-4353
+    container_name: securitymanager-4353
     ports:
       - "0000:8003"
     env_file: .env
@@ -59,8 +59,8 @@ services:
 
   apigateway:
     build: ../../../application/services/custom_services/apigateway
-    image: apigateway-6079
-    container_name: apigateway-6079
+    image: apigateway-4353
+    container_name: apigateway-4353
     ports:
       - "8000:8000"
     env_file: .env
@@ -75,5 +75,5 @@ services:
 
 
 volumes:
-  frontfend_6079-volume:
+  forlocal_4353-volume:
     driver: local

@@ -1,4 +1,4 @@
-name: aws_ec2_deployments_for_frontfend
+name: aws_ec2_deployments_for_forlocal
 on:
   push:
     branches: 
@@ -19,8 +19,8 @@ env:
   AWS_VPC_SUBNET: ${{  secrets.AWS_VPC_SUBNET  }}
   AWS_VPC_SECURITY_GROUP: ${{  secrets.AWS_VPC_SECURITY_GROUP  }}
   AWS_ECS_CLUSTER_NAME: ${{  secrets.AWS_ECS_CLUSTER_NAME  }}
-  PROJECT_NAME: frontfend-6079
-  AWS_S3_BUCKET_NAME: frontfend-6079
+  PROJECT_NAME: forlocal-4353
+  AWS_S3_BUCKET_NAME: forlocal-4353
 
 jobs:
   Prerequisites:
@@ -36,10 +36,10 @@ jobs:
         run: aws s3api create-bucket --bucket ${{ env.AWS_S3_BUCKET_NAME }} --region us-east-1
       - name: Creating the aws ECR for each micro service
         run: |
-          aws ecr create-repository --repository-name geppetto-generatedcode-frontfend-6079-apigateway  --image-scanning-configuration scanOnPush=true  --region us-east-1
-          aws ecr create-repository --repository-name geppetto-generatedcode-frontfend-6079-authproxy  --image-scanning-configuration scanOnPush=true  --region us-east-1
-          aws ecr create-repository --repository-name geppetto-generatedcode-frontfend-6079-camunda  --image-scanning-configuration scanOnPush=true  --region us-east-1
-          aws ecr create-repository --repository-name geppetto-generatedcode-frontfend-6079-securitymanager  --image-scanning-configuration scanOnPush=true  --region us-east-1
+          aws ecr create-repository --repository-name geppetto-generatedcode-forlocal-4353-apigateway  --image-scanning-configuration scanOnPush=true  --region us-east-1
+          aws ecr create-repository --repository-name geppetto-generatedcode-forlocal-4353-authproxy  --image-scanning-configuration scanOnPush=true  --region us-east-1
+          aws ecr create-repository --repository-name geppetto-generatedcode-forlocal-4353-camunda  --image-scanning-configuration scanOnPush=true  --region us-east-1
+          aws ecr create-repository --repository-name geppetto-generatedcode-forlocal-4353-securitymanager  --image-scanning-configuration scanOnPush=true  --region us-east-1
   Build_and_upload_docker_iamges_to_ECR:
     needs: Prerequisites
     runs-on: ubuntu-latest
@@ -62,23 +62,23 @@ jobs:
         run: |
      
           cd application/services/default_services/authproxy
-          docker build -t $ECR_REGISTRY/geppetto-generatedcode-frontfend-6079-authproxy:$IMAGE_TAG .
-          docker push $ECR_REGISTRY/geppetto-generatedcode-frontfend-6079-authproxy:$IMAGE_TAG
+          docker build -t $ECR_REGISTRY/geppetto-generatedcode-forlocal-4353-authproxy:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/geppetto-generatedcode-forlocal-4353-authproxy:$IMAGE_TAG
           echo "Successfully build the docker image for authproxy  and pushed to aws ecr"
 
           cd ../camunda
-          docker build -t $ECR_REGISTRY/geppetto-generatedcode-frontfend-6079-camunda:$IMAGE_TAG .
-          docker push $ECR_REGISTRY/geppetto-generatedcode-frontfend-6079-camunda:$IMAGE_TAG
+          docker build -t $ECR_REGISTRY/geppetto-generatedcode-forlocal-4353-camunda:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/geppetto-generatedcode-forlocal-4353-camunda:$IMAGE_TAG
           echo "Successfully build the docker image for camunda  and pushed to aws ecr"
 
           cd ../securitymanager
-          docker build -t $ECR_REGISTRY/geppetto-generatedcode-frontfend-6079-securitymanager:$IMAGE_TAG .
-          docker push $ECR_REGISTRY/geppetto-generatedcode-frontfend-6079-securitymanager:$IMAGE_TAG
+          docker build -t $ECR_REGISTRY/geppetto-generatedcode-forlocal-4353-securitymanager:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/geppetto-generatedcode-forlocal-4353-securitymanager:$IMAGE_TAG
           echo "Successfully build the  docker image for securitymanager and pushed to aws ecr"
 
           cd ../../custom_services/apigateway
-          docker build -t $ECR_REGISTRY/geppetto-generatedcode-frontfend-6079-apigateway:$IMAGE_TAG .
-          docker push $ECR_REGISTRY/geppetto-generatedcode-frontfend-6079-apigateway:$IMAGE_TAG
+          docker build -t $ECR_REGISTRY/geppetto-generatedcode-forlocal-4353-apigateway:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/geppetto-generatedcode-forlocal-4353-apigateway:$IMAGE_TAG
           echo "Successfully build the docker image for apigateway and pushed to aws ecr"
 
      
@@ -107,7 +107,7 @@ jobs:
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
           task-definition: .github/workflows/task-definition.json
-          container-name: mongo-6079
+          container-name: mongo-4353
           image: geppettotest/mongo-local:april2020
       - name: Deploy Amazon ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
@@ -116,7 +116,7 @@ jobs:
           cluster: ${{  env.AWS_ECS_CLUSTER_NAME  }}
           wait-for-service-stability: true
       - name: Run the ECS task definition
-        run: aws ecs run-task --cluster ${{  env.AWS_ECS_CLUSTER_NAME  }}  --task-definition frontfend --launch-type FARGATE --network-configuration "awsvpcConfiguration={subnets=[${{  env.AWS_VPC_SUBNET  }}],securityGroups=[${{  env.AWS_VPC_SECURITY_GROUP  }}],assignPublicIp=ENABLED}"
+        run: aws ecs run-task --cluster ${{  env.AWS_ECS_CLUSTER_NAME  }}  --task-definition forlocal --launch-type FARGATE --network-configuration "awsvpcConfiguration={subnets=[${{  env.AWS_VPC_SUBNET  }}],securityGroups=[${{  env.AWS_VPC_SECURITY_GROUP  }}],assignPublicIp=ENABLED}"
 
   Upload_S3_Bucket:
     needs: Prerequisites
@@ -131,12 +131,12 @@ jobs:
       - name: Installing angular/cli
         run: npm install -g @angular/cli
       - name: Installing the node modules
-        working-directory: ./application/client/desktop/frontfend
+        working-directory: ./application/client/desktop/forlocal
         run: |
           npm install
           npm i @ng-select/ng-select
       - name: Production build
-        working-directory: ./application/client/desktop/frontfend
+        working-directory: ./application/client/desktop/forlocal
         run: ng build --configuration=production
       - uses: jakejarvis/s3-sync-action@v0.5.1
         with:
@@ -146,6 +146,6 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{  env.AWS_ACCESS_KEY_ID  }}
           AWS_SECRET_ACCESS_KEY: ${{  env.AWS_SECRET_ACCESS_KEY  }}
           AWS_REGION: ${{  env.AWS_REGION  }}
-          SOURCE_DIR: "application/client/desktop/frontfend/dist/frontfend"
+          SOURCE_DIR: "application/client/desktop/forlocal/dist/forlocal"
       - name: Enable the static webhosting
         run: aws s3 website s3://${{ env.AWS_S3_BUCKET_NAME }}/ --index-document index.html --error-document error.html
