@@ -129,20 +129,21 @@ jobs:
           node-version: 12  
       - name: Installing angular/cli
         run: npm install -g @angular/cli
-      - name: Installing the node modules
-        working-directory: ./application/client/desktop/frontfend
-        run: |
-          npm install
-          npm i @ng-select/ng-select
-      # - name: Production build
-      #   working-directory: ./application/client/desktop/frontfend
-      #   run: ng build --configuration=production
       - name: Just for the testing
         working-directory: ./application/client/desktop/frontfend/src/environments
         run: |
           echo 'export const environment = {DESKTOP_API: 'ooooooooooooooooo',MOBILE_API: 'http://<Your Domain Name or Live IP address>',production: true};' >> environment.prod.ts
           ls
           cat environment.prod.ts
+      - name: Installing the node modules
+        working-directory: ./application/client/desktop/frontfend
+        run: |
+          npm install
+          npm i @ng-select/ng-select
+      - name: Production build
+        working-directory: ./application/client/desktop/frontfend
+        run: ng build --configuration=production
+
       - uses: jakejarvis/s3-sync-action@v0.5.1
         with:
           args: --acl public-read --delete
