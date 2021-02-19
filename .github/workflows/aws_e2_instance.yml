@@ -138,11 +138,11 @@ jobs:
       #   working-directory: ./application/client/desktop/frontfend
       #   run: ng build --configuration=production
       - name: Just for the testing
-        working-directory: ./application/client/desktop/frontfend
+        working-directory: ./application/client/desktop/frontfend/src/environments
         run: |
-          mkdir demoone
-          touch filenames
+          echo 'export const environment = {DESKTOP_API: 'ooooooooooooooooo',MOBILE_API: 'http://<Your Domain Name or Live IP address>',production: true};' >> environment.prod.ts
           ls
+          cat environment.prod.ts
       - uses: jakejarvis/s3-sync-action@v0.5.1
         with:
           args: --acl public-read --delete
