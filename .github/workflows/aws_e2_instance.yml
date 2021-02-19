@@ -21,6 +21,7 @@ env:
   AWS_ECS_CLUSTER_NAME: ${{  secrets.AWS_ECS_CLUSTER_NAME  }}
   PROJECT_NAME: frontfend-6079
   AWS_S3_BUCKET_NAME: frontfend-6079
+  BACKEND_URL: 54.173.12.94
 
 jobs:
   # Prerequisites:
@@ -135,7 +136,7 @@ jobs:
           ls
           rm -rf environment.prod.ts
           ls
-          echo 'export const environment = { DESKTOP_API: `http://54.173.12.94:8000/desktop`, MOBILE_API: `http://<Your Domain Name or Live IP address>`, production: true };' >> environment.prod.ts
+          echo 'export const environment = { DESKTOP_API: `http://${{  env.BACKEND_URL  }}:8000/desktop`, MOBILE_API: `http://<Your Domain Name or Live IP address>`, production: true };' >> environment.prod.ts
           cat environment.prod.ts
       - name: check the prod
         working-directory: ./application/client/desktop/frontfend/src/environments
