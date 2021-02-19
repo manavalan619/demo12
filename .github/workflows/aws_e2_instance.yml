@@ -157,6 +157,6 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{  env.AWS_ACCESS_KEY_ID  }}
           AWS_SECRET_ACCESS_KEY: ${{  env.AWS_SECRET_ACCESS_KEY  }}
           AWS_REGION: ${{  env.AWS_REGION  }}
-          SOURCE_DIR: "application/client/desktop/frontfend/"
+          SOURCE_DIR: "application/client/desktop/frontfend/dist/frontfend"
       - name: Enable the static webhosting
         run: aws s3 website s3://${{ env.AWS_S3_BUCKET_NAME }}/ --index-document index.html --error-document error.html
