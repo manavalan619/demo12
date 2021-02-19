@@ -3,10 +3,6 @@
 
 ### Deploy the your generated application in aws by using github actions.
 
-- Clone the  repo and paste the all folders and files to your own repo.
-```sh
-$ git clone https://github.com/gepinfo/frontfend-6079
-```
 
 - First copy the github action folder in the below path and paste in root directory, by using the below commands in the terminal .
 ```sh
