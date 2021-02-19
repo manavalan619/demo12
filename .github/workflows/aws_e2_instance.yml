@@ -133,7 +133,8 @@ jobs:
         working-directory: ./application/client/desktop/frontfend/src/environments
         run: |
           ls
-          cat environment.prod.ts
+          rm -rf environment.prod.ts
+          ls
           echo 'export const environment = {DESKTOP_API: 'ooooooooooooooooo',MOBILE_API: 'http://<Your Domain Name or Live IP address>',production: true};' >> environment.prod.ts
           cat environment.prod.ts
       - name: check the prod
