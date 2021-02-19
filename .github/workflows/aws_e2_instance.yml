@@ -136,6 +136,9 @@ jobs:
           cat environment.prod.ts
           echo 'Add value2' >> environment.prod.ts
           cat environment.prod.ts
+      - name: check the prod
+        working-directory: ./application/client/desktop/frontfend/src/environments
+        run: cat environment.prod.ts
       - name: Installing the node modules
         working-directory: ./application/client/desktop/frontfend
         run: |
