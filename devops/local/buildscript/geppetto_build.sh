@@ -1,14 +1,14 @@
 #!bin/bash
 
-APPLICATION='/forlocal'
+APPLICATION='/fordevcheck'
 
 CUSTOMSERVICEPATH='../../../services/custom_services'
 
 HELMPATH='../devops/local'
 
 
-DESKTOPCODE='../../../application/client/desktop/forlocal'
-DESKTOPIMAGENAME='geppettotest/forlocal-desktop:1.0'
+DESKTOPCODE='../../../application/client/desktop/fordevcheck'
+DESKTOPIMAGENAME='geppettotest/fordevcheck-desktop:1.0'
 
 echo "Started to build docker images for pod...."
 
@@ -76,7 +76,7 @@ helm_install () {
 
 cd $HELMPATH
 helm install --dry-run --debug ./helm
-helm install --name forlocal-4353 ./helm
+helm install --name fordevcheck-0279 ./helm
 if [ $? -eq 0 ]; then
     echo "App Deployment is Done"
 else

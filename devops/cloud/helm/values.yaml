@@ -1,13 +1,13 @@
-# Default values for forlocal.
+# Default values for fordevcheck.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 app:
-  prefix: forlocal
-  namespace: forlocal
+  prefix: fordevcheck
+  namespace: fordevcheck
 
 logging:
-  namespace: forlocal-logging
+  namespace: fordevcheck-logging
 
 service:
   type: NodePort
@@ -61,7 +61,7 @@ deployment:
   customImagePullPolicy: Always
   apigateway:
      name: apigateway
-     image: geppettotest/forlocal-apigateway:1.0
+     image: geppettotest/fordevcheck-apigateway:1.0
   mongo:
      name: mongo
      image: mongo:3.2   
@@ -79,7 +79,7 @@ deployment:
      image: geppettodistribution/default-adminmanager:2.0
   desktop:
      name: desktop
-     image: geppettotest/forlocal-desktop:1.0
+     image: geppettotest/fordevcheck-desktop:1.0
 
   camundapod:
      name: camundapod
@@ -87,7 +87,7 @@ deployment:
 
 config:
   vault:
-    rootToken: vault-forlocal-2019
+    rootToken: vault-fordevcheck-2019
 
 persistentVolume:
   mongo:
