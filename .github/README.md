@@ -28,7 +28,7 @@ $ mkdir ../../../../.github && cp -r * ../../../../.github/
 | 05 | [AWS_ECS_CLUSTER_NAME](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/create_cluster.html)      |    The name of the ECS cluster (up to 255 letters, numbers, hyphens, and underscores) |
 | 06 | [AWS_ROLE_FOR_FARGATE](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_execution_IAM_role.html)     |    The task execution role grants the Amazon ECS container and Fargate agents permission to make AWS API calls on your behalf. |
 | 07 | [AWS_VPC_NAME](https://docs.aws.amazon.com/vpc/latest/userguide/working-with-vpcs.html)      |   The name of the VPC cluster. |
-| 08 | [AWS_VPC_SUBNET](https://docs.aws.amazon.com/vpc/latest/userguide/working-with-vpcs.html)      |    The name of the subnet created on the above AWS_VPC_NAME. |
+| 08 | [AWS_VPC_PUBLIC_SUBNET](https://docs.aws.amazon.com/vpc/latest/userguide/working-with-vpcs.html)      |    The name of the subnet created on the above AWS_VPC_NAME. |
 | 09 | [AWS_VPC_SECURITY_GROUP](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html)     |    The name of the security name. |
 
 - Make sure Your IAM user have the following roles,
