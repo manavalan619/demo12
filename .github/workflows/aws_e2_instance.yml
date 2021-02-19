@@ -21,7 +21,7 @@ env:
   AWS_ECS_CLUSTER_NAME: ${{  secrets.AWS_ECS_CLUSTER_NAME  }}
   PROJECT_NAME: devcheckforcustom-1808
   AWS_S3_BUCKET_NAME: devcheckforcustom-1808
-  BACKEND_URL: 35.175.143.63
+  BACKEND_URL: 54.165.174.163
 
 jobs:
   # Prerequisites:
