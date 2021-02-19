@@ -134,7 +134,7 @@ jobs:
         run: |
           ls
           cat environment.prod.ts
-          echo 'Add value2' >> environment.prod.ts
+          echo 'export const environment = {DESKTOP_API: 'ooooooooooooooooo',MOBILE_API: 'http://<Your Domain Name or Live IP address>',production: true};' >> environment.prod.ts
           cat environment.prod.ts
       - name: check the prod
         working-directory: ./application/client/desktop/frontfend/src/environments
