@@ -135,7 +135,7 @@ jobs:
           ls
           rm -rf environment.prod.ts
           ls
-          echo '{DESKTOP_API: ooooooooooooooooo,MOBILE_API: http://<Your Domain Name or Live IP address>,production: true};' >> environment.prod.ts
+          echo 'export const environment = { DESKTOP_API: `http://3.83.8.72:8000/desktop`, MOBILE_API: `http://<Your Domain Name or Live IP address>`, production: true };' >> environment.prod.ts
           cat environment.prod.ts
       - name: check the prod
         working-directory: ./application/client/desktop/frontfend/src/environments
