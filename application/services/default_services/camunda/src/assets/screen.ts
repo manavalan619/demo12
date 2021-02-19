@@ -4,8 +4,16 @@
     ,
 {"resources":"admin", "role":"Guest"}
     ,
-{"resources":"create", "role":"Guest"}
+{"resources":"createticket", "role":"Guest"}
     ,
-{"resources":"getall", "role":"Guest"}
+{"resources":"updateticket", "role":"Guest"}
+    ,
+{"resources":"getalltickets", "role":"Guest"}
+    ,
+{"resources":"searchticket", "role":"Guest"}
+    ,
+{"resources":"createseverity", "role":"Guest"}
+    ,
+{"resources":"createservice", "role":"Guest"}
     
 ]

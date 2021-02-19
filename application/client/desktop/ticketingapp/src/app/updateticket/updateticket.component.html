@@ -1,0 +1,31 @@
+<h2 class="screen-align">updateticket</h2>
+<form>
+    <div id="template-i5ye" class="form-group">
+        <label id="template-ineg" class="label">Name</label>
+        <input id="template-i8hz" class="input form-control" placeholder="Type here your name" [(ngModel)]="Tickets.Name" [ngModelOptions]="{standalone: true}" type="text">
+    </div>
+    <div id="template-iqbd" class="form-group">
+        <label id="template-iq49" class="label">Description</label>
+        <input id="template-iwrb" class="input form-control" placeholder="Type here your email" [(ngModel)]="Tickets.Description" [ngModelOptions]="{standalone: true}" type="text">
+    </div>
+    <div id="template-if2dc" class="form-group">
+        <label id="template-if2dc" class="label">Service type</label>
+    </div>
+    <div id="template-ikiix" class="">
+        <ng-select class="" style="margin-top: -10px;" [searchable]="true" [virtualScroll]="true" class="template-iov3w"
+        name="dynamicdropdown_template-iov3w" bindLabel="Name" bindValue="Name" [items]="servicetypesitemArray" [(ngModel)]="Tickets.Type"
+         [ngModelOptions]="{standalone: true}" (click)="servicetypesGpGetAllValues()"></ng-select>
+    </div>
+    <div id="template-iv6z2" class="form-group">
+        <label id="template-iv6z2" class="label">Severity</label>
+    </div>
+    <div id="template-ivryy" class="">
+        <ng-select class="" style="margin-top: -10px;" [searchable]="true" [virtualScroll]="true" class="template-ixm0g"
+        name="dynamicdropdown_template-ixm0g" bindLabel="Name" bindValue="Name" [items]="SeverityitemArray" [(ngModel)]="Tickets.Severity"
+         [ngModelOptions]="{standalone: true}" (click)="SeverityGpGetAllValues()"></ng-select>
+    </div>
+    <div id="template-i8z35" class="form-group">
+        <button type="submit" id="template-ilu52" (click)="GpUpdate()" class="button btn btn-primary">update</button>&nbsp;&nbsp;
+    </div>
+
+</form>

@@ -20,9 +20,17 @@ spec:
   - name: {{ .Values.service.admin.name }}
     port: {{ .Values.service.admin.port }}
     targetPort: {{ .Values.service.admin.targetPort }}
-  - name: {{ .Values.service.school.name }}
-    port: {{ .Values.service.school.port }}
-    targetPort: {{ .Values.service.school.targetPort }}
+  - name: {{ .Values.service.tickets.name }}
+    port: {{ .Values.service.tickets.port }}
+    targetPort: {{ .Values.service.tickets.targetPort }}
+
+  - name: {{ .Values.service.servicetype.name }}
+    port: {{ .Values.service.servicetype.port }}
+    targetPort: {{ .Values.service.servicetype.targetPort }}
+
+  - name: {{ .Values.service.severity.name }}
+    port: {{ .Values.service.severity.port }}
+    targetPort: {{ .Values.service.severity.targetPort }}
 
   selector:
     name: {{ .Values.app.prefix }}-app

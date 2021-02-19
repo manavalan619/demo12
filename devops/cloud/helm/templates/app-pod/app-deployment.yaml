@@ -64,12 +64,36 @@ spec:
               value: {{ .Values.app.prefix }}-app-db
             - name: MONGO_DB_URL
               value: "mongodb://{{ .Values.app.prefix }}-app-db.{{ .Values.app.prefix }}.svc.cluster.local:27017/{{ .Values.app.prefix }}"
-        - name: {{ .Values.deployment.school.name }}-container
+        - name: {{ .Values.deployment.tickets.name }}-container
           imagePullPolicy: {{ .Values.deployment.customImagePullPolicy }}
-          image: {{ .Values.deployment.school.image }}
+          image: {{ .Values.deployment.tickets.image }}
           ports:
             - name: http-port
               containerPort: 8005
+          env:
+            - name: {{ .Values.app.prefix }}-app-db
+              value: {{ .Values.app.prefix }}-app-db
+            - name: MONGO_DB_URL
+              value: "mongodb://{{ .Values.app.prefix }}-app-db.{{ .Values.app.prefix }}.svc.cluster.local:27017/{{ .Values.app.prefix }}"
+
+        - name: {{ .Values.deployment.servicetype.name }}-container
+          imagePullPolicy: {{ .Values.deployment.customImagePullPolicy }}
+          image: {{ .Values.deployment.servicetype.image }}
+          ports:
+            - name: http-port
+              containerPort: 8006
+          env:
+            - name: {{ .Values.app.prefix }}-app-db
+              value: {{ .Values.app.prefix }}-app-db
+            - name: MONGO_DB_URL
+              value: "mongodb://{{ .Values.app.prefix }}-app-db.{{ .Values.app.prefix }}.svc.cluster.local:27017/{{ .Values.app.prefix }}"
+
+        - name: {{ .Values.deployment.severity.name }}-container
+          imagePullPolicy: {{ .Values.deployment.customImagePullPolicy }}
+          image: {{ .Values.deployment.severity.image }}
+          ports:
+            - name: http-port
+              containerPort: 8007
           env:
             - name: {{ .Values.app.prefix }}-app-db
               value: {{ .Values.app.prefix }}-app-db

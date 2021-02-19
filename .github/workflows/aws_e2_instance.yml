@@ -1,4 +1,4 @@
-name: aws_ec2_deployments_for_devcheckforcustom
+name: aws_ec2_deployments_for_ticketingapp
 on:
   push:
     branches: 
@@ -19,112 +19,122 @@ env:
   AWS_VPC_SUBNET: ${{  secrets.AWS_VPC_SUBNET  }}
   AWS_VPC_SECURITY_GROUP: ${{  secrets.AWS_VPC_SECURITY_GROUP  }}
   AWS_ECS_CLUSTER_NAME: ${{  secrets.AWS_ECS_CLUSTER_NAME  }}
-  PROJECT_NAME: devcheckforcustom-1808
-  AWS_S3_BUCKET_NAME: devcheckforcustom-1808
-  BACKEND_URL: 54.165.174.163
+  PROJECT_NAME: ticketingapp-5274
+  AWS_S3_BUCKET_NAME: ticketingapp-5274
 
 jobs:
-  # Prerequisites:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Configure the aws cli
-  #       uses: aws-actions/configure-aws-credentials@v1
-  #       with:
-  #         aws-access-key-id: ${{  env.AWS_ACCESS_KEY_ID  }}
-  #         aws-secret-access-key: ${{  env.AWS_SECRET_ACCESS_KEY  }}
-  #         aws-region: ${{  env.AWS_REGION  }}
-  #     - name: Creating the S3 bucket
-  #       run: aws s3api create-bucket --bucket ${{ env.AWS_S3_BUCKET_NAME }} --region us-east-1
-  #     - name: Creating the aws ECR for each micro service
-  #       run: |
-  #         aws ecr create-repository --repository-name geppetto-generatedcode-devcheckforcustom-1808-apigateway  --image-scanning-configuration scanOnPush=true  --region us-east-1
-  #         aws ecr create-repository --repository-name geppetto-generatedcode-devcheckforcustom-1808-authproxy  --image-scanning-configuration scanOnPush=true  --region us-east-1
-  #         aws ecr create-repository --repository-name geppetto-generatedcode-devcheckforcustom-1808-camunda  --image-scanning-configuration scanOnPush=true  --region us-east-1
-  #         aws ecr create-repository --repository-name geppetto-generatedcode-devcheckforcustom-1808-securitymanager  --image-scanning-configuration scanOnPush=true  --region us-east-1
-  #         aws ecr create-repository --repository-name geppetto-generatedcode-devcheckforcustom-1808-school  --image-scanning-configuration scanOnPush=true  --region us-east-1
-  # Build_and_upload_docker_iamges_to_ECR:
-  #   needs: Prerequisites
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Configure the aws cli
-  #       uses: aws-actions/configure-aws-credentials@v1
-  #       with:
-  #         aws-access-key-id: ${{  env.AWS_ACCESS_KEY_ID  }}
-  #         aws-secret-access-key: ${{  env.AWS_SECRET_ACCESS_KEY  }}
-  #         aws-region: ${{  env.AWS_REGION  }}
-  #     - name: Checkout_Repo
-  #       uses: actions/checkout@v2
-  #     - name: Login to AWS ECR
-  #       id: login-ecr
-  #       uses: aws-actions/amazon-ecr-login@v1
-  #     - name: Build, tag, and push image to Amazon ECR
-  #       env:
-  #         ECR_REGISTRY: ${{  steps.login-ecr.outputs.registry  }}
-  #         IMAGE_TAG: 1
-  #       run: |
+  Prerequisites:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure the aws cli
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{  env.AWS_ACCESS_KEY_ID  }}
+          aws-secret-access-key: ${{  env.AWS_SECRET_ACCESS_KEY  }}
+          aws-region: ${{  env.AWS_REGION  }}
+      - name: Creating the S3 bucket
+        run: aws s3api create-bucket --bucket ${{ env.AWS_S3_BUCKET_NAME }} --region us-east-1
+      - name: Creating the aws ECR for each micro service
+        run: |
+          aws ecr create-repository --repository-name geppetto-generatedcode-ticketingapp-5274-apigateway  --image-scanning-configuration scanOnPush=true  --region us-east-1
+          aws ecr create-repository --repository-name geppetto-generatedcode-ticketingapp-5274-authproxy  --image-scanning-configuration scanOnPush=true  --region us-east-1
+          aws ecr create-repository --repository-name geppetto-generatedcode-ticketingapp-5274-camunda  --image-scanning-configuration scanOnPush=true  --region us-east-1
+          aws ecr create-repository --repository-name geppetto-generatedcode-ticketingapp-5274-securitymanager  --image-scanning-configuration scanOnPush=true  --region us-east-1
+          aws ecr create-repository --repository-name geppetto-generatedcode-ticketingapp-5274-tickets  --image-scanning-configuration scanOnPush=true  --region us-east-1
+          aws ecr create-repository --repository-name geppetto-generatedcode-ticketingapp-5274-servicetype  --image-scanning-configuration scanOnPush=true  --region us-east-1
+          aws ecr create-repository --repository-name geppetto-generatedcode-ticketingapp-5274-severity  --image-scanning-configuration scanOnPush=true  --region us-east-1
+  Build_and_upload_docker_iamges_to_ECR:
+    needs: Prerequisites
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure the aws cli
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{  env.AWS_ACCESS_KEY_ID  }}
+          aws-secret-access-key: ${{  env.AWS_SECRET_ACCESS_KEY  }}
+          aws-region: ${{  env.AWS_REGION  }}
+      - name: Checkout_Repo
+        uses: actions/checkout@v2
+      - name: Login to AWS ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+      - name: Build, tag, and push image to Amazon ECR
+        env:
+          ECR_REGISTRY: ${{  steps.login-ecr.outputs.registry  }}
+          IMAGE_TAG: 1
+        run: |
      
-  #         cd application/services/default_services/authproxy
-  #         docker build -t $ECR_REGISTRY/geppetto-generatedcode-devcheckforcustom-1808-authproxy:$IMAGE_TAG .
-  #         docker push $ECR_REGISTRY/geppetto-generatedcode-devcheckforcustom-1808-authproxy:$IMAGE_TAG
-  #         echo "Successfully build the docker image for authproxy  and pushed to aws ecr"
+          cd application/services/default_services/authproxy
+          docker build -t $ECR_REGISTRY/geppetto-generatedcode-ticketingapp-5274-authproxy:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/geppetto-generatedcode-ticketingapp-5274-authproxy:$IMAGE_TAG
+          echo "Successfully build the docker image for authproxy  and pushed to aws ecr"
 
-  #         cd ../camunda
-  #         docker build -t $ECR_REGISTRY/geppetto-generatedcode-devcheckforcustom-1808-camunda:$IMAGE_TAG .
-  #         docker push $ECR_REGISTRY/geppetto-generatedcode-devcheckforcustom-1808-camunda:$IMAGE_TAG
-  #         echo "Successfully build the docker image for camunda  and pushed to aws ecr"
+          cd ../camunda
+          docker build -t $ECR_REGISTRY/geppetto-generatedcode-ticketingapp-5274-camunda:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/geppetto-generatedcode-ticketingapp-5274-camunda:$IMAGE_TAG
+          echo "Successfully build the docker image for camunda  and pushed to aws ecr"
 
-  #         cd ../securitymanager
-  #         docker build -t $ECR_REGISTRY/geppetto-generatedcode-devcheckforcustom-1808-securitymanager:$IMAGE_TAG .
-  #         docker push $ECR_REGISTRY/geppetto-generatedcode-devcheckforcustom-1808-securitymanager:$IMAGE_TAG
-  #         echo "Successfully build the  docker image for securitymanager and pushed to aws ecr"
+          cd ../securitymanager
+          docker build -t $ECR_REGISTRY/geppetto-generatedcode-ticketingapp-5274-securitymanager:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/geppetto-generatedcode-ticketingapp-5274-securitymanager:$IMAGE_TAG
+          echo "Successfully build the  docker image for securitymanager and pushed to aws ecr"
 
-  #         cd ../../custom_services/apigateway
-  #         docker build -t $ECR_REGISTRY/geppetto-generatedcode-devcheckforcustom-1808-apigateway:$IMAGE_TAG .
-  #         docker push $ECR_REGISTRY/geppetto-generatedcode-devcheckforcustom-1808-apigateway:$IMAGE_TAG
-  #         echo "Successfully build the docker image for apigateway and pushed to aws ecr"
+          cd ../../custom_services/apigateway
+          docker build -t $ECR_REGISTRY/geppetto-generatedcode-ticketingapp-5274-apigateway:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/geppetto-generatedcode-ticketingapp-5274-apigateway:$IMAGE_TAG
+          echo "Successfully build the docker image for apigateway and pushed to aws ecr"
 
-  #         cd ../school
-  #         docker build -t $ECR_REGISTRY/geppetto-generatedcode-devcheckforcustom-1808-school:$IMAGE_TAG .
-  #         docker push $ECR_REGISTRY/geppetto-generatedcode-devcheckforcustom-1808-school:$IMAGE_TAG
-  #         echo "Successfully build the docker image for school and pushed to aws ecr"
+          cd ../tickets
+          docker build -t $ECR_REGISTRY/geppetto-generatedcode-ticketingapp-5274-tickets:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/geppetto-generatedcode-ticketingapp-5274-tickets:$IMAGE_TAG
+          echo "Successfully build the docker image for tickets and pushed to aws ecr"
+          cd ../servicetype
+          docker build -t $ECR_REGISTRY/geppetto-generatedcode-ticketingapp-5274-servicetype:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/geppetto-generatedcode-ticketingapp-5274-servicetype:$IMAGE_TAG
+          echo "Successfully build the docker image for servicetype and pushed to aws ecr"
+          cd ../severity
+          docker build -t $ECR_REGISTRY/geppetto-generatedcode-ticketingapp-5274-severity:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/geppetto-generatedcode-ticketingapp-5274-severity:$IMAGE_TAG
+          echo "Successfully build the docker image for severity and pushed to aws ecr"
      
-  # Deploy_backend:
-  #   needs: Build_and_upload_docker_iamges_to_ECR
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Check the  branch
-  #       uses: actions/checkout@v2
-  #     - name: Installing the Node
-  #       uses: actions/setup-node@v1
-  #       with:
-  #         node-version: 10
-  #     - name: Convert the task_defination.ts to json
-  #       working-directory: .github/workflows
-  #       run: |
-  #         AWS_ACCOUNT_ID="${{ env.AWS_ACCOUNT_ID }}" AWS_ROLE_FOR_FARGATE="${{ env.AWS_ROLE_FOR_FARGATE }}" node task-definition.ts >> task-definition.json
-  #     - name: Configure AWS credentials
-  #       uses: aws-actions/configure-aws-credentials@v1
-  #       with:
-  #         aws-access-key-id: ${{  env.AWS_ACCESS_KEY_ID  }}
-  #         aws-secret-access-key: ${{  env.AWS_SECRET_ACCESS_KEY  }}
-  #         aws-region: ${{  env.AWS_REGION  }}
-  #     - name: Fill in the new image ID in the Amazon ECS task definition
-  #       id: task-def
-  #       uses: aws-actions/amazon-ecs-render-task-definition@v1
-  #       with:
-  #         task-definition: .github/workflows/task-definition.json
-  #         container-name: mongo-1808
-  #         image: geppettotest/mongo-local:april2020
-  #     - name: Deploy Amazon ECS task definition
-  #       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
-  #       with:
-  #         task-definition: ${{ steps.task-def.outputs.task-definition }}
-  #         cluster: ${{  env.AWS_ECS_CLUSTER_NAME  }}
-  #         wait-for-service-stability: true
-  #     - name: Run the ECS task definition
-  #       run: aws ecs run-task --cluster ${{  env.AWS_ECS_CLUSTER_NAME  }}  --task-definition devcheckforcustom --launch-type FARGATE --network-configuration "awsvpcConfiguration={subnets=[${{  env.AWS_VPC_SUBNET  }}],securityGroups=[${{  env.AWS_VPC_SECURITY_GROUP  }}],assignPublicIp=ENABLED}"
+  Deploy_backend:
+    needs: Build_and_upload_docker_iamges_to_ECR
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check the  branch
+        uses: actions/checkout@v2
+      - name: Installing the Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10
+      - name: Convert the task_defination.ts to json
+        working-directory: .github/workflows
+        run: |
+          AWS_ACCOUNT_ID="${{ env.AWS_ACCOUNT_ID }}" AWS_ROLE_FOR_FARGATE="${{ env.AWS_ROLE_FOR_FARGATE }}" node task-definition.ts >> task-definition.json
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{  env.AWS_ACCESS_KEY_ID  }}
+          aws-secret-access-key: ${{  env.AWS_SECRET_ACCESS_KEY  }}
+          aws-region: ${{  env.AWS_REGION  }}
+      - name: Fill in the new image ID in the Amazon ECS task definition
+        id: task-def
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition: .github/workflows/task-definition.json
+          container-name: mongo-5274
+          image: geppettotest/mongo-local:april2020
+      - name: Deploy Amazon ECS task definition
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        with:
+          task-definition: ${{ steps.task-def.outputs.task-definition }}
+          cluster: ${{  env.AWS_ECS_CLUSTER_NAME  }}
+          wait-for-service-stability: true
+      - name: Run the ECS task definition
+        run: aws ecs run-task --cluster ${{  env.AWS_ECS_CLUSTER_NAME  }}  --task-definition ticketingapp --launch-type FARGATE --network-configuration "awsvpcConfiguration={subnets=[${{  env.AWS_VPC_SUBNET  }}],securityGroups=[${{  env.AWS_VPC_SECURITY_GROUP  }}],assignPublicIp=ENABLED}"
 
   Upload_S3_Bucket:
+    needs: Deploy_backend
     runs-on: ubuntu-latest
     steps:
       - name: Setup repo
@@ -136,17 +146,12 @@ jobs:
       - name: Installing angular/cli
         run: npm install -g @angular/cli
       - name: Installing the node modules
-        working-directory: ./application/client/desktop/devcheckforcustom
+        working-directory: ./application/client/desktop/ticketingapp
         run: |
           npm install
           npm i @ng-select/ng-select
-      - name: Just for the testing
-        working-directory: ./application/client/desktop/devcheckforcustom/src/environments
-        run: |
-          rm -rf environment.prod.ts
-          echo 'export const environment = { DESKTOP_API: `http://${{  env.BACKEND_URL  }}:8000/desktop`, MOBILE_API: `http://<Your Domain Name or Live IP address>`, production: true };' >> environment.prod.ts
       - name: Production build
-        working-directory: ./application/client/desktop/devcheckforcustom
+        working-directory: ./application/client/desktop/ticketingapp
         run: ng build --configuration=production
       - uses: jakejarvis/s3-sync-action@v0.5.1
         with:
@@ -156,6 +161,6 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{  env.AWS_ACCESS_KEY_ID  }}
           AWS_SECRET_ACCESS_KEY: ${{  env.AWS_SECRET_ACCESS_KEY  }}
           AWS_REGION: ${{  env.AWS_REGION  }}
-          SOURCE_DIR: "application/client/desktop/devcheckforcustom/dist/devcheckforcustom"
+          SOURCE_DIR: "application/client/desktop/ticketingapp/dist/ticketingapp"
       - name: Enable the static webhosting
         run: aws s3 website s3://${{ env.AWS_S3_BUCKET_NAME }}/ --index-document index.html --error-document error.html

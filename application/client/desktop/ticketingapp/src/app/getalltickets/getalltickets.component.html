@@ -1,0 +1,5 @@
+<h2 class="screen-align">getalltickets</h2>
+<div class='template-il4u' name=grid_template-il4u
+    (click)="GpGetAllValues()" >
+    <ag-grid-angular #agGrid style="width: 100%; height: 100%;" id="myGrid" class="ag-theme-balham" [columnDefs]="columnDefs" [pagination]="true" [paginationPageSize]="paginationPageSize" [defaultColDef]="defaultColDef" [rowData]="rowData" [rowSelection]="rowSelection" (gridReady)="onGridReady($event)" domLayout='autoHeight' ></ag-grid-angular>
+</div>

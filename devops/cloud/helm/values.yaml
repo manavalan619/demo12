@@ -1,13 +1,13 @@
-# Default values for devcheckforcustom.
+# Default values for ticketingapp.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 app:
-  prefix: devcheckforcustom
-  namespace: devcheckforcustom
+  prefix: ticketingapp
+  namespace: ticketingapp
 
 logging:
-  namespace: devcheckforcustom-logging
+  namespace: ticketingapp-logging
 
 service:
   type: NodePort
@@ -54,11 +54,23 @@ service:
     type: NodePort
     port: 8080
     targetPort: 8080
-  school: 
-    name: school
+  tickets: 
+    name: tickets
     type: NodePort
     port: 8005
     targetPort: 8005
+
+  servicetype: 
+    name: servicetype
+    type: NodePort
+    port: 8006
+    targetPort: 8006
+
+  severity: 
+    name: severity
+    type: NodePort
+    port: 8007
+    targetPort: 8007
 
 
 deployment:
@@ -66,7 +78,7 @@ deployment:
   customImagePullPolicy: Always
   apigateway:
      name: apigateway
-     image: geppettotest/devcheckforcustom-apigateway:1.0
+     image: geppettotest/ticketingapp-apigateway:1.0
   mongo:
      name: mongo
      image: mongo:3.2   
@@ -84,10 +96,18 @@ deployment:
      image: geppettodistribution/default-adminmanager:2.0
   desktop:
      name: desktop
-     image: geppettotest/devcheckforcustom-desktop:1.0
-  school: 
-    name: school
-    image: geppettotest/devcheckforcustom-school:1.0
+     image: geppettotest/ticketingapp-desktop:1.0
+  tickets: 
+    name: tickets
+    image: geppettotest/ticketingapp-tickets:1.0
+
+  servicetype: 
+    name: servicetype
+    image: geppettotest/ticketingapp-servicetype:1.0
+
+  severity: 
+    name: severity
+    image: geppettotest/ticketingapp-severity:1.0
 
   camundapod:
      name: camundapod
@@ -95,7 +115,7 @@ deployment:
 
 config:
   vault:
-    rootToken: vault-devcheckforcustom-2019
+    rootToken: vault-ticketingapp-2019
 
 persistentVolume:
   mongo:

@@ -1,0 +1,34 @@
+<h2 class="screen-align">searchticket</h2>
+<form>
+    <div id="template-i2ah" class="form-group">
+        <label id="template-i6qx" class="label">Name</label>
+        <input id="template-il4o" class="input form-control" placeholder="Type here your name" [(ngModel)]="Tickets.Name" [ngModelOptions]="{standalone: true}" type="text">
+    </div>
+    <div id="template-igtf" class="form-group">
+        <label id="template-it85" class="label">Description</label>
+        <input id="template-itsa" class="input form-control" placeholder="Type here your email" [(ngModel)]="Tickets.Description" [ngModelOptions]="{standalone: true}" type="text">
+    </div>
+    <div id="template-iv10q" class="form-group">
+        <label id="template-iv10q" class="label">Service Type</label>
+    </div>
+    <div id="template-inkta" class="">
+        <ng-select class="" style="margin-top: -10px;" [searchable]="true" [virtualScroll]="true" class="template-iq882"
+        name="dynamicdropdown_template-iq882" bindLabel="Name" bindValue="Name" [items]="servicetypesitemArray" [(ngModel)]="Tickets.Type"
+         [ngModelOptions]="{standalone: true}" (click)="servicetypesGpGetAllValues()"></ng-select>
+    </div>
+    <div id="template-i883g" class="form-group">
+        <label id="template-i883g" class="label">Severity</label>
+    </div>
+    <div id="template-iv22n" class="">
+        <ng-select class="" style="margin-top: -10px;" [searchable]="true" [virtualScroll]="true" class="template-iiuzj"
+        name="dynamicdropdown_template-iiuzj" bindLabel="Name" bindValue="Name" [items]="SeverityitemArray" [(ngModel)]="Tickets.Severity"
+         [ngModelOptions]="{standalone: true}" (click)="SeverityGpGetAllValues()"></ng-select>
+    </div>
+    <div id="template-ix8nf" class="form-group">
+        <button type="submit" id="template-i7hew" (click)="GpSearch()" class="button btn btn-primary">Search</button>&nbsp;&nbsp;
+    </div>
+
+</form>
+<div class='template-i6ini' name=grid_template-i6ini>
+    <ag-grid-angular #agGrid style="width: 100%; height: 100%;" id="myGrid" class="ag-theme-balham" [columnDefs]="columnDefs" [pagination]="true" [paginationPageSize]="paginationPageSize" [defaultColDef]="defaultColDef" [rowData]="rowData" [rowSelection]="rowSelection" (gridReady)="onGridReady($event)" domLayout='autoHeight' (selectionChanged)="onSelectionChanged($event)"></ag-grid-angular>
+</div>
