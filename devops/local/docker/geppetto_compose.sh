@@ -1,6 +1,6 @@
 #!bin/bash
 
-DESKTOPCODE='../../../application/client/desktop/ticketingapp'
+DESKTOPCODE='../../../application/client/desktop/checkfargate'
 
 COMPOSEPATH='../../../../devops/local/docker/'
 
@@ -13,8 +13,8 @@ do
     c)  
          echo "Creating new docker images and containers"
          cd $DESKTOPCODE
-         docker build -t ticketingappui-5274 .
-         docker run --name ticketingappui-5274 --restart=unless-stopped -d -p 5055:5000 ticketingappui-5274
+         docker build -t checkfargateui-1622 .
+         docker run --name checkfargateui-1622 --restart=unless-stopped -d -p 5055:5000 checkfargateui-1622
          sleep 15
          echo "UI build is done..."
 
@@ -22,8 +22,8 @@ do
          docker-compose up -d --build
          echo "uploading the mongo script..."
          sleep 50
-         docker cp mongo.js mongo-5274:/data/db/
-         docker exec -ti mongo-5274 mongo -u admin -p 'password' --authenticationDatabase 'admin' ticketingapp_5274 /data/db/mongo.js
+         docker cp mongo.js mongo-1622:/data/db/
+         docker exec -ti mongo-1622 mongo -u admin -p 'password' --authenticationDatabase 'admin' checkfargate_1622 /data/db/mongo.js
          sleep 10
          echo "Process completed"
          echo " Your application is deployed here the link, http://localhost:5055 "
@@ -31,21 +31,21 @@ do
     d)
          echo "Now Deleting all containers and images"
          docker-compose down -v --rmi all 
-         docker rm -f ticketingappui-5274
-         docker rmi ticketingappui-5274
+         docker rm -f checkfargateui-1622
+         docker rmi checkfargateui-1622
          echo "Process completed"
          ;;
     r)
          echo "Now Re-starting the stopped containers"
          docker-compose start
-         docker restart ticketingappui-5274
+         docker restart checkfargateui-1622
          sleep 35
          echo "Process completed"
          ;;
     s)
          echo "Now stopping the running containers"
          docker-compose stop
-         docker stop ticketingappui-5274
+         docker stop checkfargateui-1622
          echo "Process completed"
          ;;
     *)

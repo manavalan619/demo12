@@ -1,0 +1,7 @@
+{
+  "name": "checkfargate",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

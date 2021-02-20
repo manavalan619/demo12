@@ -1,13 +1,13 @@
-# Default values for ticketingapp.
+# Default values for checkfargate.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 app:
-  prefix: ticketingapp
-  namespace: ticketingapp
+  prefix: checkfargate
+  namespace: checkfargate
 
 logging:
-  namespace: ticketingapp-logging
+  namespace: checkfargate-logging
 
 service:
   type: NodePort
@@ -54,23 +54,11 @@ service:
     type: NodePort
     port: 8080
     targetPort: 8080
-  tickets: 
-    name: tickets
+  mano: 
+    name: mano
     type: NodePort
     port: 8005
     targetPort: 8005
-
-  servicetype: 
-    name: servicetype
-    type: NodePort
-    port: 8006
-    targetPort: 8006
-
-  severity: 
-    name: severity
-    type: NodePort
-    port: 8007
-    targetPort: 8007
 
 
 deployment:
@@ -78,7 +66,7 @@ deployment:
   customImagePullPolicy: Always
   apigateway:
      name: apigateway
-     image: geppettotest/ticketingapp-apigateway:1.0
+     image: geppettotest/checkfargate-apigateway:1.0
   mongo:
      name: mongo
      image: mongo:3.2   
@@ -96,18 +84,10 @@ deployment:
      image: geppettodistribution/default-adminmanager:2.0
   desktop:
      name: desktop
-     image: geppettotest/ticketingapp-desktop:1.0
-  tickets: 
-    name: tickets
-    image: geppettotest/ticketingapp-tickets:1.0
-
-  servicetype: 
-    name: servicetype
-    image: geppettotest/ticketingapp-servicetype:1.0
-
-  severity: 
-    name: severity
-    image: geppettotest/ticketingapp-severity:1.0
+     image: geppettotest/checkfargate-desktop:1.0
+  mano: 
+    name: mano
+    image: geppettotest/checkfargate-mano:1.0
 
   camundapod:
      name: camundapod
@@ -115,7 +95,7 @@ deployment:
 
 config:
   vault:
-    rootToken: vault-ticketingapp-2019
+    rootToken: vault-checkfargate-2019
 
 persistentVolume:
   mongo:
