@@ -5,7 +5,7 @@
 - [Docker-compose -v 1.27.3](https://docs.docker.com/compose/install/)
 - [bash](https://fossbytes.com/installing-gnu-bash-4-4-linux-distros/)
 
-
+mm
 ### Steps Followed to run application in docker-compose:
 - To run the generated application in docker follow the below steps .
 
