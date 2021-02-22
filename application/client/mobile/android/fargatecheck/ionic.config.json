@@ -1,7 +1,0 @@
-{
-  "name": "fargatecheck",
-  "integrations": {
-    "cordova": {}
-  },
-  "type": "ionic-angular"
-}

@@ -1,13 +1,13 @@
-# Default values for fargatecheck.
+# Default values for nightchech.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 app:
-  prefix: fargatecheck
-  namespace: fargatecheck
+  prefix: nightchech
+  namespace: nightchech
 
 logging:
-  namespace: fargatecheck-logging
+  namespace: nightchech-logging
 
 service:
   type: NodePort
@@ -57,8 +57,8 @@ service:
   school: 
     name: school
     type: NodePort
-    port: 8006
-    targetPort: 8006
+    port: 8005
+    targetPort: 8005
 
 
 deployment:
@@ -66,7 +66,7 @@ deployment:
   customImagePullPolicy: Always
   apigateway:
      name: apigateway
-     image: geppettotest/fargatecheck-apigateway:1.0
+     image: geppettotest/nightchech-apigateway:1.0
   mongo:
      name: mongo
      image: mongo:3.2   
@@ -84,10 +84,10 @@ deployment:
      image: geppettodistribution/default-adminmanager:2.0
   desktop:
      name: desktop
-     image: geppettotest/fargatecheck-desktop:1.0
+     image: geppettotest/nightchech-desktop:1.0
   school: 
     name: school
-    image: geppettotest/fargatecheck-school:1.0
+    image: geppettotest/nightchech-school:1.0
 
   camundapod:
      name: camundapod
@@ -95,7 +95,7 @@ deployment:
 
 config:
   vault:
-    rootToken: vault-fargatecheck-2019
+    rootToken: vault-nightchech-2019
 
 persistentVolume:
   mongo:
