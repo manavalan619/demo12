@@ -123,41 +123,41 @@ jobs:
       - name: Run the ECS task definition
         run: aws ecs run-task --cluster ${{  env.AWS_ECS_CLUSTER_NAME  }}  --task-definition nightchech --launch-type FARGATE --network-configuration "awsvpcConfiguration={subnets=[${{  env.AWS_VPC_SUBNET  }}],securityGroups=[${{  env.AWS_VPC_SECURITY_GROUP  }}],assignPublicIp=ENABLED}"
 
-  Upload_S3_Bucket:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Setup repo
-        uses: actions/checkout@v2
-      - name: Install the node
-        uses: actions/setup-node@v1
-        with:
-          node-version: 12  
-      - name: Installing angular/cli
-        run: npm install -g @angular/cli
-      - name: Just for the testing
-        working-directory: ./application/client/desktop/nightchech/src/environments
-        run: |
-          ls
-          rm -rf environment.prod.ts
-          ls
-          echo 'export const environment = { DESKTOP_API: `http://${{  env.BACKEND_URL  }}:8000/desktop`, MOBILE_API: `http://<Your Domain Name or Live IP address>`, production: true };' >> environment.prod.ts
-          cat environment.prod.ts
-      - name: Installing the node modules
-        working-directory: ./application/client/desktop/nightchech
-        run: |
-          npm install
-          npm i @ng-select/ng-select
-      - name: Production build
-        working-directory: ./application/client/desktop/nightchech
-        run: ng build --configuration=production
-      - uses: jakejarvis/s3-sync-action@v0.5.1
-        with:
-          args: --acl public-read --delete
-        env:
-          AWS_S3_BUCKET: ${{  env.AWS_S3_BUCKET_NAME  }}
-          AWS_ACCESS_KEY_ID: ${{  env.AWS_ACCESS_KEY_ID  }}
-          AWS_SECRET_ACCESS_KEY: ${{  env.AWS_SECRET_ACCESS_KEY  }}
-          AWS_REGION: ${{  env.AWS_REGION  }}
-          SOURCE_DIR: "application/client/desktop/nightchech/dist/nightchech"
-      - name: Enable the static webhosting
-        run: aws s3 website s3://${{ env.AWS_S3_BUCKET_NAME }}/ --index-document index.html --error-document error.html
+  # Upload_S3_Bucket:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Setup repo
+  #       uses: actions/checkout@v2
+  #     - name: Install the node
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: 12  
+  #     - name: Installing angular/cli
+  #       run: npm install -g @angular/cli
+  #     - name: Just for the testing
+  #       working-directory: ./application/client/desktop/nightchech/src/environments
+  #       run: |
+  #         ls
+  #         rm -rf environment.prod.ts
+  #         ls
+  #         echo 'export const environment = { DESKTOP_API: `http://${{  env.BACKEND_URL  }}:8000/desktop`, MOBILE_API: `http://<Your Domain Name or Live IP address>`, production: true };' >> environment.prod.ts
+  #         cat environment.prod.ts
+  #     - name: Installing the node modules
+  #       working-directory: ./application/client/desktop/nightchech
+  #       run: |
+  #         npm install
+  #         npm i @ng-select/ng-select
+  #     - name: Production build
+  #       working-directory: ./application/client/desktop/nightchech
+  #       run: ng build --configuration=production
+  #     - uses: jakejarvis/s3-sync-action@v0.5.1
+  #       with:
+  #         args: --acl public-read --delete
+  #       env:
+  #         AWS_S3_BUCKET: ${{  env.AWS_S3_BUCKET_NAME  }}
+  #         AWS_ACCESS_KEY_ID: ${{  env.AWS_ACCESS_KEY_ID  }}
+  #         AWS_SECRET_ACCESS_KEY: ${{  env.AWS_SECRET_ACCESS_KEY  }}
+  #         AWS_REGION: ${{  env.AWS_REGION  }}
+  #         SOURCE_DIR: "application/client/desktop/nightchech/dist/nightchech"
+  #     - name: Enable the static webhosting
+  #       run: aws s3 website s3://${{ env.AWS_S3_BUCKET_NAME }}/ --index-document index.html --error-document error.html
