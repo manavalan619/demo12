@@ -4,57 +4,57 @@ module.exports = {
     ],
     "inferenceAccelerators": [],
     "containerDefinitions": [
-        // {
-        //     "name": "mongo-3755",
-        //     "image": "geppettotest/mongo-local:april2020",
-        //     "memoryReservation": "300",
-        //     "resourceRequirements": null,
-        //     "essential": true,
-        //     "portMappings": [
-        //         {
-        //             "containerPort": "27017",
-        //             "protocol": "tcp",
-        //             "hostPort": "27017"
-        //         }
-        //     ],
-        //     "environmentFiles": null,
-        //     "environment": [{
-        //         "name": "MONGO_INITDB_ROOT_PASSWORD",
-        //         "value": "password"
-        //       },
-        //       {
-        //         "name": "MONGO_INITDB_ROOT_USERNAME",
-        //         "value": "admin"
-        //       }],
-        //     "secrets": null,
-        //     "mountPoints": [
-        //         {
-        //           "readOnly": null,
-        //           "containerPath": "/data/db",
-        //           "sourceVolume": "nightchech"
-        //         }
-        //       ],
-        //     "volumesFrom": null,
-        //     "hostname": null,
-        //     "user": null,
-        //     "workingDirectory": null,
-        //     "extraHosts": null,
-        //     "logConfiguration": {
-        //         "logDriver": "awslogs",
-        //         "options": {
-        //             "awslogs-group": "/ecs/nightchech",
-        //             "awslogs-region": "us-east-1",
-        //             "awslogs-stream-prefix": "ecs",
-        //             "awslogs-create-group": "true"
-        //         }
-        //     },
-        //     "ulimits": null,
-        //     "dockerLabels": null,
-        //     "dependsOn": null,
-        //     "repositoryCredentials": {
-        //         "credentialsParameter": ""
-        //     }
-        // },
+        {
+            "name": "mongo-3755",
+            "image": "geppettotest/mongo-local:april2020",
+            "memoryReservation": "300",
+            "resourceRequirements": null,
+            "essential": true,
+            "portMappings": [
+                {
+                    "containerPort": "27017",
+                    "protocol": "tcp",
+                    "hostPort": "27017"
+                }
+            ],
+            "environmentFiles": null,
+            "environment": [{
+                "name": "MONGO_INITDB_ROOT_PASSWORD",
+                "value": "password"
+              },
+              {
+                "name": "MONGO_INITDB_ROOT_USERNAME",
+                "value": "admin"
+              }],
+            "secrets": null,
+            "mountPoints": [
+                {
+                  "readOnly": null,
+                  "containerPath": "/data/db",
+                  "sourceVolume": "nightchech"
+                }
+              ],
+            "volumesFrom": null,
+            "hostname": null,
+            "user": null,
+            "workingDirectory": null,
+            "extraHosts": null,
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/ecs/nightchech",
+                    "awslogs-region": "us-east-1",
+                    "awslogs-stream-prefix": "ecs",
+                    "awslogs-create-group": "true"
+                }
+            },
+            "ulimits": null,
+            "dockerLabels": null,
+            "dependsOn": null,
+            "repositoryCredentials": {
+                "credentialsParameter": ""
+            }
+        },
         // {
         //     "name": "camunda-3755",
         //     "image": "geppettodistribution/camunda-local:Jan2021",
