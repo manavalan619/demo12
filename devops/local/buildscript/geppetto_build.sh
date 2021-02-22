@@ -1,14 +1,14 @@
 #!bin/bash
 
-APPLICATION='/fargatecheck'
+APPLICATION='/finalcheckforfargate'
 
 CUSTOMSERVICEPATH='../../../services/custom_services'
 
 HELMPATH='../devops/local'
 
 
-DESKTOPCODE='../../../application/client/desktop/fargatecheck'
-DESKTOPIMAGENAME='geppettotest/fargatecheck-desktop:1.0'
+DESKTOPCODE='../../../application/client/desktop/finalcheckforfargate'
+DESKTOPIMAGENAME='geppettotest/finalcheckforfargate-desktop:1.0'
 
 echo "Started to build docker images for pod...."
 
@@ -76,7 +76,7 @@ helm_install () {
 
 cd $HELMPATH
 helm install --dry-run --debug ./helm
-helm install --name fargatecheck-0925 ./helm
+helm install --name finalcheckforfargate-3102 ./helm
 if [ $? -eq 0 ]; then
     echo "App Deployment is Done"
 else

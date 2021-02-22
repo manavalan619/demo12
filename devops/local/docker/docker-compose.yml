@@ -2,13 +2,13 @@ version: "3.8"
 services:
   mongo:
     image: geppettotest/mongo-local:april2020
-    container_name: mongo-0925
+    container_name: mongo-3102
     restart: unless-stopped
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=password
     volumes:
-      - fargatecheck_0925-volume:/data/db
+      - finalcheckforfargate_3102-volume:/data/db
     ports:
       - "27018:27017"
     healthcheck:
@@ -20,14 +20,14 @@ services:
 
   camunda:
     image: geppettodistribution/camunda-local:Jan2021
-    container_name: camunda-0925
+    container_name: camunda-3102
     ports:
       - "0000:8080"
 
   authproxy:
     build: ../../../application/services/default_services/authproxy
-    image: authproxy-0925
-    container_name: authproxy-0925
+    image: authproxy-3102
+    container_name: authproxy-3102
     ports:
       - "0000:8001"
     env_file: .env
@@ -37,8 +37,8 @@ services:
 
   camundaservice:
     build: ../../../application/services/default_services/camunda
-    image: camundaservice-0925
-    container_name: camundasvc-0925
+    image: camundaservice-3102
+    container_name: camundasvc-3102
     ports:
       - "8002:8002"
     env_file: .env
@@ -48,8 +48,8 @@ services:
 
   securitymanager:
     build: ../../../application/services/default_services/securitymanager
-    image: securitymanager-0925
-    container_name: securitymanager-0925
+    image: securitymanager-3102
+    container_name: securitymanager-3102
     ports:
       - "8003:8003"
     env_file: .env
@@ -59,8 +59,8 @@ services:
 
   apigateway:
     build: ../../../application/services/custom_services/apigateway
-    image: apigateway-0925
-    container_name: apigateway-0925
+    image: apigateway-3102
+    container_name: apigateway-3102
     ports:
       - "8000:8000"
     env_file: .env
@@ -75,15 +75,15 @@ services:
 
   school: 
     build: ../../../application/services/custom_services/school
-    image: school-0925
-    container_name: school-0925
+    image: school-3102
+    container_name: school-3102
     ports: 
-      - 8006:8006
+      - 8007:8007
     env_file: .env
     depends_on:
       - mongo
 
 
 volumes:
-  fargatecheck_0925-volume:
+  finalcheckforfargate_3102-volume:
     driver: local

@@ -1,9 +1,9 @@
 import { Request, Response, NextFunction } from "express";
-import { manoController } from '../controller/manoController';
+import { studentsController } from '../controller/studentsController';
 
 
 export class Routes {
-    private mano: manoController = new manoController();
+    private students: studentsController = new studentsController();
     
     public routes(app): void {
           app.route('/health/entity-service').get((req: Request, res: Response) => {
@@ -11,8 +11,8 @@ export class Routes {
                 status: 'up'
             })
         })
-        app.route('/mano').get(this.mano.GpGetAllValues);
-app.route('/mano').post(this.mano.GpCreate);
+        app.route('/students').get(this.students.GpGetAllValues);
+app.route('/students').post(this.students.GpCreate);
      }
 
 }
