@@ -2,7 +2,7 @@
 openapi: 3.0.0
 info:
    version: 1.3.0
-   title: finalcheckforfargate open api specification
+   title: fargatecheck open api specification
    description: school API
    termsOfService: http://api_url/terms/
    contact:
@@ -13,15 +13,15 @@ info:
       name: Apache 2.0
       url: https://www.apache.org/licenses/LICENSE-2.0.html
 servers:
-   - url: http://localhost:8007
+   - url: http://localhost:8006
      description: school
 tags:
-- name: students
+- name: mano
 paths:
-   "/students":
+   "/mano":
       get:
          tags:
-         -  students
+         -  mano
          description: GpGetAllValues
          responses:
             200:
@@ -34,13 +34,13 @@ paths:
                description: Internal Server Error
       post:
          tags:
-         -  students
+         -  mano
          description: GpCreate
          requestBody:
             content:
                application/json:
                   schema:
-                     $ref: "#/components/schemas/students"
+                     $ref: "#/components/schemas/mano"
          responses:
             200:
                description: Success
@@ -52,7 +52,7 @@ paths:
                description: Internal Server Error
 components:
    schemas:
-      students:
+      mano:
          type: object
          properties:
             Name:

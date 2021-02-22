@@ -1,13 +1,13 @@
-# Default values for finalcheckforfargate.
+# Default values for fargatecheck.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 app:
-  prefix: finalcheckforfargate
-  namespace: finalcheckforfargate
+  prefix: fargatecheck
+  namespace: fargatecheck
 
 logging:
-  namespace: finalcheckforfargate-logging
+  namespace: fargatecheck-logging
 
 service:
   type: NodePort
@@ -57,8 +57,8 @@ service:
   school: 
     name: school
     type: NodePort
-    port: 8007
-    targetPort: 8007
+    port: 8006
+    targetPort: 8006
 
 
 deployment:
@@ -66,7 +66,7 @@ deployment:
   customImagePullPolicy: Always
   apigateway:
      name: apigateway
-     image: geppettotest/finalcheckforfargate-apigateway:1.0
+     image: geppettotest/fargatecheck-apigateway:1.0
   mongo:
      name: mongo
      image: mongo:3.2   
@@ -84,10 +84,10 @@ deployment:
      image: geppettodistribution/default-adminmanager:2.0
   desktop:
      name: desktop
-     image: geppettotest/finalcheckforfargate-desktop:1.0
+     image: geppettotest/fargatecheck-desktop:1.0
   school: 
     name: school
-    image: geppettotest/finalcheckforfargate-school:1.0
+    image: geppettotest/fargatecheck-school:1.0
 
   camundapod:
      name: camundapod
@@ -95,7 +95,7 @@ deployment:
 
 config:
   vault:
-    rootToken: vault-finalcheckforfargate-2019
+    rootToken: vault-fargatecheck-2019
 
 persistentVolume:
   mongo:

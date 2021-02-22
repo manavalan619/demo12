@@ -1,7 +1,0 @@
-{
-  "name": "finalcheckforfargate",
-  "integrations": {
-    "cordova": {}
-  },
-  "type": "ionic-angular"
-}
