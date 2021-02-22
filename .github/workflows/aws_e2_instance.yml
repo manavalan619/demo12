@@ -125,7 +125,6 @@ jobs:
   #       run: aws ecs run-task --cluster ${{  env.AWS_ECS_CLUSTER_NAME  }}  --task-definition checkfargate --launch-type FARGATE --network-configuration "awsvpcConfiguration={subnets=[${{  env.AWS_VPC_SUBNET  }}],securityGroups=[${{  env.AWS_VPC_SECURITY_GROUP  }}],assignPublicIp=ENABLED}"
 
   Upload_S3_Bucket:
-    needs: Deploy_backend
     runs-on: ubuntu-latest
     steps:
       - name: Setup repo
