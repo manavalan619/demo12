@@ -121,7 +121,9 @@ jobs:
       #     cluster: ${{  env.AWS_ECS_CLUSTER_NAME  }}
       #     wait-for-service-stability: true
       - name: Run the ECS task definition
-        run: aws ecs describe-tasks --cluster Cost-Estimation-Testing --tasks Cost-Estimation-Testing/13a8f4e17785468ea55033573e9e1c4e
+        run: | 
+          $mano=aws ecs describe-tasks --cluster Cost-Estimation-Testing --tasks Cost-Estimation-Testing/13a8f4e17785468ea55033573e9e1c4e
+          echo $mano
 
   # Upload_S3_Bucket:
   #   runs-on: ubuntu-latest
