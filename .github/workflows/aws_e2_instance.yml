@@ -90,6 +90,8 @@ jobs:
      
   Deploy_backend:
     runs-on: ubuntu-latest
+    outputs:
+        public_ip: ${{ steps.networkconfig.outputs.PUBLIC_IP_ADDRESS }}
     steps:
       - name: Check the  branch
         uses: actions/checkout@v2
@@ -129,10 +131,11 @@ jobs:
         env:
           ipaddress: $mano
       - name: check one more
+        id: networkconfig
         run: |
           ipaddress=$(aws ec2 describe-network-interfaces --network-interface-ids ${{ env.ipaddress }})
           orgial=$(aws ec2 describe-network-interfaces --network-interface-ids ${{ env.ipaddress }}  | jq '.NetworkInterfaces[].PrivateIpAddresses[].Association.PublicIp')
-          echo "$orgial"
+          echo "::set-output name=PUBLIC_IP_ADDRESS::$(aws ec2 describe-network-interfaces --network-interface-ids ${{ env.ipaddress }}  | jq '.NetworkInterfaces[].PrivateIpAddresses[].Association.PublicIp')"
         env:
           AWS_S3_BUCKET_NAME: $orgial
   Upload_S3_Bucket:
@@ -161,7 +164,9 @@ jobs:
           npm i @ng-select/ng-select
       - name: Production build
         working-directory: ./application/client/desktop/nightchech
-        run: ng build --configuration=production
+        run: |
+          ng build --configuration=production
+          echo ${{ Deploy_backend.outputs.public_ip }}
       - uses: jakejarvis/s3-sync-action@v0.5.1
         with:
           args: --acl public-read --delete
