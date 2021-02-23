@@ -121,11 +121,18 @@ jobs:
       #     cluster: ${{  env.AWS_ECS_CLUSTER_NAME  }}
       #     wait-for-service-stability: true
       - name: Run the ECS task definition
+        
         run: | 
           echo "::set-output name=INSTANCE_DEV::$(aws ecs describe-tasks --cluster Cost-Estimation-Testing --tasks Cost-Estimation-Testing/13a8f4e17785468ea55033573e9e1c4e | jq '.tasks[].attachments[].details[1].value')"
           mano=$(aws ecs describe-tasks --cluster Cost-Estimation-Testing --tasks Cost-Estimation-Testing/13a8f4e17785468ea55033573e9e1c4e | jq '.tasks[].attachments[].details[1].value')
           echo "$mano"
           ipaddress=$(aws ec2 describe-network-interfaces --network-interface-ids $mano)
+          echo "$ipaddress"
+        env:
+          ipaddress: $mano
+      - name: check one more
+        run: |
+          ipaddress=$(aws ec2 describe-network-interfaces --network-interface-ids ${{ env.ipaddress }})
           echo "$ipaddress"
   # Upload_S3_Bucket:
   #   runs-on: ubuntu-latest
