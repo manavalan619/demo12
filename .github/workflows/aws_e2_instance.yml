@@ -91,7 +91,7 @@ jobs:
   Deploy_backend:
     runs-on: ubuntu-latest
     outputs:
-        public_ip: ${{ steps.public-ip-address.outputs.PUBLIC_IP_ADDRESS }}
+        public_ip: ${{ steps.networkInterfaceId.outputs.PUBLIC_IP_ADDRESS }}
     steps:
       - name: Check the  branch
         uses: actions/checkout@v2
@@ -126,6 +126,7 @@ jobs:
         run: |
           mano=$(aws ecs run-task --cluster Cost-Estimation-Testing  --task-definition nightchech --launch-type FARGATE --network-configuration "awsvpcConfiguration={subnets=[subnet-51cbee09],securityGroups=[sg-0be12e6ecdad0e56b],assignPublicIp=ENABLED}" | jq  -r '.tasks[].taskArn')
           echo "::set-output name=NETWORK_ID::$(aws ecs describe-tasks --cluster ${{  env.AWS_ECS_CLUSTER_NAME  }} --tasks $mano | jq '.tasks[].attachments[].details[1].value')"
+          echo "::set-output name=PUBLIC_IP_ADDRESS::$(aws ec2 describe-network-interfaces --network-interface-ids ${{ steps.networkInterfaceId.outputs.NETWORK_ID }}  | jq -r '.NetworkInterfaces[].PrivateIpAddresses[].Association.PublicIp')"
 
           echo $mano
         env: 
@@ -136,10 +137,10 @@ jobs:
       #   run: | 
       #     echo "::set-output name=NETWORK_ID::$(aws ecs describe-tasks --cluster ${{  env.AWS_ECS_CLUSTER_NAME  }} --tasks ${{ steps.RUN_TASK.outputs.TASK_ARN }} | jq '.tasks[].attachments[].details[1].value')"
       #   id: networkInterfaceId
-      - name: Get the Public Ip Address of Task 
-        id: public-ip-address
-        run: |
-          echo "::set-output name=PUBLIC_IP_ADDRESS::$(aws ec2 describe-network-interfaces --network-interface-ids ${{ steps.networkInterfaceId.outputs.NETWORK_ID }}  | jq -r '.NetworkInterfaces[].PrivateIpAddresses[].Association.PublicIp')"
+      # - name: Get the Public Ip Address of Task 
+      #   id: public-ip-address
+      #   run: |
+      #     echo "::set-output name=PUBLIC_IP_ADDRESS::$(aws ec2 describe-network-interfaces --network-interface-ids ${{ steps.networkInterfaceId.outputs.NETWORK_ID }}  | jq -r '.NetworkInterfaces[].PrivateIpAddresses[].Association.PublicIp')"
       # Upload_S3_Bucket:
       #   needs: Deploy_backend
       #   runs-on: ubuntu-latest
