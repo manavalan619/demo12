@@ -126,7 +126,7 @@ jobs:
         id: networkInterfaceId
         run: |
           run_task=$(aws ecs run-task --cluster ${{  env.AWS_ECS_CLUSTER_NAME  }}  --task-definition nightchech --launch-type FARGATE --network-configuration "awsvpcConfiguration={subnets=[${{  env.AWS_VPC_SUBNET  }}],securityGroups=[${{  env.AWS_VPC_SECURITY_GROUP  }}],assignPublicIp=ENABLED}" | jq  -r '.tasks[].taskArn')
-          sleep 60s
+          sleep 20s
           echo $run_task  
           echo "::set-output name=NETWORK_ID::$(aws ecs describe-tasks --cluster ${{  env.AWS_ECS_CLUSTER_NAME  }} --tasks $run_task | jq '.tasks[].attachments[].details[1].value')"
           echo "::set-output name=PUBLIC_IP_ADDRESS::$(aws ec2 describe-network-interfaces --network-interface-ids ${{ steps.networkInterfaceId.outputs.NETWORK_ID }}  | jq -r '.NetworkInterfaces[].PrivateIpAddresses[].Association.PublicIp')"
