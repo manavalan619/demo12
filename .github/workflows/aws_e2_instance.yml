@@ -166,7 +166,7 @@ jobs:
         working-directory: ./application/client/desktop/nightchech
         run: |
           ng build --configuration=production
-          echo ${{ Deploy_backend.outputs.public_ip }}
+          echo ${{ needs.Deploy_backend.outputs.public_ip }}
       - uses: jakejarvis/s3-sync-action@v0.5.1
         with:
           args: --acl public-read --delete
