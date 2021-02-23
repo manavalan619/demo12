@@ -109,24 +109,24 @@ jobs:
           aws-access-key-id: ${{  env.AWS_ACCESS_KEY_ID  }}
           aws-secret-access-key: ${{  env.AWS_SECRET_ACCESS_KEY  }}
           aws-region: ${{  env.AWS_REGION  }}
-      - name: Fill in the new image ID in the Amazon ECS task definition
-        id: task-def
-        uses: aws-actions/amazon-ecs-render-task-definition@v1
-        with:
-          task-definition: .github/workflows/task-definition.json
-          container-name: mongo-3755
-          image: geppettotest/mongo-local:april2020
-      - name: Deploy Amazon ECS task definition
-        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
-        with:
-          task-definition: ${{ steps.task-def.outputs.task-definition }}
-          cluster: ${{  env.AWS_ECS_CLUSTER_NAME  }}
-          wait-for-service-stability: true
+      # - name: Fill in the new image ID in the Amazon ECS task definition
+      #   id: task-def
+      #   uses: aws-actions/amazon-ecs-render-task-definition@v1
+      #   with:
+      #     task-definition: .github/workflows/task-definition.json
+      #     container-name: mongo-3755
+      #     image: geppettotest/mongo-local:april2020
+      # - name: Deploy Amazon ECS task definition
+      #   uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+      #   with:
+      #     task-definition: ${{ steps.task-def.outputs.task-definition }}
+      #     cluster: ${{  env.AWS_ECS_CLUSTER_NAME  }}
+      #     wait-for-service-stability: true
       - name: Run the ECS task definition
         run: aws ecs run-task --cluster ${{  env.AWS_ECS_CLUSTER_NAME  }}  --task-definition nightchech --launch-type FARGATE --network-configuration "awsvpcConfiguration={subnets=[${{  env.AWS_VPC_SUBNET  }}],securityGroups=[${{  env.AWS_VPC_SECURITY_GROUP  }}],assignPublicIp=ENABLED}"
       - name: Get the networkInterfaceId of task   
         run: | 
-          echo "::set-output name=NETWORK_ID::$(aws ecs describe-tasks --cluster ${{  env.AWS_ECS_CLUSTER_NAME  }} --tasks ${{  env.AWS_ECS_CLUSTER_NAME  }}/13a8f4e17785468ea55033573e9e1c4e | jq '.tasks[].attachments[].details[1].value')"
+          echo "::set-output name=NETWORK_ID::$(aws ecs describe-tasks --cluster ${{  env.AWS_ECS_CLUSTER_NAME  }} --tasks ${{  env.AWS_ECS_CLUSTER_NAME  }}/d8dd502f6be24f7ab19b026ef1a457a2 | jq '.tasks[].attachments[].details[1].value')"
         id: networkInterfaceId
       - name: Get the Public Ip Address of Task 
         id: public-ip-address
