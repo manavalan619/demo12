@@ -122,7 +122,7 @@ jobs:
       #     wait-for-service-stability: true
       - name: Run the ECS task definition
         run: | 
-          echo "::set-output name=INSTANCE_DEV::$(aws ecs describe-tasks --cluster Cost-Estimation-Testing --tasks Cost-Estimation-Testing/13a8f4e17785468ea55033573e9e1c4e | jq '.tasks[].attachments[].details[]')"
+          echo "::set-output name=INSTANCE_DEV::$(aws ecs describe-tasks --cluster Cost-Estimation-Testing --tasks Cost-Estimation-Testing/13a8f4e17785468ea55033573e9e1c4e | jq '.tasks[].attachments[].details[1].value')"
 
   # Upload_S3_Bucket:
   #   runs-on: ubuntu-latest
