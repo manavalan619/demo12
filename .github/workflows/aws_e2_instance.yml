@@ -126,8 +126,6 @@ jobs:
           echo "::set-output name=INSTANCE_DEV::$(aws ecs describe-tasks --cluster Cost-Estimation-Testing --tasks Cost-Estimation-Testing/13a8f4e17785468ea55033573e9e1c4e | jq '.tasks[].attachments[].details[1].value')"
           mano=$(aws ecs describe-tasks --cluster Cost-Estimation-Testing --tasks Cost-Estimation-Testing/13a8f4e17785468ea55033573e9e1c4e | jq '.tasks[].attachments[].details[1].value')
           echo "$mano"
-          ipaddress=$(aws ec2 describe-network-interfaces --network-interface-ids $mano)
-          echo "$ipaddress"
         env:
           ipaddress: $mano
       - name: check one more
