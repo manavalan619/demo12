@@ -91,7 +91,7 @@ jobs:
   Deploy_backend:
     runs-on: ubuntu-latest
     outputs:
-        public_ip: ${{ steps.networkconfig.outputs.PUBLIC_IP_ADDRESS }}
+        public_ip: ${{ steps.public-ip-address.outputs.PUBLIC_IP_ADDRESS }}
     steps:
       - name: Check the  branch
         uses: actions/checkout@v2
@@ -122,21 +122,14 @@ jobs:
       #     task-definition: ${{ steps.task-def.outputs.task-definition }}
       #     cluster: ${{  env.AWS_ECS_CLUSTER_NAME  }}
       #     wait-for-service-stability: true
-      - name: Run the ECS task definition
-        
+      - name: Get the networkInterfaceId of task   
         run: | 
           echo "::set-output name=NETWORK_ID::$(aws ecs describe-tasks --cluster Cost-Estimation-Testing --tasks Cost-Estimation-Testing/13a8f4e17785468ea55033573e9e1c4e | jq '.tasks[].attachments[].details[1].value')"
-          mano=$(aws ecs describe-tasks --cluster Cost-Estimation-Testing --tasks Cost-Estimation-Testing/13a8f4e17785468ea55033573e9e1c4e | jq '.tasks[].attachments[].details[1].value')
-          echo "$mano"
         id: networkInterfaceId
-        env:
-          ipaddress: $mano
-      - name: check one more
-        id: networkconfig
+      - name: Get the Public Ip Address of Task 
+        id: public-ip-address
         run: |
           echo "::set-output name=PUBLIC_IP_ADDRESS::$(aws ec2 describe-network-interfaces --network-interface-ids ${{ steps.networkInterfaceId.outputs.NETWORK_ID }}  | jq -r '.NetworkInterfaces[].PrivateIpAddresses[].Association.PublicIp')"
-        env:
-          AWS_S3_BUCKET_NAME: $orgial
   Upload_S3_Bucket:
     needs: Deploy_backend
     runs-on: ubuntu-latest
