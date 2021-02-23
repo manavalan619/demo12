@@ -131,7 +131,8 @@ jobs:
       - name: check one more
         run: |
           ipaddress=$(aws ec2 describe-network-interfaces --network-interface-ids ${{ env.ipaddress }})
-          echo "$ipaddress"
+          orgial=$(aws ec2 describe-network-interfaces --network-interface-ids ${{ env.ipaddress }}  | jq '.NetworkInterfaces[].PrivateIpAddresses[].Association.PublicIp')
+          echo "$orgial"
   # Upload_S3_Bucket:
   #   runs-on: ubuntu-latest
   #   steps:
