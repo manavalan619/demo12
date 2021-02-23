@@ -124,7 +124,8 @@ jobs:
           wait-for-service-stability: true
       - name: Run the ECS task definition
         run: |
-          echo "::set-output name=TASK_ARN::$(aws ecs run-task --cluster ${{  env.AWS_ECS_CLUSTER_NAME  }}  --task-definition nightchech --launch-type FARGATE --network-configuration "awsvpcConfiguration={subnets=[${{  env.AWS_VPC_SUBNET  }}],securityGroups=[${{  env.AWS_VPC_SECURITY_GROUP  }}],assignPublicIp=ENABLED}" | jq  '.tasks[].taskArn')"
+          mano=$(aws ecs run-task --cluster Cost-Estimation-Testing  --task-definition nightchech --launch-type FARGATE --network-configuration "awsvpcConfiguration={subnets=[subnet-51cbee09],securityGroups=[sg-0be12e6ecdad0e56b],assignPublicIp=ENABLED}" | jq  '.tasks[].taskArn')
+          echo $mano
         id: RUN_TASK
  
       - name: Get the networkInterfaceId of task   
