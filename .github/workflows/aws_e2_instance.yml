@@ -125,17 +125,16 @@ jobs:
       - name: Run the ECS task definition
         
         run: | 
-          echo "::set-output name=INSTANCE_DEV::$(aws ecs describe-tasks --cluster Cost-Estimation-Testing --tasks Cost-Estimation-Testing/13a8f4e17785468ea55033573e9e1c4e | jq '.tasks[].attachments[].details[1].value')"
+          echo "::set-output name=NETWORK_ID::$(aws ecs describe-tasks --cluster Cost-Estimation-Testing --tasks Cost-Estimation-Testing/13a8f4e17785468ea55033573e9e1c4e | jq '.tasks[].attachments[].details[1].value')"
           mano=$(aws ecs describe-tasks --cluster Cost-Estimation-Testing --tasks Cost-Estimation-Testing/13a8f4e17785468ea55033573e9e1c4e | jq '.tasks[].attachments[].details[1].value')
           echo "$mano"
+        id: networkInterfaceId
         env:
           ipaddress: $mano
       - name: check one more
         id: networkconfig
         run: |
-          ipaddress=$(aws ec2 describe-network-interfaces --network-interface-ids ${{ env.ipaddress }})
-          orgial=$(aws ec2 describe-network-interfaces --network-interface-ids ${{ env.ipaddress }}  | jq -r '.NetworkInterfaces[].PrivateIpAddresses[].Association.PublicIp')
-          echo "::set-output name=PUBLIC_IP_ADDRESS::$(aws ec2 describe-network-interfaces --network-interface-ids ${{ env.ipaddress }}  | jq -r '.NetworkInterfaces[].PrivateIpAddresses[].Association.PublicIp')"
+          echo "::set-output name=PUBLIC_IP_ADDRESS::$(aws ec2 describe-network-interfaces --network-interface-ids ${{ steps.networkInterfaceId.outputs.NETWORK_ID }}  | jq -r '.NetworkInterfaces[].PrivateIpAddresses[].Association.PublicIp')"
         env:
           AWS_S3_BUCKET_NAME: $orgial
   Upload_S3_Bucket:
