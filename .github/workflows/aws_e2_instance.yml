@@ -124,13 +124,12 @@ jobs:
           wait-for-service-stability: true
       - name: Run the ECS task definition
         run: |
-          $mano=$(aws ecs run-task --cluster ${{  env.AWS_ECS_CLUSTER_NAME  }}  --task-definition nightchech --launch-type FARGATE --network-configuration "awsvpcConfiguration={subnets=[${{  env.AWS_VPC_SUBNET  }}],securityGroups=[${{  env.AWS_VPC_SECURITY_GROUP  }}],assignPublicIp=ENABLED}" | jq  '.tasks[].taskArn')
+          mano=$(aws ecs run-task --cluster ${{  env.AWS_ECS_CLUSTER_NAME  }}  --task-definition nightchech --launch-type FARGATE --network-configuration "awsvpcConfiguration={subnets=[${{  env.AWS_VPC_SUBNET  }}],securityGroups=[${{  env.AWS_VPC_SECURITY_GROUP  }}],assignPublicIp=ENABLED}" | jq  '.tasks[].taskArn')
         id: RUN_TASK
         env: 
           TASK_ARN: $mano
       - name: Get the networkInterfaceId of task   
         run: | 
-          echo "::set-output name=NETWORK_ID::$(aws ecs describe-tasks --cluster ${{  env.AWS_ECS_CLUSTER_NAME  }} --tasks ${{ env.TASK_ARN }} | jq '.tasks[].attachments[].details[1].value')"
           aws ecs describe-tasks --cluster ${{  env.AWS_ECS_CLUSTER_NAME  }} --tasks ${{ steps.RUN_TASK.outputs.TASK_ARN }} | jq '.tasks[].attachments[].details[1].value'
         id: networkInterfaceId
       - name: Get the Public Ip Address of Task 
