@@ -58,7 +58,7 @@ module.exports = {
         {
             "name": "school-3755",
             "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-nightchech-3755-school:1`,
-            "memoryReservation": "500",
+            "memoryReservation": "300",
             "resourceRequirements": null,
             "essential": true,
             "portMappings": [
@@ -101,8 +101,8 @@ module.exports = {
         }
     ],
     "networkMode": "awsvpc",
-    "memory": "256",
-    "cpu": "1024",
+    "memory": "1024",
+    "cpu": "256",
     "executionRoleArn": `arn:aws:iam::${process.env.AWS_ACCOUNT_ID}:role/${process.env.AWS_ROLE_FOR_FARGATE}`,
     "family": "nightchech",
     "tags": [],
