@@ -1,10 +1,10 @@
-# Default values for nightchech.
+# Default values for devcheckfaragte.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 app:
-  prefix: nightchech
-  namespace: nightchech
+  prefix: devcheckfaragte
+  namespace: devcheckfaragte
 
 service:
   type: NodePort
@@ -51,11 +51,11 @@ service:
     type: NodePort
     port: 8080
     targetPort: 8080
-  school: 
-    name: school
+  college: 
+    name: college
     type: NodePort
-    port: 8005
-    targetPort: 8005
+    port: 8014
+    targetPort: 8014
 
 
 deployment:
@@ -63,7 +63,7 @@ deployment:
   customImagePullPolicy: Always
   apigateway:
      name: apigateway
-     image: geppettotest/nightchech-apigateway:1.0
+     image: geppettotest/devcheckfaragte-apigateway:1.0
   mongo:
      name: mongo
      image: mongo:3.2   
@@ -81,10 +81,10 @@ deployment:
      image: geppettodistribution/default-adminmanager:2.0
   desktop:
      name: desktop
-     image: geppettotest/nightchech-desktop:1.0
-  school: 
-    name: school
-    image: geppettotest/nightchech-school:1.0
+     image: geppettotest/devcheckfaragte-desktop:1.0
+  college: 
+    name: college
+    image: geppettotest/devcheckfaragte-college:1.0
 
   camundapod:
      name: camundapod
@@ -92,7 +92,7 @@ deployment:
 
 config:
   vault:
-    rootToken: vault-nightchech-2021
+    rootToken: vault-devcheckfaragte-2021
 
 persistentVolume:
   mongo:

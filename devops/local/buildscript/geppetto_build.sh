@@ -1,14 +1,14 @@
 #!bin/bash
 
-APPLICATION='/nightchech'
+APPLICATION='/devcheckfaragte'
 
 CUSTOMSERVICEPATH='../../../services/custom_services'
 
 HELMPATH='../devops/local'
 
 
-DESKTOPCODE='../../../application/client/desktop/nightchech'
-DESKTOPIMAGENAME='geppettotest/nightchech-desktop:1.0'
+DESKTOPCODE='../../../application/client/desktop/devcheckfaragte'
+DESKTOPIMAGENAME='geppettotest/devcheckfaragte-desktop:1.0'
 
 echo "Started to build docker images for pod...."
 
@@ -76,7 +76,7 @@ helm_install () {
 
 cd $HELMPATH
 helm install --dry-run --debug ./helm
-helm install --name nightchech-3755 ./helm
+helm install --name devcheckfaragte-1814 ./helm
 if [ $? -eq 0 ]; then
     echo "App Deployment is Done"
 else

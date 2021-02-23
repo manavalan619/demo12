@@ -1,4 +1,4 @@
-# Deploy the your nightchech-3755 applicaton by using github actions
+# Deploy the your devcheckfaragte-1814 applicaton by using github actions
 ![Github Actions](https://readmegeppetto.s3.amazonaws.com/githubactions.jpeg)
 
 ### Deploy the your generated application in aws by using github actions.
@@ -35,4 +35,4 @@ $ mkdir ../../../../.github && cp -r * ../../../../.github/
 
 - Here the URL for your application,
 
-http://nightchech-3755.s3-website-us-east-1.amazonaws.com/
+http://devcheckfaragte-1814.s3-website-us-east-1.amazonaws.com/

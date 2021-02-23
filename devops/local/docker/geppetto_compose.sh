@@ -1,6 +1,6 @@
 #!bin/bash
 
-DESKTOPCODE='../../../application/client/desktop/nightchech'
+DESKTOPCODE='../../../application/client/desktop/devcheckfaragte'
 
 COMPOSEPATH='../../../../devops/local/docker/'
 
@@ -13,8 +13,8 @@ do
     c)  
          echo "Creating new docker images and containers"
          cd $DESKTOPCODE
-         docker build -t nightchechui-3755 .
-         docker run --name nightchechui-3755 --restart=unless-stopped -d -p 5055:5000 nightchechui-3755
+         docker build -t devcheckfaragteui-1814 .
+         docker run --name devcheckfaragteui-1814 --restart=unless-stopped -d -p 5055:5000 devcheckfaragteui-1814
          sleep 15
          echo "UI build is done..."
 
@@ -22,8 +22,8 @@ do
          docker-compose up -d --build
          echo "uploading the mongo script..."
          sleep 50
-         docker cp mongo.js mongo-3755:/data/db/
-         docker exec -ti mongo-3755 mongo -u admin -p 'password' --authenticationDatabase 'admin' nightchech_3755 /data/db/mongo.js
+         docker cp mongo.js mongo-1814:/data/db/
+         docker exec -ti mongo-1814 mongo -u admin -p 'password' --authenticationDatabase 'admin' devcheckfaragte_1814 /data/db/mongo.js
          sleep 10
          echo "Process completed"
          echo " Your application is deployed here the link, http://localhost:5055 "
@@ -31,21 +31,21 @@ do
     d)
          echo "Now Deleting all containers and images"
          docker-compose down -v --rmi all 
-         docker rm -f nightchechui-3755
-         docker rmi nightchechui-3755
+         docker rm -f devcheckfaragteui-1814
+         docker rmi devcheckfaragteui-1814
          echo "Process completed"
          ;;
     r)
          echo "Now Re-starting the stopped containers"
          docker-compose start
-         docker restart nightchechui-3755
+         docker restart devcheckfaragteui-1814
          sleep 35
          echo "Process completed"
          ;;
     s)
          echo "Now stopping the running containers"
          docker-compose stop
-         docker stop nightchechui-3755
+         docker stop devcheckfaragteui-1814
          echo "Process completed"
          ;;
     *)

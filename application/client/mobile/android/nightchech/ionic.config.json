@@ -1,7 +1,0 @@
-{
-  "name": "nightchech",
-  "integrations": {
-    "cordova": {}
-  },
-  "type": "ionic-angular"
-}
