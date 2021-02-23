@@ -135,7 +135,7 @@ jobs:
         run: |
           ipaddress=$(aws ec2 describe-network-interfaces --network-interface-ids ${{ env.ipaddress }})
           orgial=$(aws ec2 describe-network-interfaces --network-interface-ids ${{ env.ipaddress }}  | jq -r '.NetworkInterfaces[].PrivateIpAddresses[].Association.PublicIp')
-          echo "::set-output name=PUBLIC_IP_ADDRESS::$(aws ec2 describe-network-interfaces --network-interface-ids ${{ env.ipaddress }}  | jq '.NetworkInterfaces[].PrivateIpAddresses[].Association.PublicIp')"
+          echo "::set-output name=PUBLIC_IP_ADDRESS::$(aws ec2 describe-network-interfaces --network-interface-ids ${{ env.ipaddress }}  | jq -r '.NetworkInterfaces[].PrivateIpAddresses[].Association.PublicIp')"
         env:
           AWS_S3_BUCKET_NAME: $orgial
   Upload_S3_Bucket:
