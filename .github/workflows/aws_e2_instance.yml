@@ -124,7 +124,7 @@ jobs:
       #     wait-for-service-stability: true
       - name: Get the networkInterfaceId of task   
         run: | 
-          echo "::set-output name=NETWORK_ID::$(aws ecs describe-tasks --cluster Cost-Estimation-Testing --tasks Cost-Estimation-Testing/13a8f4e17785468ea55033573e9e1c4e | jq '.tasks[].attachments[].details[1].value')"
+          echo "::set-output name=NETWORK_ID::$(aws ecs describe-tasks --cluster ${{  env.AWS_ECS_CLUSTER_NAME  }} --tasks ${{  env.AWS_ECS_CLUSTER_NAME  }}/13a8f4e17785468ea55033573e9e1c4e | jq '.tasks[].attachments[].details[1].value')"
         id: networkInterfaceId
       - name: Get the Public Ip Address of Task 
         id: public-ip-address
