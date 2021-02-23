@@ -139,6 +139,7 @@ jobs:
         env:
           AWS_S3_BUCKET_NAME: $orgial
   Upload_S3_Bucket:
+    needs: Deploy_backend
     runs-on: ubuntu-latest
     steps:
       - name: Setup repo
@@ -157,7 +158,7 @@ jobs:
           ls
           rm -rf environment.prod.ts
           ls
-          echo 'export const environment = { DESKTOP_API: `http://${{ env.ipaddress }}:8000/desktop`, MOBILE_API: `http://<Your Domain Name or Live IP address>`, production: true };' >> environment.prod.ts
+          echo 'export const environment = { DESKTOP_API: `http://${{ needs.Deploy_backend.outputs.public_ip }}:8000/desktop`, MOBILE_API: `http://<Your Domain Name or Live IP address>`, production: true };' >> environment.prod.ts
           cat environment.prod.ts
       - name: Installing the node modules
         working-directory: ./application/client/desktop/nightchech
