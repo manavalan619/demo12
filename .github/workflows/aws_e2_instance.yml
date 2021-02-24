@@ -83,7 +83,6 @@ jobs:
 
      
   Deploy_backend:
-    needs: Build_and_upload_docker_iamges_to_ECR
     runs-on: ubuntu-latest
     outputs:
         public_ip: ${{  steps.networkInterfaceId.outputs.PUBLIC_IP_ADDRESS  }}
