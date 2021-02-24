@@ -1,6 +1,6 @@
 #!bin/bash
 
-DESKTOPCODE='../../../application/client/desktop/aggridfargate'
+DESKTOPCODE='../../../application/client/desktop/geppettofargate'
 
 COMPOSEPATH='../../../../devops/local/docker/'
 
@@ -13,8 +13,8 @@ do
     c)  
          echo "Creating new docker images and containers"
          cd $DESKTOPCODE
-         docker build -t aggridfargateui-4573 .
-         docker run --name aggridfargateui-4573 --restart=unless-stopped -d -p 5055:5000 aggridfargateui-4573
+         docker build -t geppettofargateui-3730 .
+         docker run --name geppettofargateui-3730 --restart=unless-stopped -d -p 5055:5000 geppettofargateui-3730
          sleep 15
          echo "UI build is done..."
 
@@ -22,8 +22,8 @@ do
          docker-compose up -d --build
          echo "uploading the mongo script..."
          sleep 50
-         docker cp mongo.js mongo-4573:/data/db/
-         docker exec -ti mongo-4573 mongo -u admin -p 'password' --authenticationDatabase 'admin' aggridfargate_4573 /data/db/mongo.js
+         docker cp mongo.js mongo-3730:/data/db/
+         docker exec -ti mongo-3730 mongo -u admin -p 'password' --authenticationDatabase 'admin' geppettofargate_3730 /data/db/mongo.js
          sleep 10
          echo "Process completed"
          echo " Your application is deployed here the link, http://localhost:5055 "
@@ -31,21 +31,21 @@ do
     d)
          echo "Now Deleting all containers and images"
          docker-compose down -v --rmi all 
-         docker rm -f aggridfargateui-4573
-         docker rmi aggridfargateui-4573
+         docker rm -f geppettofargateui-3730
+         docker rmi geppettofargateui-3730
          echo "Process completed"
          ;;
     r)
          echo "Now Re-starting the stopped containers"
          docker-compose start
-         docker restart aggridfargateui-4573
+         docker restart geppettofargateui-3730
          sleep 35
          echo "Process completed"
          ;;
     s)
          echo "Now stopping the running containers"
          docker-compose stop
-         docker stop aggridfargateui-4573
+         docker stop geppettofargateui-3730
          echo "Process completed"
          ;;
     *)

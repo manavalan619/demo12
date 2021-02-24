@@ -1,10 +1,10 @@
-# Default values for aggridfargate.
+# Default values for geppettofargate.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 app:
-  prefix: aggridfargate
-  namespace: aggridfargate
+  prefix: geppettofargate
+  namespace: geppettofargate
 
 service:
   type: NodePort
@@ -51,11 +51,6 @@ service:
     type: NodePort
     port: 8080
     targetPort: 8080
-  manavalan: 
-    name: manavalan
-    type: NodePort
-    port: 8013
-    targetPort: 8013
 
 
 deployment:
@@ -63,7 +58,7 @@ deployment:
   customImagePullPolicy: Always
   apigateway:
      name: apigateway
-     image: geppettotest/aggridfargate-apigateway:1.0
+     image: geppettotest/geppettofargate-apigateway:1.0
   mongo:
      name: mongo
      image: mongo:3.2   
@@ -81,10 +76,7 @@ deployment:
      image: geppettodistribution/default-adminmanager:2.0
   desktop:
      name: desktop
-     image: geppettotest/aggridfargate-desktop:1.0
-  manavalan: 
-    name: manavalan
-    image: geppettotest/aggridfargate-manavalan:1.0
+     image: geppettotest/geppettofargate-desktop:1.0
 
   camundapod:
      name: camundapod
@@ -92,7 +84,7 @@ deployment:
 
 config:
   vault:
-    rootToken: vault-aggridfargate-2021
+    rootToken: vault-geppettofargate-2021
 
 persistentVolume:
   mongo:
