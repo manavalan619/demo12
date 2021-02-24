@@ -1,7 +1,0 @@
-{
-  "name": "devcheckfaragte",
-  "integrations": {
-    "cordova": {}
-  },
-  "type": "ionic-angular"
-}

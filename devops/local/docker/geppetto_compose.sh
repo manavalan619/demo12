@@ -1,6 +1,6 @@
 #!bin/bash
 
-DESKTOPCODE='../../../application/client/desktop/devcheckfaragte'
+DESKTOPCODE='../../../application/client/desktop/crudfargate'
 
 COMPOSEPATH='../../../../devops/local/docker/'
 
@@ -13,8 +13,8 @@ do
     c)  
          echo "Creating new docker images and containers"
          cd $DESKTOPCODE
-         docker build -t devcheckfaragteui-1814 .
-         docker run --name devcheckfaragteui-1814 --restart=unless-stopped -d -p 5055:5000 devcheckfaragteui-1814
+         docker build -t crudfargateui-6841 .
+         docker run --name crudfargateui-6841 --restart=unless-stopped -d -p 5055:5000 crudfargateui-6841
          sleep 15
          echo "UI build is done..."
 
@@ -22,8 +22,8 @@ do
          docker-compose up -d --build
          echo "uploading the mongo script..."
          sleep 50
-         docker cp mongo.js mongo-1814:/data/db/
-         docker exec -ti mongo-1814 mongo -u admin -p 'password' --authenticationDatabase 'admin' devcheckfaragte_1814 /data/db/mongo.js
+         docker cp mongo.js mongo-6841:/data/db/
+         docker exec -ti mongo-6841 mongo -u admin -p 'password' --authenticationDatabase 'admin' crudfargate_6841 /data/db/mongo.js
          sleep 10
          echo "Process completed"
          echo " Your application is deployed here the link, http://localhost:5055 "
@@ -31,21 +31,21 @@ do
     d)
          echo "Now Deleting all containers and images"
          docker-compose down -v --rmi all 
-         docker rm -f devcheckfaragteui-1814
-         docker rmi devcheckfaragteui-1814
+         docker rm -f crudfargateui-6841
+         docker rmi crudfargateui-6841
          echo "Process completed"
          ;;
     r)
          echo "Now Re-starting the stopped containers"
          docker-compose start
-         docker restart devcheckfaragteui-1814
+         docker restart crudfargateui-6841
          sleep 35
          echo "Process completed"
          ;;
     s)
          echo "Now stopping the running containers"
          docker-compose stop
-         docker stop devcheckfaragteui-1814
+         docker stop crudfargateui-6841
          echo "Process completed"
          ;;
     *)

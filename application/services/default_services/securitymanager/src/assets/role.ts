@@ -1,6 +1,7 @@
 export const roletypes = [
     { "role": "Admin" },
-    { "role": "Guest" },
-    { "role": "User" },
-    { "role" : "Developer"}
+    { "role": "Standarduser" },
+    { "role": "GroupUser"},
+    { "role": "GroupAdmin"},
+    { "role": "Manager"}
 ]

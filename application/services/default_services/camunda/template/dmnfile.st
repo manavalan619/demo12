@@ -1,4 +1,4 @@
-dmnfile(object, roles) ::=<<
+dmnfile(object) ::=<<
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" id="Definitions_0fnw5vs" name="DRD" namespace="http://camunda.org/schema/1.0/dmn">
   <decision id="Accesslevel" name="Authorize">
@@ -15,10 +15,11 @@ dmnfile(object, roles) ::=<<
         <inputExpression id="LiteralExpression_016sarj" typeRef="string">
           <text>resourcetype</text>
         </inputExpression>
-      </input>    
-        $if(roles)$$roles:{value |
-        <output id="output_$value.output$" label="$value.role$" name="$value.role$" typeRef="string" />
-        }$$endif$
+      </input>
+      <output id="output_1" label="admin" name="Admin" typeRef="string" />
+      <output id="OutputClause_0vdltyr" label="developer" name="Developer" typeRef="string" />
+      <output id="OutputClause_16m831c" label="user" name="Standard User" typeRef="string" />
+      <output id="OutputClause_06hgt34" label="guest" name="Guest" typeRef="string" />
       $if(object)$$object:{value |
         <rule id="DecisionRule_$value.DecisionRuleId$">
         <inputEntry id="UnaryTests_$value.UnaryTestsId$">

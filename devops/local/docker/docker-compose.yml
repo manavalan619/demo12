@@ -2,13 +2,13 @@ version: "3.8"
 services:
   mongo:
     image: geppettotest/mongo-local:april2020
-    container_name: mongo-1814
+    container_name: mongo-6841
     restart: unless-stopped
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=password
     volumes:
-      - devcheckfaragte_1814-volume:/data/db
+      - crudfargate_6841-volume:/data/db
     ports:
       - "27018:27017"
     healthcheck:
@@ -20,14 +20,14 @@ services:
 
   camunda:
     image: geppettodistribution/camunda-local:Jan2021
-    container_name: camunda-1814
+    container_name: camunda-6841
     ports:
       - "0000:8080"
 
   authproxy:
     build: ../../../application/services/default_services/authproxy
-    image: authproxy-1814
-    container_name: authproxy-1814
+    image: authproxy-6841
+    container_name: authproxy-6841
     ports:
       - "0000:8001"
     env_file: .env
@@ -35,33 +35,32 @@ services:
       - mongo
       - camunda
 
-  securitymanager:
-    build: ../../../application/services/default_services/securitymanager
-    image: securitymanager-1814
-    container_name: securitymanager-1814
-    ports:
-      - "8003:8003"
-    env_file: .env
-    depends_on:
-      - mongo
-      - camunda
-
   camundaservice:
     build: ../../../application/services/default_services/camunda
-    image: camundaservice-1814
-    container_name: camundasvc-1814
+    image: camundaservice-6841
+    container_name: camundasvc-6841
     ports:
       - "8002:8002"
     env_file: .env
     depends_on:
       - mongo
       - camunda
-      - securitymanager
+
+  securitymanager:
+    build: ../../../application/services/default_services/securitymanager
+    image: securitymanager-6841
+    container_name: securitymanager-6841
+    ports:
+      - "0000:8003"
+    env_file: .env
+    depends_on:
+      - mongo
+      - camunda
 
   apigateway:
     build: ../../../application/services/custom_services/apigateway
-    image: apigateway-1814
-    container_name: apigateway-1814
+    image: apigateway-6841
+    container_name: apigateway-6841
     ports:
       - "8000:8000"
     env_file: .env
@@ -70,21 +69,21 @@ services:
       - camundaservice
       - authproxy
       - securitymanager
-      - college
+      - school
 
 
 
-  college: 
-    build: ../../../application/services/custom_services/college
-    image: college-1814
-    container_name: college-1814
+  school: 
+    build: ../../../application/services/custom_services/school
+    image: school-6841
+    container_name: school-6841
     ports: 
-      - 8014:8014
+      - 8011:8011
     env_file: .env
     depends_on:
       - mongo
 
 
 volumes:
-  devcheckfaragte_1814-volume:
+  crudfargate_6841-volume:
     driver: local
