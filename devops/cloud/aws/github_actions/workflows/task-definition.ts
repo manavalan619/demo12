@@ -5,7 +5,7 @@ module.exports = {
     "inferenceAccelerators": [],
     "containerDefinitions": [
         {
-            "name": "mongo-0303",
+            "name": "mongo-8382",
             "image": "geppettotest/mongo-local:april2020",
             "memoryReservation": "300",
             "resourceRequirements": null,
@@ -31,7 +31,7 @@ module.exports = {
                 {
                   "readOnly": null,
                   "containerPath": "/data/db",
-                  "sourceVolume": "hptemplatefargate"
+                  "sourceVolume": "crudgeppetto"
                 }
               ],
             "volumesFrom": null,
@@ -42,7 +42,7 @@ module.exports = {
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "/ecs/hptemplatefargate",
+                    "awslogs-group": "/ecs/crudgeppetto",
                     "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs",
                     "awslogs-create-group": "true"
@@ -56,7 +56,7 @@ module.exports = {
             }
         },
         {
-            "name": "camunda-0303",
+            "name": "camunda-8382",
             "image": "geppettodistribution/camunda-local:Jan2021",
             "memoryReservation": "300",
             "resourceRequirements": null,
@@ -80,7 +80,7 @@ module.exports = {
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "/ecs/hptemplatefargate",
+                    "awslogs-group": "/ecs/crudgeppetto",
                     "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs",
                     "awslogs-create-group": "true"
@@ -94,8 +94,8 @@ module.exports = {
             }
         },
         {
-            "name": "apigateway-0303",
-            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-hptemplatefargate-0303-apigateway:1`,
+            "name": "apigateway-8382",
+            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-crudgeppetto-8382-apigateway:1`,
             "memoryReservation": "300",
             "resourceRequirements": null,
             "essential": true,
@@ -107,7 +107,8 @@ module.exports = {
                 }
             ],
             "environmentFiles": null,
-            "environment": [{"name":"MONGO_DB_URL","value":"mongodb://admin:password@127.0.0.1:27017/hptemplatefargate_0303?authSource=admin"},{"name":"CAMUNDAPOD_URL","value":"http://127.0.0.1:8080"},{"name":"SECURITYURL","value":"http://127.0.0.1:8003"},{"name":"AUTHPROXYURL","value":"http://127.0.0.1:8001"},{"name":"ADMINURL","value":"http://127.0.0.1:8004"},{"name":"CAMUNDAURL","value":"http://127.0.0.1:8002"},{"name":"APIGATEWAY","value":"http://127.0.0.1:8000"}
+            "environment": [{"name":"MONGO_DB_URL","value":"mongodb://admin:password@127.0.0.1:27017/crudgeppetto_8382?authSource=admin"},{"name":"CAMUNDAPOD_URL","value":"http://127.0.0.1:8080"},{"name":"SECURITYURL","value":"http://127.0.0.1:8003"},{"name":"AUTHPROXYURL","value":"http://127.0.0.1:8001"},{"name":"ADMINURL","value":"http://127.0.0.1:8004"},{"name":"CAMUNDAURL","value":"http://127.0.0.1:8002"},{"name":"APIGATEWAY","value":"http://127.0.0.1:8000"}
+            ,{"name":"SCHOOLURL","value":"http://127.0.0.1:8005"}
             ],
             "secrets": null,
             "mountPoints": [],
@@ -119,7 +120,7 @@ module.exports = {
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "/ecs/hptemplatefargate",
+                    "awslogs-group": "/ecs/crudgeppetto",
                     "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs",
                     "awslogs-create-group": "true"
@@ -133,8 +134,8 @@ module.exports = {
             }
         },        
         {
-            "name": "authproxy-0303",
-            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-hptemplatefargate-0303-authproxy:1`,
+            "name": "authproxy-8382",
+            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-crudgeppetto-8382-authproxy:1`,
             "memoryReservation": "300",
             "resourceRequirements": null,
             "essential": true,
@@ -146,7 +147,7 @@ module.exports = {
                 }
             ],
             "environmentFiles": null,
-            "environment": [{"name":"MONGO_DB_URL","value":"mongodb://admin:password@127.0.0.1:27017/hptemplatefargate_0303?authSource=admin"},{"name":"CAMUNDAURL","value":"http://127.0.0.1:8002"}],
+            "environment": [{"name":"MONGO_DB_URL","value":"mongodb://admin:password@127.0.0.1:27017/crudgeppetto_8382?authSource=admin"},{"name":"CAMUNDAURL","value":"http://127.0.0.1:8002"}],
             "secrets": null,
             "mountPoints": [],
             "volumesFrom": null,
@@ -157,7 +158,7 @@ module.exports = {
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "/ecs/hptemplatefargate",
+                    "awslogs-group": "/ecs/crudgeppetto",
                     "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs",
                     "awslogs-create-group": "true"
@@ -171,8 +172,8 @@ module.exports = {
             }
         },
         {
-            "name": "camundasvc-0303",
-            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-hptemplatefargate-0303-camunda:1`,
+            "name": "camundasvc-8382",
+            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-crudgeppetto-8382-camunda:1`,
             "memoryReservation": "300",
             "resourceRequirements": null,
             "essential": true,
@@ -184,7 +185,7 @@ module.exports = {
                 }
             ],
             "environmentFiles": null,
-            "environment": [{"name":"MONGO_DB_URL","value":"mongodb://admin:password@127.0.0.1:27017/hptemplatefargate_0303?authSource=admin"},{"name":"CAMUNDAPOD_URL","value":"http://127.0.0.1:8080"},{"name":"SECURITYURL","value":"http://127.0.0.1:8003"},{"name":"AUTHPROXYURL","value":"http://127.0.0.1:8001"},{"name":"ADMINURL","value":"http://127.0.0.1:8004"},{"name":"CAMUNDAURL","value":"http://127.0.0.1:8002"},{"name":"APIGATEWAY","value":"http://127.0.0.1:8000"}],
+            "environment": [{"name":"MONGO_DB_URL","value":"mongodb://admin:password@127.0.0.1:27017/crudgeppetto_8382?authSource=admin"},{"name":"CAMUNDAPOD_URL","value":"http://127.0.0.1:8080"},{"name":"SECURITYURL","value":"http://127.0.0.1:8003"},{"name":"AUTHPROXYURL","value":"http://127.0.0.1:8001"},{"name":"ADMINURL","value":"http://127.0.0.1:8004"},{"name":"CAMUNDAURL","value":"http://127.0.0.1:8002"},{"name":"APIGATEWAY","value":"http://127.0.0.1:8000"}],
             "secrets": null,
             "mountPoints": [],
             "volumesFrom": null,
@@ -195,7 +196,7 @@ module.exports = {
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "/ecs/hptemplatefargate",
+                    "awslogs-group": "/ecs/crudgeppetto",
                     "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs",
                     "awslogs-create-group": "true"
@@ -209,8 +210,8 @@ module.exports = {
             }
         },
         {
-            "name": "securitymanager-0303",
-            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-hptemplatefargate-0303-securitymanager:1`,
+            "name": "securitymanager-8382",
+            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-crudgeppetto-8382-securitymanager:1`,
             "memoryReservation": "300",
             "resourceRequirements": null,
             "essential": true,
@@ -222,7 +223,7 @@ module.exports = {
                 }
             ],
             "environmentFiles": null,
-            "environment": [{"name":"MONGO_DB_URL","value":"mongodb://admin:password@127.0.0.1:27017/hptemplatefargate_0303?authSource=admin"},{"name":"CAMUNDAPOD_URL","value":"http://127.0.0.1:8080"},{"name":"SECURITYURL","value":"http://127.0.0.1:8003"},{"name":"AUTHPROXYURL","value":"http://127.0.0.1:8001"},{"name":"ADMINURL","value":"http://127.0.0.1:8004"},{"name":"CAMUNDAURL","value":"http://127.0.0.1:8002"},{"name":"APIGATEWAY","value":"http://127.0.0.1:8000"}],
+            "environment": [{"name":"MONGO_DB_URL","value":"mongodb://admin:password@127.0.0.1:27017/crudgeppetto_8382?authSource=admin"},{"name":"CAMUNDAPOD_URL","value":"http://127.0.0.1:8080"},{"name":"SECURITYURL","value":"http://127.0.0.1:8003"},{"name":"AUTHPROXYURL","value":"http://127.0.0.1:8001"},{"name":"ADMINURL","value":"http://127.0.0.1:8004"},{"name":"CAMUNDAURL","value":"http://127.0.0.1:8002"},{"name":"APIGATEWAY","value":"http://127.0.0.1:8000"}],
             "secrets": null,
             "mountPoints": [],
             "volumesFrom": null,
@@ -233,7 +234,7 @@ module.exports = {
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "/ecs/hptemplatefargate",
+                    "awslogs-group": "/ecs/crudgeppetto",
                     "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs",
                     "awslogs-create-group": "true"
@@ -246,18 +247,56 @@ module.exports = {
                 "credentialsParameter": ""
             }
         },
+        {
+            "name": "school-8382",
+            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-crudgeppetto-8382-school:1`,
+            "memoryReservation": "300",
+            "resourceRequirements": null,
+            "essential": true,
+            "portMappings": [
+                {
+                    "containerPort": "8005",
+                    "protocol": "tcp",
+                    "hostPort": "8005"
+                }
+            ],
+            "environmentFiles": null,
+            "environment": [{"name":"MONGO_DB_URL","value":"mongodb://admin:password@127.0.0.1:27017/crudgeppetto_8382?authSource=admin"}],
+            "secrets": null,
+            "mountPoints": [],
+            "volumesFrom": null,
+            "hostname": null,
+            "user": null,
+            "workingDirectory": null,
+            "extraHosts": null,
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/ecs/crudgeppetto",
+                    "awslogs-region": "us-east-1",
+                    "awslogs-stream-prefix": "ecs",
+                    "awslogs-create-group": "true"
+                }
+            },
+            "ulimits": null,
+            "dockerLabels": null,
+            "dependsOn": null,
+            "repositoryCredentials": {
+                "credentialsParameter": ""
+            }
+        },          
     ],
     "volumes": [
         {
             "host": {},
-            "name": "hptemplatefargate"
+            "name": "crudgeppetto"
         }
     ],
     "networkMode": "awsvpc",
     "memory": "3072",
     "cpu": "1024",
     "executionRoleArn": `arn:aws:iam::${process.env.AWS_ACCOUNT_ID}:role/${process.env.AWS_ROLE_FOR_FARGATE}`,
-    "family": "hptemplatefargate",
+    "family": "crudgeppetto",
     "tags": [],
     "placementConstraints": [],
     "taskRoleArn": `arn:aws:iam::${process.env.AWS_ACCOUNT_ID}:role/${process.env.AWS_ROLE_FOR_FARGATE}`
