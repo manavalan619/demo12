@@ -1,0 +1,7 @@
+{
+  "name": "hptemplatefargate",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

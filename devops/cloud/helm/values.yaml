@@ -1,13 +1,13 @@
-# Default values for geppettofargate.
+# Default values for hptemplatefargate.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 app:
-  prefix: geppettofargate
-  namespace: geppettofargate
+  prefix: hptemplatefargate
+  namespace: hptemplatefargate
 
 logging:
-  namespace: geppettofargate-logging
+  namespace: hptemplatefargate-logging
 
 service:
   type: NodePort
@@ -61,7 +61,7 @@ deployment:
   customImagePullPolicy: Always
   apigateway:
      name: apigateway
-     image: geppettotest/geppettofargate-apigateway:1.0
+     image: geppettotest/hptemplatefargate-apigateway:1.0
   mongo:
      name: mongo
      image: mongo:3.2   
@@ -79,7 +79,7 @@ deployment:
      image: geppettodistribution/default-adminmanager:2.0
   desktop:
      name: desktop
-     image: geppettotest/geppettofargate-desktop:1.0
+     image: geppettotest/hptemplatefargate-desktop:1.0
 
   camundapod:
      name: camundapod
@@ -87,7 +87,7 @@ deployment:
 
 config:
   vault:
-    rootToken: vault-geppettofargate-2019
+    rootToken: vault-hptemplatefargate-2019
 
 persistentVolume:
   mongo:

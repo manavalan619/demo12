@@ -1,14 +1,14 @@
 #!bin/bash
 
-APPLICATION='/geppettofargate'
+APPLICATION='/hptemplatefargate'
 
 CUSTOMSERVICEPATH='../../../services/custom_services'
 
 HELMPATH='../devops/local'
 
 
-DESKTOPCODE='../../../application/client/desktop/geppettofargate'
-DESKTOPIMAGENAME='geppettotest/geppettofargate-desktop:1.0'
+DESKTOPCODE='../../../application/client/desktop/hptemplatefargate'
+DESKTOPIMAGENAME='geppettotest/hptemplatefargate-desktop:1.0'
 
 echo "Started to build docker images for pod...."
 
@@ -76,7 +76,7 @@ helm_install () {
 
 cd $HELMPATH
 helm install --dry-run --debug ./helm
-helm install --name geppettofargate-3730 ./helm
+helm install --name hptemplatefargate-0303 ./helm
 if [ $? -eq 0 ]; then
     echo "App Deployment is Done"
 else

@@ -1,7 +1,0 @@
-{
-  "name": "geppettofargate",
-  "integrations": {
-    "cordova": {}
-  },
-  "type": "ionic-angular"
-}

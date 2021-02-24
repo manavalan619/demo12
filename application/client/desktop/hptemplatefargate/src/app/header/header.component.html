@@ -1,0 +1,59 @@
+<header class="" id='header'>
+  <div class="row">
+    <div class="col-sm-2">
+      <a class='logo' href='index.html' id='template-im3f'>
+        <img class='img-fluid' src='assets/img/logo.png' alt='' id='template-i810i'>
+      </a>
+    </div>
+    <div class="navbar mainmenu col-sm-9 flex">
+      <nav class="mainmenu-menu nav-menu d-none d-lg-block">
+		<ul id='template-iyj9x'>
+<li class="nav-item" *ngIf="userId!=null">
+        <a class="nav-link" [routerLink]="['/home']">{{'source.home' | i18next}}</a>
+    </li><li class="nav-item" *ngIf='isAdminUser'>
+        <a class="nav-link" [routerLink]="['/admin']">{{'source.admin' | i18next}}</a>
+    </li><li class="nav-item" *ngIf="isApplicable('admin') && userId">
+<a class="nav-link" [routerLink]="['/admin']">{{'source.admin' | i18next}}</a>
+</li><li class="nav-item" *ngIf="isApplicable('admin') && userId">
+<a class="nav-link" [routerLink]="['/admin']">{{'source.admin' | i18next}}</a>
+</li><li class="nav-item" *ngIf="isApplicable('authorization') && userId">
+<a class="nav-link" [routerLink]="['/authorization']">{{'source.authorization' | i18next}}</a>
+</li><li class="nav-item" *ngIf="isApplicable('authorization') && userId">
+<a class="nav-link" [routerLink]="['/authorization']">{{'source.authorization' | i18next}}</a>
+</li><li class="nav-item" *ngIf="isApplicable('manageroles') && userId">
+<a class="nav-link" [routerLink]="['/manageroles']">{{'source.manageroles' | i18next}}</a>
+</li>
+</ul>
+      </nav>
+      <div class="dropdown">
+        <img class="cursor-pointer" src="../../assets/img/hp-user.png" width="40" />
+        <div class="dropdown-content">
+          <a class="nav-link" *ngIf='userId==null' [routerLink]="['/login']">{{'source.login' | i18next}}</a>
+          <a class="nav-link" *ngIf='userId!=null' (click)="logout()">{{'source.logout' | i18next}}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="navbar">
+    <nav class="nav-menu1 d-none d-lg-block">
+      <ul>
+        <li><a href="">24/7 VIRTUAL SUPPORT ></a></li>
+        <li><a href="">COVID-19: HELPING YOU ADAPT ></a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'top': '100px','display': confirmLangChangeModal}">
+  <div class="modal-dialog modal-sm" role="dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <p>language change cause you to re-login</p>
+      </div>
+      <div class="modal-footer" style="padding: 5px">
+        <button type="button" (click)="confirmLangChange()" class="btn btn-default">Confirm</button>
+        <button type="button" (click)="onCloseHandled()" class="btn btn-default">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+  

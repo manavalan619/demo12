@@ -1,4 +1,4 @@
-# Deploy your geppettofargate-3730 applicaton by using github actions
+# Deploy your hptemplatefargate-0303 applicaton by using github actions
 ![Github Actions](https://readmegeppetto.s3.amazonaws.com/githubactions.jpeg)
 
 ### Deploy the your generated application in aws by using github actions.
@@ -35,4 +35,4 @@ $ mkdir ../../../../.github && cp -r * ../../../../.github/
 
 - Here the URL for your application,
 
-http://geppettofargate-3730.s3-website-us-east-1.amazonaws.com/
+http://hptemplatefargate-0303.s3-website-us-east-1.amazonaws.com/

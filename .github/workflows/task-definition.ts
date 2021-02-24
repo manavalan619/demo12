@@ -5,7 +5,7 @@ module.exports = {
     "inferenceAccelerators": [],
     "containerDefinitions": [
         {
-            "name": "mongo-3730",
+            "name": "mongo-0303",
             "image": "geppettotest/mongo-local:april2020",
             "memoryReservation": "300",
             "resourceRequirements": null,
@@ -31,7 +31,7 @@ module.exports = {
                 {
                   "readOnly": null,
                   "containerPath": "/data/db",
-                  "sourceVolume": "geppettofargate"
+                  "sourceVolume": "hptemplatefargate"
                 }
               ],
             "volumesFrom": null,
@@ -42,7 +42,7 @@ module.exports = {
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "/ecs/geppettofargate",
+                    "awslogs-group": "/ecs/hptemplatefargate",
                     "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs",
                     "awslogs-create-group": "true"
@@ -56,7 +56,7 @@ module.exports = {
             }
         },
         {
-            "name": "camunda-3730",
+            "name": "camunda-0303",
             "image": "geppettodistribution/camunda-local:Jan2021",
             "memoryReservation": "300",
             "resourceRequirements": null,
@@ -80,7 +80,7 @@ module.exports = {
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "/ecs/geppettofargate",
+                    "awslogs-group": "/ecs/hptemplatefargate",
                     "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs",
                     "awslogs-create-group": "true"
@@ -94,8 +94,8 @@ module.exports = {
             }
         },
         {
-            "name": "apigateway-3730",
-            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-geppettofargate-3730-apigateway:1`,
+            "name": "apigateway-0303",
+            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-hptemplatefargate-0303-apigateway:1`,
             "memoryReservation": "300",
             "resourceRequirements": null,
             "essential": true,
@@ -107,7 +107,7 @@ module.exports = {
                 }
             ],
             "environmentFiles": null,
-            "environment": [{"name":"MONGO_DB_URL","value":"mongodb://admin:password@127.0.0.1:27017/geppettofargate_3730?authSource=admin"},{"name":"CAMUNDAPOD_URL","value":"http://127.0.0.1:8080"},{"name":"SECURITYURL","value":"http://127.0.0.1:8003"},{"name":"AUTHPROXYURL","value":"http://127.0.0.1:8001"},{"name":"ADMINURL","value":"http://127.0.0.1:8004"},{"name":"CAMUNDAURL","value":"http://127.0.0.1:8002"},{"name":"APIGATEWAY","value":"http://127.0.0.1:8000"}
+            "environment": [{"name":"MONGO_DB_URL","value":"mongodb://admin:password@127.0.0.1:27017/hptemplatefargate_0303?authSource=admin"},{"name":"CAMUNDAPOD_URL","value":"http://127.0.0.1:8080"},{"name":"SECURITYURL","value":"http://127.0.0.1:8003"},{"name":"AUTHPROXYURL","value":"http://127.0.0.1:8001"},{"name":"ADMINURL","value":"http://127.0.0.1:8004"},{"name":"CAMUNDAURL","value":"http://127.0.0.1:8002"},{"name":"APIGATEWAY","value":"http://127.0.0.1:8000"}
             ],
             "secrets": null,
             "mountPoints": [],
@@ -119,7 +119,7 @@ module.exports = {
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "/ecs/geppettofargate",
+                    "awslogs-group": "/ecs/hptemplatefargate",
                     "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs",
                     "awslogs-create-group": "true"
@@ -133,8 +133,8 @@ module.exports = {
             }
         },        
         {
-            "name": "authproxy-3730",
-            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-geppettofargate-3730-authproxy:1`,
+            "name": "authproxy-0303",
+            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-hptemplatefargate-0303-authproxy:1`,
             "memoryReservation": "300",
             "resourceRequirements": null,
             "essential": true,
@@ -146,7 +146,7 @@ module.exports = {
                 }
             ],
             "environmentFiles": null,
-            "environment": [{"name":"MONGO_DB_URL","value":"mongodb://admin:password@127.0.0.1:27017/geppettofargate_3730?authSource=admin"},{"name":"CAMUNDAURL","value":"http://127.0.0.1:8002"}],
+            "environment": [{"name":"MONGO_DB_URL","value":"mongodb://admin:password@127.0.0.1:27017/hptemplatefargate_0303?authSource=admin"},{"name":"CAMUNDAURL","value":"http://127.0.0.1:8002"}],
             "secrets": null,
             "mountPoints": [],
             "volumesFrom": null,
@@ -157,7 +157,7 @@ module.exports = {
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "/ecs/geppettofargate",
+                    "awslogs-group": "/ecs/hptemplatefargate",
                     "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs",
                     "awslogs-create-group": "true"
@@ -171,8 +171,8 @@ module.exports = {
             }
         },
         {
-            "name": "camundasvc-3730",
-            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-geppettofargate-3730-camunda:1`,
+            "name": "camundasvc-0303",
+            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-hptemplatefargate-0303-camunda:1`,
             "memoryReservation": "300",
             "resourceRequirements": null,
             "essential": true,
@@ -184,7 +184,7 @@ module.exports = {
                 }
             ],
             "environmentFiles": null,
-            "environment": [{"name":"MONGO_DB_URL","value":"mongodb://admin:password@127.0.0.1:27017/geppettofargate_3730?authSource=admin"},{"name":"CAMUNDAPOD_URL","value":"http://127.0.0.1:8080"},{"name":"SECURITYURL","value":"http://127.0.0.1:8003"},{"name":"AUTHPROXYURL","value":"http://127.0.0.1:8001"},{"name":"ADMINURL","value":"http://127.0.0.1:8004"},{"name":"CAMUNDAURL","value":"http://127.0.0.1:8002"},{"name":"APIGATEWAY","value":"http://127.0.0.1:8000"}],
+            "environment": [{"name":"MONGO_DB_URL","value":"mongodb://admin:password@127.0.0.1:27017/hptemplatefargate_0303?authSource=admin"},{"name":"CAMUNDAPOD_URL","value":"http://127.0.0.1:8080"},{"name":"SECURITYURL","value":"http://127.0.0.1:8003"},{"name":"AUTHPROXYURL","value":"http://127.0.0.1:8001"},{"name":"ADMINURL","value":"http://127.0.0.1:8004"},{"name":"CAMUNDAURL","value":"http://127.0.0.1:8002"},{"name":"APIGATEWAY","value":"http://127.0.0.1:8000"}],
             "secrets": null,
             "mountPoints": [],
             "volumesFrom": null,
@@ -195,7 +195,7 @@ module.exports = {
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "/ecs/geppettofargate",
+                    "awslogs-group": "/ecs/hptemplatefargate",
                     "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs",
                     "awslogs-create-group": "true"
@@ -209,8 +209,8 @@ module.exports = {
             }
         },
         {
-            "name": "securitymanager-3730",
-            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-geppettofargate-3730-securitymanager:1`,
+            "name": "securitymanager-0303",
+            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-hptemplatefargate-0303-securitymanager:1`,
             "memoryReservation": "300",
             "resourceRequirements": null,
             "essential": true,
@@ -222,7 +222,7 @@ module.exports = {
                 }
             ],
             "environmentFiles": null,
-            "environment": [{"name":"MONGO_DB_URL","value":"mongodb://admin:password@127.0.0.1:27017/geppettofargate_3730?authSource=admin"},{"name":"CAMUNDAPOD_URL","value":"http://127.0.0.1:8080"},{"name":"SECURITYURL","value":"http://127.0.0.1:8003"},{"name":"AUTHPROXYURL","value":"http://127.0.0.1:8001"},{"name":"ADMINURL","value":"http://127.0.0.1:8004"},{"name":"CAMUNDAURL","value":"http://127.0.0.1:8002"},{"name":"APIGATEWAY","value":"http://127.0.0.1:8000"}],
+            "environment": [{"name":"MONGO_DB_URL","value":"mongodb://admin:password@127.0.0.1:27017/hptemplatefargate_0303?authSource=admin"},{"name":"CAMUNDAPOD_URL","value":"http://127.0.0.1:8080"},{"name":"SECURITYURL","value":"http://127.0.0.1:8003"},{"name":"AUTHPROXYURL","value":"http://127.0.0.1:8001"},{"name":"ADMINURL","value":"http://127.0.0.1:8004"},{"name":"CAMUNDAURL","value":"http://127.0.0.1:8002"},{"name":"APIGATEWAY","value":"http://127.0.0.1:8000"}],
             "secrets": null,
             "mountPoints": [],
             "volumesFrom": null,
@@ -233,7 +233,7 @@ module.exports = {
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "/ecs/geppettofargate",
+                    "awslogs-group": "/ecs/hptemplatefargate",
                     "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs",
                     "awslogs-create-group": "true"
@@ -250,14 +250,14 @@ module.exports = {
     "volumes": [
         {
             "host": {},
-            "name": "geppettofargate"
+            "name": "hptemplatefargate"
         }
     ],
     "networkMode": "awsvpc",
     "memory": "3072",
     "cpu": "1024",
     "executionRoleArn": `arn:aws:iam::${process.env.AWS_ACCOUNT_ID}:role/${process.env.AWS_ROLE_FOR_FARGATE}`,
-    "family": "geppettofargate",
+    "family": "hptemplatefargate",
     "tags": [],
     "placementConstraints": [],
     "taskRoleArn": `arn:aws:iam::${process.env.AWS_ACCOUNT_ID}:role/${process.env.AWS_ROLE_FOR_FARGATE}`
