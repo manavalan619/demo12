@@ -1,0 +1,7 @@
+{
+  "name": "mnfargate",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

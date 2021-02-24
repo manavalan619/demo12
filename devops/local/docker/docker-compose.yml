@@ -2,13 +2,13 @@ version: "3.8"
 services:
   mongo:
     image: geppettotest/mongo-local:april2020
-    container_name: mongo-8382
+    container_name: mongo-1304
     restart: unless-stopped
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=password
     volumes:
-      - crudgeppetto_8382-volume:/data/db
+      - mnfargate_1304-volume:/data/db
     ports:
       - "27018:27017"
     healthcheck:
@@ -20,14 +20,14 @@ services:
 
   camunda:
     image: geppettodistribution/camunda-local:Jan2021
-    container_name: camunda-8382
+    container_name: camunda-1304
     ports:
       - "0000:8080"
 
   authproxy:
     build: ../../../application/services/default_services/authproxy
-    image: authproxy-8382
-    container_name: authproxy-8382
+    image: authproxy-1304
+    container_name: authproxy-1304
     ports:
       - "0000:8001"
     env_file: .env
@@ -37,8 +37,8 @@ services:
 
   securitymanager:
     build: ../../../application/services/default_services/securitymanager
-    image: securitymanager-8382
-    container_name: securitymanager-8382
+    image: securitymanager-1304
+    container_name: securitymanager-1304
     ports:
       - "8003:8003"
     env_file: .env
@@ -48,8 +48,8 @@ services:
 
   camundaservice:
     build: ../../../application/services/default_services/camunda
-    image: camundaservice-8382
-    container_name: camundasvc-8382
+    image: camundaservice-1304
+    container_name: camundasvc-1304
     ports:
       - "8002:8002"
     env_file: .env
@@ -60,8 +60,8 @@ services:
 
   apigateway:
     build: ../../../application/services/custom_services/apigateway
-    image: apigateway-8382
-    container_name: apigateway-8382
+    image: apigateway-1304
+    container_name: apigateway-1304
     ports:
       - "8000:8000"
     env_file: .env
@@ -70,21 +70,11 @@ services:
       - camundaservice
       - authproxy
       - securitymanager
-      - school
 
 
 
-  school: 
-    build: ../../../application/services/custom_services/school
-    image: school-8382
-    container_name: school-8382
-    ports: 
-      - 8005:8005
-    env_file: .env
-    depends_on:
-      - mongo
 
 
 volumes:
-  crudgeppetto_8382-volume:
+  mnfargate_1304-volume:
     driver: local

@@ -1,4 +1,4 @@
-# Deploy your crudgeppetto-8382 applicaton by using github actions
+# Deploy your mnfargate-1304 applicaton by using github actions
 ![Github Actions](https://readmegeppetto.s3.amazonaws.com/githubactions.jpeg)
 
 ### Deploy the your generated application in aws by using github actions.
@@ -35,4 +35,4 @@ $ mkdir ../../../../.github && cp -r * ../../../../.github/
 
 - Here the URL for your application,
 
-http://crudgeppetto-8382.s3-website-us-east-1.amazonaws.com/
+http://mnfargate-1304.s3-website-us-east-1.amazonaws.com/

@@ -1,6 +1,6 @@
 #!bin/bash
 
-DESKTOPCODE='../../../application/client/desktop/crudgeppetto'
+DESKTOPCODE='../../../application/client/desktop/mnfargate'
 
 COMPOSEPATH='../../../../devops/local/docker/'
 
@@ -13,8 +13,8 @@ do
     c)  
          echo "Creating new docker images and containers"
          cd $DESKTOPCODE
-         docker build -t crudgeppettoui-8382 .
-         docker run --name crudgeppettoui-8382 --restart=unless-stopped -d -p 5055:5000 crudgeppettoui-8382
+         docker build -t mnfargateui-1304 .
+         docker run --name mnfargateui-1304 --restart=unless-stopped -d -p 5055:5000 mnfargateui-1304
          sleep 15
          echo "UI build is done..."
 
@@ -22,8 +22,8 @@ do
          docker-compose up -d --build
          echo "uploading the mongo script..."
          sleep 50
-         docker cp mongo.js mongo-8382:/data/db/
-         docker exec -ti mongo-8382 mongo -u admin -p 'password' --authenticationDatabase 'admin' crudgeppetto_8382 /data/db/mongo.js
+         docker cp mongo.js mongo-1304:/data/db/
+         docker exec -ti mongo-1304 mongo -u admin -p 'password' --authenticationDatabase 'admin' mnfargate_1304 /data/db/mongo.js
          sleep 10
          echo "Process completed"
          echo " Your application is deployed here the link, http://localhost:5055 "
@@ -31,21 +31,21 @@ do
     d)
          echo "Now Deleting all containers and images"
          docker-compose down -v --rmi all 
-         docker rm -f crudgeppettoui-8382
-         docker rmi crudgeppettoui-8382
+         docker rm -f mnfargateui-1304
+         docker rmi mnfargateui-1304
          echo "Process completed"
          ;;
     r)
          echo "Now Re-starting the stopped containers"
          docker-compose start
-         docker restart crudgeppettoui-8382
+         docker restart mnfargateui-1304
          sleep 35
          echo "Process completed"
          ;;
     s)
          echo "Now stopping the running containers"
          docker-compose stop
-         docker stop crudgeppettoui-8382
+         docker stop mnfargateui-1304
          echo "Process completed"
          ;;
     *)

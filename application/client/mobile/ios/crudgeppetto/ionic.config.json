@@ -1,7 +1,0 @@
-{
-  "name": "crudgeppetto",
-  "integrations": {
-    "cordova": {}
-  },
-  "type": "ionic-angular"
-}

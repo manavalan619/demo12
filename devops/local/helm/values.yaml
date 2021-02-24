@@ -1,10 +1,10 @@
-# Default values for crudgeppetto.
+# Default values for mnfargate.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 app:
-  prefix: crudgeppetto
-  namespace: crudgeppetto
+  prefix: mnfargate
+  namespace: mnfargate
 
 service:
   type: NodePort
@@ -51,11 +51,6 @@ service:
     type: NodePort
     port: 8080
     targetPort: 8080
-  school: 
-    name: school
-    type: NodePort
-    port: 8005
-    targetPort: 8005
 
 
 deployment:
@@ -63,7 +58,7 @@ deployment:
   customImagePullPolicy: Always
   apigateway:
      name: apigateway
-     image: geppettotest/crudgeppetto-apigateway:1.0
+     image: geppettotest/mnfargate-apigateway:1.0
   mongo:
      name: mongo
      image: mongo:3.2   
@@ -81,10 +76,7 @@ deployment:
      image: geppettodistribution/default-adminmanager:2.0
   desktop:
      name: desktop
-     image: geppettotest/crudgeppetto-desktop:1.0
-  school: 
-    name: school
-    image: geppettotest/crudgeppetto-school:1.0
+     image: geppettotest/mnfargate-desktop:1.0
 
   camundapod:
      name: camundapod
@@ -92,7 +84,7 @@ deployment:
 
 config:
   vault:
-    rootToken: vault-crudgeppetto-2021
+    rootToken: vault-mnfargate-2021
 
 persistentVolume:
   mongo:
