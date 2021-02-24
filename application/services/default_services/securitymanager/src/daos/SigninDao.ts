@@ -19,7 +19,7 @@ export class SigninDao {
         new CustomLogger().showLogger('info', 'Enter into SigninDao.ts: signindao');
         rolemodel.find().then(result => {
             asyncLoop(result, (roles, next) => {
-                if (roles.role === 'Standarduser') {
+                if (roles.role === 'User') {
                     this.signuprole = roles._id;
                 }
                 next();
@@ -205,6 +205,29 @@ export class SigninDao {
         }).catch((error) => {
             callback(error);
         })
+    }
+
+    public saveroledao(roleData, callback) {
+        new CustomLogger().showLogger('info', 'Enter into SigninDao.ts: saveroledao');
+
+        let temp = new rolemodel(roleData);
+        temp.save().then((result) => {
+            new CustomLogger().showLogger('info', 'Exit from ticketDao.ts: saveroledao');
+            callback(result);
+        }).catch((error) => {
+            callback(error);
+        });
+    }
+
+    public deleteroledao(roleId, callback) {
+        new CustomLogger().showLogger('info', 'Enter into SigninDao.ts: deleteroledao');
+
+        rolemodel.findByIdAndRemove(roleId).then((result) => {
+            new CustomLogger().showLogger('info', 'Exit from SigninDao.ts: deleteroledao');
+            callback(result);
+        }).catch((error) => {
+            callback(error);
+        });
     }
 
     public updateuserdao(updateuser, callback) {
