@@ -98,6 +98,7 @@ module.exports = {
             "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-livedemo-5811-apigateway:1`,
             "memoryReservation": "300",
             "resourceRequirements": null,
+            
             "essential": true,
             "portMappings": [
                 {
@@ -128,8 +129,28 @@ module.exports = {
             },
             "ulimits": null,
             "dockerLabels": null,
-            "dependsOn": null,
-            "repositoryCredentials": {
+            "dependsOn": [
+                {
+                    "containerName": "camunda-5811",
+                    "condition": "START"
+                },
+                {
+                    "containerName": "camundaservice-5811",
+                    "condition": "START"
+                },
+                {
+                    "containerName": "authproxy-5811",
+                    "condition": "START"
+                },
+                {
+                    "containerName": "securitymanager-5811",
+                    "condition": "START"
+                },
+                {
+                    "containerName": "school-5811",
+                    "condition": "START"
+                }
+            ],            "repositoryCredentials": {
                 "credentialsParameter": ""
             }
         },        
@@ -166,8 +187,28 @@ module.exports = {
             },
             "ulimits": null,
             "dockerLabels": null,
-            "dependsOn": null,
-            "repositoryCredentials": {
+            "dependsOn": [
+                {
+                    "containerName": "camunda-5811",
+                    "condition": "START"
+                },
+                {
+                    "containerName": "camundaservice-5811",
+                    "condition": "START"
+                },
+                {
+                    "containerName": "authproxy-5811",
+                    "condition": "START"
+                },
+                {
+                    "containerName": "securitymanager-5811",
+                    "condition": "START"
+                },
+                {
+                    "containerName": "school-5811",
+                    "condition": "START"
+                }
+            ],            "repositoryCredentials": {
                 "credentialsParameter": ""
             }
         },
@@ -204,8 +245,28 @@ module.exports = {
             },
             "ulimits": null,
             "dockerLabels": null,
-            "dependsOn": null,
-            "repositoryCredentials": {
+            "dependsOn": [
+                {
+                    "containerName": "camunda-5811",
+                    "condition": "START"
+                },
+                {
+                    "containerName": "camundaservice-5811",
+                    "condition": "START"
+                },
+                {
+                    "containerName": "authproxy-5811",
+                    "condition": "START"
+                },
+                {
+                    "containerName": "securitymanager-5811",
+                    "condition": "START"
+                },
+                {
+                    "containerName": "school-5811",
+                    "condition": "START"
+                }
+            ],            "repositoryCredentials": {
                 "credentialsParameter": ""
             }
         },
@@ -242,8 +303,28 @@ module.exports = {
             },
             "ulimits": null,
             "dockerLabels": null,
-            "dependsOn": null,
-            "repositoryCredentials": {
+            "dependsOn": [
+                {
+                    "containerName": "camunda-5811",
+                    "condition": "START"
+                },
+                {
+                    "containerName": "camundaservice-5811",
+                    "condition": "START"
+                },
+                {
+                    "containerName": "authproxy-5811",
+                    "condition": "START"
+                },
+                {
+                    "containerName": "securitymanager-5811",
+                    "condition": "START"
+                },
+                {
+                    "containerName": "school-5811",
+                    "condition": "START"
+                }
+            ],            "repositoryCredentials": {
                 "credentialsParameter": ""
             }
         },
@@ -280,8 +361,28 @@ module.exports = {
             },
             "ulimits": null,
             "dockerLabels": null,
-            "dependsOn": null,
-            "repositoryCredentials": {
+            "dependsOn": [
+                {
+                    "containerName": "camunda-5811",
+                    "condition": "START"
+                },
+                {
+                    "containerName": "camundaservice-5811",
+                    "condition": "START"
+                },
+                {
+                    "containerName": "authproxy-5811",
+                    "condition": "START"
+                },
+                {
+                    "containerName": "securitymanager-5811",
+                    "condition": "START"
+                },
+                {
+                    "containerName": "school-5811",
+                    "condition": "START"
+                }
+            ],            "repositoryCredentials": {
                 "credentialsParameter": ""
             }
         },          
