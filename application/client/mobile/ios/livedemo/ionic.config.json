@@ -1,7 +1,0 @@
-{
-  "name": "livedemo",
-  "integrations": {
-    "cordova": {}
-  },
-  "type": "ionic-angular"
-}

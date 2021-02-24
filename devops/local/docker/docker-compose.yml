@@ -2,13 +2,13 @@ version: "3.8"
 services:
   mongo:
     image: geppettotest/mongo-local:april2020
-    container_name: mongo-5811
+    container_name: mongo-9056
     restart: unless-stopped
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=password
     volumes:
-      - livedemo_5811-volume:/data/db
+      - finaldevfarget_9056-volume:/data/db
     ports:
       - "27018:27017"
     healthcheck:
@@ -20,14 +20,14 @@ services:
 
   camunda:
     image: geppettodistribution/camunda-local:Jan2021
-    container_name: camunda-5811
+    container_name: camunda-9056
     ports:
       - "0000:8080"
 
   authproxy:
     build: ../../../application/services/default_services/authproxy
-    image: authproxy-5811
-    container_name: authproxy-5811
+    image: authproxy-9056
+    container_name: authproxy-9056
     ports:
       - "0000:8001"
     env_file: .env
@@ -35,33 +35,32 @@ services:
       - mongo
       - camunda
 
-  securitymanager:
-    build: ../../../application/services/default_services/securitymanager
-    image: securitymanager-5811
-    container_name: securitymanager-5811
-    ports:
-      - "8003:8003"
-    env_file: .env
-    depends_on:
-      - mongo
-      - camunda
-
   camundaservice:
     build: ../../../application/services/default_services/camunda
-    image: camundaservice-5811
-    container_name: camundasvc-5811
+    image: camundaservice-9056
+    container_name: camundasvc-9056
     ports:
       - "8002:8002"
     env_file: .env
     depends_on:
       - mongo
       - camunda
-      - securitymanager
+
+  securitymanager:
+    build: ../../../application/services/default_services/securitymanager
+    image: securitymanager-9056
+    container_name: securitymanager-9056
+    ports:
+      - "0000:8003"
+    env_file: .env
+    depends_on:
+      - mongo
+      - camunda
 
   apigateway:
     build: ../../../application/services/custom_services/apigateway
-    image: apigateway-5811
-    container_name: apigateway-5811
+    image: apigateway-9056
+    container_name: apigateway-9056
     ports:
       - "8000:8000"
     env_file: .env
@@ -76,15 +75,15 @@ services:
 
   school: 
     build: ../../../application/services/custom_services/school
-    image: school-5811
-    container_name: school-5811
+    image: school-9056
+    container_name: school-9056
     ports: 
-      - 8005:8005
+      - 8012:8012
     env_file: .env
     depends_on:
       - mongo
 
 
 volumes:
-  livedemo_5811-volume:
+  finaldevfarget_9056-volume:
     driver: local

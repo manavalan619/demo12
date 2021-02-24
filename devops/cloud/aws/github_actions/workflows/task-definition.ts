@@ -5,7 +5,7 @@ module.exports = {
     "inferenceAccelerators": [],
     "containerDefinitions": [
         {
-            "name": "mongo-5811",
+            "name": "mongo-9056",
             "image": "geppettotest/mongo-local:april2020",
             "memoryReservation": "300",
             "resourceRequirements": null,
@@ -31,7 +31,7 @@ module.exports = {
                 {
                   "readOnly": null,
                   "containerPath": "/data/db",
-                  "sourceVolume": "livedemo"
+                  "sourceVolume": "finaldevfarget"
                 }
               ],
             "volumesFrom": null,
@@ -42,7 +42,7 @@ module.exports = {
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "/ecs/livedemo",
+                    "awslogs-group": "/ecs/finaldevfarget",
                     "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs",
                     "awslogs-create-group": "true"
@@ -56,7 +56,7 @@ module.exports = {
             }
         },
         {
-            "name": "camunda-5811",
+            "name": "camunda-9056",
             "image": "geppettodistribution/camunda-local:Jan2021",
             "memoryReservation": "300",
             "resourceRequirements": null,
@@ -80,7 +80,7 @@ module.exports = {
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "/ecs/livedemo",
+                    "awslogs-group": "/ecs/finaldevfarget",
                     "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs",
                     "awslogs-create-group": "true"
@@ -94,8 +94,8 @@ module.exports = {
             }
         },
         {
-            "name": "apigateway-5811",
-            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-livedemo-5811-apigateway:1`,
+            "name": "apigateway-9056",
+            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-finaldevfarget-9056-apigateway:1`,
             "memoryReservation": "300",
             "resourceRequirements": null,
             "essential": true,
@@ -107,8 +107,8 @@ module.exports = {
                 }
             ],
             "environmentFiles": null,
-            "environment": [{"name":"MONGO_DB_URL","value":"mongodb://admin:password@127.0.0.1:27017/livedemo_5811?authSource=admin"},{"name":"CAMUNDAPOD_URL","value":"http://127.0.0.1:8080"},{"name":"SECURITYURL","value":"http://127.0.0.1:8003"},{"name":"AUTHPROXYURL","value":"http://127.0.0.1:8001"},{"name":"ADMINURL","value":"http://127.0.0.1:8004"},{"name":"CAMUNDAURL","value":"http://127.0.0.1:8002"},{"name":"APIGATEWAY","value":"http://127.0.0.1:8000"}
-            ,{"name":"SCHOOLURL","value":"http://127.0.0.1:8005"}
+            "environment": [{"name":"MONGO_DB_URL","value":"mongodb://admin:password@127.0.0.1:27017/finaldevfarget_9056?authSource=admin"},{"name":"CAMUNDAPOD_URL","value":"http://127.0.0.1:8080"},{"name":"SECURITYURL","value":"http://127.0.0.1:8003"},{"name":"AUTHPROXYURL","value":"http://127.0.0.1:8001"},{"name":"ADMINURL","value":"http://127.0.0.1:8004"},{"name":"CAMUNDAURL","value":"http://127.0.0.1:8002"},{"name":"APIGATEWAY","value":"http://127.0.0.1:8000"}
+            ,{"name":"SCHOOLURL","value":"http://127.0.0.1:8012"}
             ],
             "secrets": null,
             "mountPoints": [],
@@ -120,7 +120,7 @@ module.exports = {
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "/ecs/livedemo",
+                    "awslogs-group": "/ecs/finaldevfarget",
                     "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs",
                     "awslogs-create-group": "true"
@@ -134,8 +134,8 @@ module.exports = {
             }
         },        
         {
-            "name": "authproxy-5811",
-            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-livedemo-5811-authproxy:1`,
+            "name": "authproxy-9056",
+            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-finaldevfarget-9056-authproxy:1`,
             "memoryReservation": "300",
             "resourceRequirements": null,
             "essential": true,
@@ -147,7 +147,7 @@ module.exports = {
                 }
             ],
             "environmentFiles": null,
-            "environment": [{"name":"MONGO_DB_URL","value":"mongodb://admin:password@127.0.0.1:27017/livedemo_5811?authSource=admin"},{"name":"CAMUNDAURL","value":"http://127.0.0.1:8002"}],
+            "environment": [{"name":"MONGO_DB_URL","value":"mongodb://admin:password@127.0.0.1:27017/finaldevfarget_9056?authSource=admin"},{"name":"CAMUNDAURL","value":"http://127.0.0.1:8002"}],
             "secrets": null,
             "mountPoints": [],
             "volumesFrom": null,
@@ -158,7 +158,7 @@ module.exports = {
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "/ecs/livedemo",
+                    "awslogs-group": "/ecs/finaldevfarget",
                     "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs",
                     "awslogs-create-group": "true"
@@ -172,8 +172,8 @@ module.exports = {
             }
         },
         {
-            "name": "camundasvc-5811",
-            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-livedemo-5811-camunda:1`,
+            "name": "camundasvc-9056",
+            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-finaldevfarget-9056-camunda:1`,
             "memoryReservation": "300",
             "resourceRequirements": null,
             "essential": true,
@@ -185,7 +185,7 @@ module.exports = {
                 }
             ],
             "environmentFiles": null,
-            "environment": [{"name":"MONGO_DB_URL","value":"mongodb://admin:password@127.0.0.1:27017/livedemo_5811?authSource=admin"},{"name":"CAMUNDAPOD_URL","value":"http://127.0.0.1:8080"},{"name":"SECURITYURL","value":"http://127.0.0.1:8003"},{"name":"AUTHPROXYURL","value":"http://127.0.0.1:8001"},{"name":"ADMINURL","value":"http://127.0.0.1:8004"},{"name":"CAMUNDAURL","value":"http://127.0.0.1:8002"},{"name":"APIGATEWAY","value":"http://127.0.0.1:8000"}],
+            "environment": [{"name":"MONGO_DB_URL","value":"mongodb://admin:password@127.0.0.1:27017/finaldevfarget_9056?authSource=admin"},{"name":"CAMUNDAPOD_URL","value":"http://127.0.0.1:8080"},{"name":"SECURITYURL","value":"http://127.0.0.1:8003"},{"name":"AUTHPROXYURL","value":"http://127.0.0.1:8001"},{"name":"ADMINURL","value":"http://127.0.0.1:8004"},{"name":"CAMUNDAURL","value":"http://127.0.0.1:8002"},{"name":"APIGATEWAY","value":"http://127.0.0.1:8000"}],
             "secrets": null,
             "mountPoints": [],
             "volumesFrom": null,
@@ -196,7 +196,7 @@ module.exports = {
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "/ecs/livedemo",
+                    "awslogs-group": "/ecs/finaldevfarget",
                     "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs",
                     "awslogs-create-group": "true"
@@ -210,8 +210,8 @@ module.exports = {
             }
         },
         {
-            "name": "securitymanager-5811",
-            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-livedemo-5811-securitymanager:1`,
+            "name": "securitymanager-9056",
+            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-finaldevfarget-9056-securitymanager:1`,
             "memoryReservation": "300",
             "resourceRequirements": null,
             "essential": true,
@@ -223,7 +223,7 @@ module.exports = {
                 }
             ],
             "environmentFiles": null,
-            "environment": [{"name":"MONGO_DB_URL","value":"mongodb://admin:password@127.0.0.1:27017/livedemo_5811?authSource=admin"},{"name":"CAMUNDAPOD_URL","value":"http://127.0.0.1:8080"},{"name":"SECURITYURL","value":"http://127.0.0.1:8003"},{"name":"AUTHPROXYURL","value":"http://127.0.0.1:8001"},{"name":"ADMINURL","value":"http://127.0.0.1:8004"},{"name":"CAMUNDAURL","value":"http://127.0.0.1:8002"},{"name":"APIGATEWAY","value":"http://127.0.0.1:8000"}],
+            "environment": [{"name":"MONGO_DB_URL","value":"mongodb://admin:password@127.0.0.1:27017/finaldevfarget_9056?authSource=admin"},{"name":"CAMUNDAPOD_URL","value":"http://127.0.0.1:8080"},{"name":"SECURITYURL","value":"http://127.0.0.1:8003"},{"name":"AUTHPROXYURL","value":"http://127.0.0.1:8001"},{"name":"ADMINURL","value":"http://127.0.0.1:8004"},{"name":"CAMUNDAURL","value":"http://127.0.0.1:8002"},{"name":"APIGATEWAY","value":"http://127.0.0.1:8000"}],
             "secrets": null,
             "mountPoints": [],
             "volumesFrom": null,
@@ -234,7 +234,7 @@ module.exports = {
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "/ecs/livedemo",
+                    "awslogs-group": "/ecs/finaldevfarget",
                     "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs",
                     "awslogs-create-group": "true"
@@ -248,20 +248,20 @@ module.exports = {
             }
         },
         {
-            "name": "school-5811",
-            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-livedemo-5811-school:1`,
+            "name": "school-9056",
+            "image": `${process.env.AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/geppetto-generatedcode-finaldevfarget-9056-school:1`,
             "memoryReservation": "300",
             "resourceRequirements": null,
             "essential": true,
             "portMappings": [
                 {
-                    "containerPort": "8005",
+                    "containerPort": "8012",
                     "protocol": "tcp",
-                    "hostPort": "8005"
+                    "hostPort": "8012"
                 }
             ],
             "environmentFiles": null,
-            "environment": [{"name":"MONGO_DB_URL","value":"mongodb://admin:password@127.0.0.1:27017/_?authSource=admin"},{"name":"CAMUNDAPOD_URL","value":"http://127.0.0.1:8080"},{"name":"SECURITYURL","value":"http://127.0.0.1:8003"},{"name":"AUTHPROXYURL","value":"http://127.0.0.1:8001"},{"name":"ADMINURL","value":"http://127.0.0.1:8004"},{"name":"CAMUNDAURL","value":"http://127.0.0.1:8002"},{"name":"APIGATEWAY","value":"http://127.0.0.1:8000"}],
+            "environment": [{"name":"MONGO_DB_URL","value":"mongodb://admin:password@127.0.0.1:27017/finaldevfarget_9056?authSource=admin"}],
             "secrets": null,
             "mountPoints": [],
             "volumesFrom": null,
@@ -272,7 +272,7 @@ module.exports = {
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "/ecs/",
+                    "awslogs-group": "/ecs/finaldevfarget",
                     "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs",
                     "awslogs-create-group": "true"
@@ -289,14 +289,14 @@ module.exports = {
     "volumes": [
         {
             "host": {},
-            "name": "livedemo"
+            "name": "finaldevfarget"
         }
     ],
     "networkMode": "awsvpc",
     "memory": "3072",
     "cpu": "1024",
     "executionRoleArn": `arn:aws:iam::${process.env.AWS_ACCOUNT_ID}:role/${process.env.AWS_ROLE_FOR_FARGATE}`,
-    "family": "livedemo",
+    "family": "finaldevfarget",
     "tags": [],
     "placementConstraints": [],
     "taskRoleArn": `arn:aws:iam::${process.env.AWS_ACCOUNT_ID}:role/${process.env.AWS_ROLE_FOR_FARGATE}`
