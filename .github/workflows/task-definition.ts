@@ -189,23 +189,11 @@ module.exports = {
             "dockerLabels": null,
             "dependsOn": [
                 {
+                    "containerName": "mongo-5811",
+                    "condition": "START"
+                },
+                {
                     "containerName": "camunda-5811",
-                    "condition": "START"
-                },
-                {
-                    "containerName": "camundaservice-5811",
-                    "condition": "START"
-                },
-                {
-                    "containerName": "authproxy-5811",
-                    "condition": "START"
-                },
-                {
-                    "containerName": "securitymanager-5811",
-                    "condition": "START"
-                },
-                {
-                    "containerName": "school-5811",
                     "condition": "START"
                 }
             ],            "repositoryCredentials": {
@@ -247,11 +235,11 @@ module.exports = {
             "dockerLabels": null,
             "dependsOn": [
                 {
-                    "containerName": "camunda-5811",
+                    "containerName": "mongo-5811",
                     "condition": "START"
                 },
                 {
-                    "containerName": "camundaservice-5811",
+                    "containerName": "camunda-5811",
                     "condition": "START"
                 },
                 {
@@ -260,10 +248,6 @@ module.exports = {
                 },
                 {
                     "containerName": "securitymanager-5811",
-                    "condition": "START"
-                },
-                {
-                    "containerName": "school-5811",
                     "condition": "START"
                 }
             ],            "repositoryCredentials": {
@@ -309,19 +293,7 @@ module.exports = {
                     "condition": "START"
                 },
                 {
-                    "containerName": "camundaservice-5811",
-                    "condition": "START"
-                },
-                {
-                    "containerName": "authproxy-5811",
-                    "condition": "START"
-                },
-                {
-                    "containerName": "securitymanager-5811",
-                    "condition": "START"
-                },
-                {
-                    "containerName": "school-5811",
+                    "containerName": "mongo-5811",
                     "condition": "START"
                 }
             ],            "repositoryCredentials": {
@@ -363,23 +335,7 @@ module.exports = {
             "dockerLabels": null,
             "dependsOn": [
                 {
-                    "containerName": "camunda-5811",
-                    "condition": "START"
-                },
-                {
-                    "containerName": "camundaservice-5811",
-                    "condition": "START"
-                },
-                {
-                    "containerName": "authproxy-5811",
-                    "condition": "START"
-                },
-                {
-                    "containerName": "securitymanager-5811",
-                    "condition": "START"
-                },
-                {
-                    "containerName": "school-5811",
+                    "containerName": "mongo-5811",
                     "condition": "START"
                 }
             ],            "repositoryCredentials": {
