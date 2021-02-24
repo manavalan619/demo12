@@ -1,13 +1,13 @@
-# Default values for crudfargate.
+# Default values for forlocal.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 app:
-  prefix: crudfargate
-  namespace: crudfargate
+  prefix: forlocal
+  namespace: forlocal
 
 logging:
-  namespace: crudfargate-logging
+  namespace: forlocal-logging
 
 service:
   type: NodePort
@@ -54,11 +54,6 @@ service:
     type: NodePort
     port: 8080
     targetPort: 8080
-  school: 
-    name: school
-    type: NodePort
-    port: 8011
-    targetPort: 8011
 
 
 deployment:
@@ -66,7 +61,7 @@ deployment:
   customImagePullPolicy: Always
   apigateway:
      name: apigateway
-     image: geppettotest/crudfargate-apigateway:1.0
+     image: geppettotest/forlocal-apigateway:1.0
   mongo:
      name: mongo
      image: mongo:3.2   
@@ -84,10 +79,7 @@ deployment:
      image: geppettodistribution/default-adminmanager:2.0
   desktop:
      name: desktop
-     image: geppettotest/crudfargate-desktop:1.0
-  school: 
-    name: school
-    image: geppettotest/crudfargate-school:1.0
+     image: geppettotest/forlocal-desktop:1.0
 
   camundapod:
      name: camundapod
@@ -95,7 +87,7 @@ deployment:
 
 config:
   vault:
-    rootToken: vault-crudfargate-2019
+    rootToken: vault-forlocal-2019
 
 persistentVolume:
   mongo:
