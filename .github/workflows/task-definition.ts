@@ -135,7 +135,7 @@ module.exports = {
                     "condition": "START"
                 },
                 {
-                    "containerName": "camundaservice-5811",
+                    "containerName": "camundasvc-5811",
                     "condition": "START"
                 },
                 {
