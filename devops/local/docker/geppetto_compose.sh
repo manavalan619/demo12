@@ -1,6 +1,6 @@
 #!bin/bash
 
-DESKTOPCODE='../../../application/client/desktop/finaldevfarget'
+DESKTOPCODE='../../../application/client/desktop/aggridfargate'
 
 COMPOSEPATH='../../../../devops/local/docker/'
 
@@ -13,8 +13,8 @@ do
     c)  
          echo "Creating new docker images and containers"
          cd $DESKTOPCODE
-         docker build -t finaldevfargetui-9056 .
-         docker run --name finaldevfargetui-9056 --restart=unless-stopped -d -p 5055:5000 finaldevfargetui-9056
+         docker build -t aggridfargateui-4573 .
+         docker run --name aggridfargateui-4573 --restart=unless-stopped -d -p 5055:5000 aggridfargateui-4573
          sleep 15
          echo "UI build is done..."
 
@@ -22,8 +22,8 @@ do
          docker-compose up -d --build
          echo "uploading the mongo script..."
          sleep 50
-         docker cp mongo.js mongo-9056:/data/db/
-         docker exec -ti mongo-9056 mongo -u admin -p 'password' --authenticationDatabase 'admin' finaldevfarget_9056 /data/db/mongo.js
+         docker cp mongo.js mongo-4573:/data/db/
+         docker exec -ti mongo-4573 mongo -u admin -p 'password' --authenticationDatabase 'admin' aggridfargate_4573 /data/db/mongo.js
          sleep 10
          echo "Process completed"
          echo " Your application is deployed here the link, http://localhost:5055 "
@@ -31,21 +31,21 @@ do
     d)
          echo "Now Deleting all containers and images"
          docker-compose down -v --rmi all 
-         docker rm -f finaldevfargetui-9056
-         docker rmi finaldevfargetui-9056
+         docker rm -f aggridfargateui-4573
+         docker rmi aggridfargateui-4573
          echo "Process completed"
          ;;
     r)
          echo "Now Re-starting the stopped containers"
          docker-compose start
-         docker restart finaldevfargetui-9056
+         docker restart aggridfargateui-4573
          sleep 35
          echo "Process completed"
          ;;
     s)
          echo "Now stopping the running containers"
          docker-compose stop
-         docker stop finaldevfargetui-9056
+         docker stop aggridfargateui-4573
          echo "Process completed"
          ;;
     *)

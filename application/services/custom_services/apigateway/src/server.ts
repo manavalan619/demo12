@@ -8,7 +8,7 @@ import {
     AuthproxyController,
     AdminController,
     CamundaController,
-    studentsController
+    listController
     } from './apicontroller';
 
 const PORT = 8000
@@ -17,7 +17,7 @@ let apisController = [
     new AuthproxyController(),
     new AdminController(),
     new CamundaController(),
-    new studentsController()
+    new listController()
     ]
 class App {
 
