@@ -1,7 +1,0 @@
-{
-  "name": "devcheck",
-  "integrations": {
-    "cordova": {}
-  },
-  "type": "ionic-angular"
-}

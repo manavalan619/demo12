@@ -1,13 +1,13 @@
-# Default values for devcheck.
+# Default values for hptemplate.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 app:
-  prefix: devcheck
-  namespace: devcheck
+  prefix: hptemplate
+  namespace: hptemplate
 
 logging:
-  namespace: devcheck-logging
+  namespace: hptemplate-logging
 
 service:
   type: NodePort
@@ -54,6 +54,11 @@ service:
     type: NodePort
     port: 8080
     targetPort: 8080
+  school: 
+    name: school
+    type: NodePort
+    port: 8006
+    targetPort: 8006
 
 
 deployment:
@@ -61,7 +66,7 @@ deployment:
   customImagePullPolicy: Always
   apigateway:
      name: apigateway
-     image: geppettotest/devcheck-apigateway:1.0
+     image: geppettotest/hptemplate-apigateway:1.0
   mongo:
      name: mongo
      image: mongo:3.2   
@@ -79,7 +84,10 @@ deployment:
      image: geppettodistribution/default-adminmanager:2.0
   desktop:
      name: desktop
-     image: geppettotest/devcheck-desktop:1.0
+     image: geppettotest/hptemplate-desktop:1.0
+  school: 
+    name: school
+    image: geppettotest/hptemplate-school:1.0
 
   camundapod:
      name: camundapod
@@ -87,7 +95,7 @@ deployment:
 
 config:
   vault:
-    rootToken: vault-devcheck-2019
+    rootToken: vault-hptemplate-2019
 
 persistentVolume:
   mongo:

@@ -1,6 +1,6 @@
 #!bin/bash
 
-DESKTOPCODE='../../../application/client/desktop/devcheck'
+DESKTOPCODE='../../../application/client/desktop/hptemplate'
 
 COMPOSEPATH='../../../../devops/local/docker/'
 
@@ -13,8 +13,8 @@ do
     c)  
          echo "Creating new docker images and containers"
          cd $DESKTOPCODE
-         docker build -t devcheckui-2067 .
-         docker run --name devcheckui-2067 --restart=unless-stopped -d -p 5055:5000 devcheckui-2067
+         docker build -t hptemplateui-2532 .
+         docker run --name hptemplateui-2532 --restart=unless-stopped -d -p 5055:5000 hptemplateui-2532
          sleep 15
          echo "UI build is done..."
 
@@ -22,8 +22,8 @@ do
          docker-compose up -d --build
          echo "uploading the mongo script..."
          sleep 50
-         docker cp mongo.js mongo-2067:/data/db/
-         docker exec -ti mongo-2067 mongo -u admin -p 'password' --authenticationDatabase 'admin' devcheck_2067 /data/db/mongo.js
+         docker cp mongo.js mongo-2532:/data/db/
+         docker exec -ti mongo-2532 mongo -u admin -p 'password' --authenticationDatabase 'admin' hptemplate_2532 /data/db/mongo.js
          sleep 10
          echo "Process completed"
          echo " Your application is deployed here the link, http://localhost:5055 "
@@ -31,21 +31,21 @@ do
     d)
          echo "Now Deleting all containers and images"
          docker-compose down -v --rmi all 
-         docker rm -f devcheckui-2067
-         docker rmi devcheckui-2067
+         docker rm -f hptemplateui-2532
+         docker rmi hptemplateui-2532
          echo "Process completed"
          ;;
     r)
          echo "Now Re-starting the stopped containers"
          docker-compose start
-         docker restart devcheckui-2067
+         docker restart hptemplateui-2532
          sleep 35
          echo "Process completed"
          ;;
     s)
          echo "Now stopping the running containers"
          docker-compose stop
-         docker stop devcheckui-2067
+         docker stop hptemplateui-2532
          echo "Process completed"
          ;;
     *)
