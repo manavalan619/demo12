@@ -1,6 +1,6 @@
 #!bin/bash
 
-DESKTOPCODE='../../../application/client/desktop/mnfargate'
+DESKTOPCODE='../../../application/client/desktop/emptydev'
 
 COMPOSEPATH='../../../../devops/local/docker/'
 
@@ -13,8 +13,8 @@ do
     c)  
          echo "Creating new docker images and containers"
          cd $DESKTOPCODE
-         docker build -t mnfargateui-1304 .
-         docker run --name mnfargateui-1304 --restart=unless-stopped -d -p 5055:5000 mnfargateui-1304
+         docker build -t emptydevui-4889 .
+         docker run --name emptydevui-4889 --restart=unless-stopped -d -p 5055:5000 emptydevui-4889
          sleep 15
          echo "UI build is done..."
 
@@ -22,8 +22,8 @@ do
          docker-compose up -d --build
          echo "uploading the mongo script..."
          sleep 50
-         docker cp mongo.js mongo-1304:/data/db/
-         docker exec -ti mongo-1304 mongo -u admin -p 'password' --authenticationDatabase 'admin' mnfargate_1304 /data/db/mongo.js
+         docker cp mongo.js mongo-4889:/data/db/
+         docker exec -ti mongo-4889 mongo -u admin -p 'password' --authenticationDatabase 'admin' emptydev_4889 /data/db/mongo.js
          sleep 10
          echo "Process completed"
          echo " Your application is deployed here the link, http://localhost:5055 "
@@ -31,21 +31,21 @@ do
     d)
          echo "Now Deleting all containers and images"
          docker-compose down -v --rmi all 
-         docker rm -f mnfargateui-1304
-         docker rmi mnfargateui-1304
+         docker rm -f emptydevui-4889
+         docker rmi emptydevui-4889
          echo "Process completed"
          ;;
     r)
          echo "Now Re-starting the stopped containers"
          docker-compose start
-         docker restart mnfargateui-1304
+         docker restart emptydevui-4889
          sleep 35
          echo "Process completed"
          ;;
     s)
          echo "Now stopping the running containers"
          docker-compose stop
-         docker stop mnfargateui-1304
+         docker stop emptydevui-4889
          echo "Process completed"
          ;;
     *)

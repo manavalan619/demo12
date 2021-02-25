@@ -1,13 +1,13 @@
-# Default values for mnfargate.
+# Default values for emptydev.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 app:
-  prefix: mnfargate
-  namespace: mnfargate
+  prefix: emptydev
+  namespace: emptydev
 
 logging:
-  namespace: mnfargate-logging
+  namespace: emptydev-logging
 
 service:
   type: NodePort
@@ -61,7 +61,7 @@ deployment:
   customImagePullPolicy: Always
   apigateway:
      name: apigateway
-     image: geppettotest/mnfargate-apigateway:1.0
+     image: geppettotest/emptydev-apigateway:1.0
   mongo:
      name: mongo
      image: mongo:3.2   
@@ -79,7 +79,7 @@ deployment:
      image: geppettodistribution/default-adminmanager:2.0
   desktop:
      name: desktop
-     image: geppettotest/mnfargate-desktop:1.0
+     image: geppettotest/emptydev-desktop:1.0
 
   camundapod:
      name: camundapod
@@ -87,7 +87,7 @@ deployment:
 
 config:
   vault:
-    rootToken: vault-mnfargate-2019
+    rootToken: vault-emptydev-2019
 
 persistentVolume:
   mongo:
