@@ -1,4 +1,4 @@
-# Deploy your cruddev-8527 applicaton by using github actions
+# Deploy your devcheck-2067 applicaton by using github actions
 ![Github Actions](https://readmegeppetto.s3.amazonaws.com/githubactions.jpeg)
 
 ### Deploy the your generated application in aws by using github actions.
@@ -35,4 +35,4 @@ $ mkdir ../../../../.github && cp -r * ../../../../.github/
 
 - Here the URL for your application,
 
-http://cruddev-8527.s3-website-us-east-1.amazonaws.com/
+http://devcheck-2067.s3-website-us-east-1.amazonaws.com/

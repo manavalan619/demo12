@@ -1,6 +1,6 @@
 #!bin/bash
 
-DESKTOPCODE='../../../application/client/desktop/cruddev'
+DESKTOPCODE='../../../application/client/desktop/devcheck'
 
 COMPOSEPATH='../../../../devops/local/docker/'
 
@@ -13,8 +13,8 @@ do
     c)  
          echo "Creating new docker images and containers"
          cd $DESKTOPCODE
-         docker build -t cruddevui-8527 .
-         docker run --name cruddevui-8527 --restart=unless-stopped -d -p 5055:5000 cruddevui-8527
+         docker build -t devcheckui-2067 .
+         docker run --name devcheckui-2067 --restart=unless-stopped -d -p 5055:5000 devcheckui-2067
          sleep 15
          echo "UI build is done..."
 
@@ -22,8 +22,8 @@ do
          docker-compose up -d --build
          echo "uploading the mongo script..."
          sleep 50
-         docker cp mongo.js mongo-8527:/data/db/
-         docker exec -ti mongo-8527 mongo -u admin -p 'password' --authenticationDatabase 'admin' cruddev_8527 /data/db/mongo.js
+         docker cp mongo.js mongo-2067:/data/db/
+         docker exec -ti mongo-2067 mongo -u admin -p 'password' --authenticationDatabase 'admin' devcheck_2067 /data/db/mongo.js
          sleep 10
          echo "Process completed"
          echo " Your application is deployed here the link, http://localhost:5055 "
@@ -31,21 +31,21 @@ do
     d)
          echo "Now Deleting all containers and images"
          docker-compose down -v --rmi all 
-         docker rm -f cruddevui-8527
-         docker rmi cruddevui-8527
+         docker rm -f devcheckui-2067
+         docker rmi devcheckui-2067
          echo "Process completed"
          ;;
     r)
          echo "Now Re-starting the stopped containers"
          docker-compose start
-         docker restart cruddevui-8527
+         docker restart devcheckui-2067
          sleep 35
          echo "Process completed"
          ;;
     s)
          echo "Now stopping the running containers"
          docker-compose stop
-         docker stop cruddevui-8527
+         docker stop devcheckui-2067
          echo "Process completed"
          ;;
     *)

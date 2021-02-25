@@ -1,13 +1,13 @@
-# Default values for cruddev.
+# Default values for devcheck.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 app:
-  prefix: cruddev
-  namespace: cruddev
+  prefix: devcheck
+  namespace: devcheck
 
 logging:
-  namespace: cruddev-logging
+  namespace: devcheck-logging
 
 service:
   type: NodePort
@@ -54,11 +54,6 @@ service:
     type: NodePort
     port: 8080
     targetPort: 8080
-  mano: 
-    name: mano
-    type: NodePort
-    port: 8005
-    targetPort: 8005
 
 
 deployment:
@@ -66,7 +61,7 @@ deployment:
   customImagePullPolicy: Always
   apigateway:
      name: apigateway
-     image: geppettotest/cruddev-apigateway:1.0
+     image: geppettotest/devcheck-apigateway:1.0
   mongo:
      name: mongo
      image: mongo:3.2   
@@ -84,10 +79,7 @@ deployment:
      image: geppettodistribution/default-adminmanager:2.0
   desktop:
      name: desktop
-     image: geppettotest/cruddev-desktop:1.0
-  mano: 
-    name: mano
-    image: geppettotest/cruddev-mano:1.0
+     image: geppettotest/devcheck-desktop:1.0
 
   camundapod:
      name: camundapod
@@ -95,7 +87,7 @@ deployment:
 
 config:
   vault:
-    rootToken: vault-cruddev-2019
+    rootToken: vault-devcheck-2019
 
 persistentVolume:
   mongo:

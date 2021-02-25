@@ -1,14 +1,14 @@
 #!bin/bash
 
-APPLICATION='/cruddev'
+APPLICATION='/devcheck'
 
 CUSTOMSERVICEPATH='../../../services/custom_services'
 
 HELMPATH='../devops/local'
 
 
-DESKTOPCODE='../../../application/client/desktop/cruddev'
-DESKTOPIMAGENAME='geppettotest/cruddev-desktop:1.0'
+DESKTOPCODE='../../../application/client/desktop/devcheck'
+DESKTOPIMAGENAME='geppettotest/devcheck-desktop:1.0'
 
 echo "Started to build docker images for pod...."
 
@@ -76,7 +76,7 @@ helm_install () {
 
 cd $HELMPATH
 helm install --dry-run --debug ./helm
-helm install --name cruddev-8527 ./helm
+helm install --name devcheck-2067 ./helm
 if [ $? -eq 0 ]; then
     echo "App Deployment is Done"
 else
