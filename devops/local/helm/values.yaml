@@ -1,10 +1,10 @@
-# Default values for redtemplate.
+# Default values for crudstage.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 app:
-  prefix: redtemplate
-  namespace: redtemplate
+  prefix: crudstage
+  namespace: crudstage
 
 service:
   type: NodePort
@@ -51,6 +51,11 @@ service:
     type: NodePort
     port: 8080
     targetPort: 8080
+  college: 
+    name: college
+    type: NodePort
+    port: 8005
+    targetPort: 8005
 
 
 deployment:
@@ -58,7 +63,7 @@ deployment:
   customImagePullPolicy: Always
   apigateway:
      name: apigateway
-     image: geppettotest/redtemplate-apigateway:1.0
+     image: geppettotest/crudstage-apigateway:1.0
   mongo:
      name: mongo
      image: mongo:3.2   
@@ -76,7 +81,10 @@ deployment:
      image: geppettodistribution/default-adminmanager:2.0
   desktop:
      name: desktop
-     image: geppettotest/redtemplate-desktop:1.0
+     image: geppettotest/crudstage-desktop:1.0
+  college: 
+    name: college
+    image: geppettotest/crudstage-college:1.0
 
   camundapod:
      name: camundapod
@@ -84,7 +92,7 @@ deployment:
 
 config:
   vault:
-    rootToken: vault-redtemplate-2021
+    rootToken: vault-crudstage-2021
 
 persistentVolume:
   mongo:

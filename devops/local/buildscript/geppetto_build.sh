@@ -1,14 +1,14 @@
 #!bin/bash
 
-APPLICATION='/redtemplate'
+APPLICATION='/crudstage'
 
 CUSTOMSERVICEPATH='../../../services/custom_services'
 
 HELMPATH='../devops/local'
 
 
-DESKTOPCODE='../../../application/client/desktop/redtemplate'
-DESKTOPIMAGENAME='geppettotest/redtemplate-desktop:1.0'
+DESKTOPCODE='../../../application/client/desktop/crudstage'
+DESKTOPIMAGENAME='geppettotest/crudstage-desktop:1.0'
 
 echo "Started to build docker images for pod...."
 
@@ -76,7 +76,7 @@ helm_install () {
 
 cd $HELMPATH
 helm install --dry-run --debug ./helm
-helm install --name redtemplate-7467 ./helm
+helm install --name crudstage-8681 ./helm
 if [ $? -eq 0 ]; then
     echo "App Deployment is Done"
 else

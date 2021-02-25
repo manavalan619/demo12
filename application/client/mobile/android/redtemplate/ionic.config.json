@@ -1,7 +1,0 @@
-{
-  "name": "redtemplate",
-  "integrations": {
-    "cordova": {}
-  },
-  "type": "ionic-angular"
-}

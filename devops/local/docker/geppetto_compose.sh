@@ -1,6 +1,6 @@
 #!bin/bash
 
-DESKTOPCODE='../../../application/client/desktop/redtemplate'
+DESKTOPCODE='../../../application/client/desktop/crudstage'
 
 COMPOSEPATH='../../../../devops/local/docker/'
 
@@ -13,8 +13,8 @@ do
     c)  
          echo "Creating new docker images and containers"
          cd $DESKTOPCODE
-         docker build -t redtemplateui-7467 .
-         docker run --name redtemplateui-7467 --restart=unless-stopped -d -p 5055:5000 redtemplateui-7467
+         docker build -t crudstageui-8681 .
+         docker run --name crudstageui-8681 --restart=unless-stopped -d -p 5055:5000 crudstageui-8681
          sleep 15
          echo "UI build is done..."
 
@@ -22,8 +22,8 @@ do
          docker-compose up -d --build
          echo "uploading the mongo script..."
          sleep 50
-         docker cp mongo.js mongo-7467:/data/db/
-         docker exec -ti mongo-7467 mongo -u admin -p 'password' --authenticationDatabase 'admin' redtemplate_7467 /data/db/mongo.js
+         docker cp mongo.js mongo-8681:/data/db/
+         docker exec -ti mongo-8681 mongo -u admin -p 'password' --authenticationDatabase 'admin' crudstage_8681 /data/db/mongo.js
          sleep 10
          echo "Process completed"
          echo " Your application is deployed here the link, http://localhost:5055 "
@@ -31,21 +31,21 @@ do
     d)
          echo "Now Deleting all containers and images"
          docker-compose down -v --rmi all 
-         docker rm -f redtemplateui-7467
-         docker rmi redtemplateui-7467
+         docker rm -f crudstageui-8681
+         docker rmi crudstageui-8681
          echo "Process completed"
          ;;
     r)
          echo "Now Re-starting the stopped containers"
          docker-compose start
-         docker restart redtemplateui-7467
+         docker restart crudstageui-8681
          sleep 35
          echo "Process completed"
          ;;
     s)
          echo "Now stopping the running containers"
          docker-compose stop
-         docker stop redtemplateui-7467
+         docker stop crudstageui-8681
          echo "Process completed"
          ;;
     *)

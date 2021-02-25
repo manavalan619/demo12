@@ -1,0 +1,7 @@
+{
+  "name": "crudstage",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
