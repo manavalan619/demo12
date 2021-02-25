@@ -128,8 +128,29 @@ module.exports = {
             },
             "ulimits": null,
             "dockerLabels": null,
-            "dependsOn": null,
-            "repositoryCredentials": {
+            "dependsOn": [
+                {
+                    "containerName": "camunda-8527",
+                    "condition": "START"
+                },
+                {
+                    "containerName": "camundasvc-8527",
+                    "condition": "START"
+                },
+                {
+                    "containerName": "authproxy-8527",
+                    "condition": "START"
+                },
+                {
+                    "containerName": "securitymanager-8527",
+                    "condition": "START"
+                },
+                {
+                    "containerName": "mano-1814",
+                    "condition": "START"
+                }
+            ],       
+                "repositoryCredentials": {
                 "credentialsParameter": ""
             }
         },        
@@ -166,7 +187,10 @@ module.exports = {
             },
             "ulimits": null,
             "dockerLabels": null,
-            "dependsOn": null,
+            "dependsOn": [{
+                "containerName": "camundasvc-8527",
+                "condition": "START"
+            }],
             "repositoryCredentials": {
                 "credentialsParameter": ""
             }
@@ -204,7 +228,13 @@ module.exports = {
             },
             "ulimits": null,
             "dockerLabels": null,
-            "dependsOn": null,
+            "dependsOn": [{
+                "containerName": "securitymanager-8527",
+                "condition": "START"
+            },{
+                "containerName": "camunda-8527",
+                "condition": "START"
+            },],
             "repositoryCredentials": {
                 "credentialsParameter": ""
             }
@@ -242,8 +272,16 @@ module.exports = {
             },
             "ulimits": null,
             "dockerLabels": null,
-            "dependsOn": null,
-            "repositoryCredentials": {
+            "dependsOn": [
+                {
+                    "containerName": "mongo-8527",
+                    "condition": "START"
+                },
+                {
+                    "containerName": "camunda-8527",
+                    "condition": "START"
+                }
+            ],            "repositoryCredentials": {
                 "credentialsParameter": ""
             }
         },
@@ -280,8 +318,12 @@ module.exports = {
             },
             "ulimits": null,
             "dockerLabels": null,
-            "dependsOn": null,
-            "repositoryCredentials": {
+            "dependsOn": [
+                {
+                    "containerName": "mongo-8527",
+                    "condition": "START"
+                }
+            ],            "repositoryCredentials": {
                 "credentialsParameter": ""
             }
         },          
