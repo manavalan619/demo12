@@ -1,14 +1,14 @@
 #!bin/bash
 
-APPLICATION='/hptemplate'
+APPLICATION='/stagecheck'
 
 CUSTOMSERVICEPATH='../../../services/custom_services'
 
 HELMPATH='../devops/local'
 
 
-DESKTOPCODE='../../../application/client/desktop/hptemplate'
-DESKTOPIMAGENAME='geppettotest/hptemplate-desktop:1.0'
+DESKTOPCODE='../../../application/client/desktop/stagecheck'
+DESKTOPIMAGENAME='geppettotest/stagecheck-desktop:1.0'
 
 echo "Started to build docker images for pod...."
 
@@ -76,7 +76,7 @@ helm_install () {
 
 cd $HELMPATH
 helm install --dry-run --debug ./helm
-helm install --name hptemplate-2532 ./helm
+helm install --name stagecheck-6765 ./helm
 if [ $? -eq 0 ]; then
     echo "App Deployment is Done"
 else
