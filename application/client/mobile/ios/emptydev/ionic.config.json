@@ -1,7 +1,0 @@
-{
-  "name": "emptydev",
-  "integrations": {
-    "cordova": {}
-  },
-  "type": "ionic-angular"
-}
