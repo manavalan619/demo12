@@ -1,13 +1,13 @@
-# Default values for stagecheck.
+# Default values for redtemplate.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 app:
-  prefix: stagecheck
-  namespace: stagecheck
+  prefix: redtemplate
+  namespace: redtemplate
 
 logging:
-  namespace: stagecheck-logging
+  namespace: redtemplate-logging
 
 service:
   type: NodePort
@@ -61,7 +61,7 @@ deployment:
   customImagePullPolicy: Always
   apigateway:
      name: apigateway
-     image: geppettotest/stagecheck-apigateway:1.0
+     image: geppettotest/redtemplate-apigateway:1.0
   mongo:
      name: mongo
      image: mongo:3.2   
@@ -79,7 +79,7 @@ deployment:
      image: geppettodistribution/default-adminmanager:2.0
   desktop:
      name: desktop
-     image: geppettotest/stagecheck-desktop:1.0
+     image: geppettotest/redtemplate-desktop:1.0
 
   camundapod:
      name: camundapod
@@ -87,7 +87,7 @@ deployment:
 
 config:
   vault:
-    rootToken: vault-stagecheck-2019
+    rootToken: vault-redtemplate-2019
 
 persistentVolume:
   mongo:

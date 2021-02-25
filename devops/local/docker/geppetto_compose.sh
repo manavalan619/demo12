@@ -1,6 +1,6 @@
 #!bin/bash
 
-DESKTOPCODE='../../../application/client/desktop/stagecheck'
+DESKTOPCODE='../../../application/client/desktop/redtemplate'
 
 COMPOSEPATH='../../../../devops/local/docker/'
 
@@ -13,8 +13,8 @@ do
     c)  
          echo "Creating new docker images and containers"
          cd $DESKTOPCODE
-         docker build -t stagecheckui-6765 .
-         docker run --name stagecheckui-6765 --restart=unless-stopped -d -p 5055:5000 stagecheckui-6765
+         docker build -t redtemplateui-7467 .
+         docker run --name redtemplateui-7467 --restart=unless-stopped -d -p 5055:5000 redtemplateui-7467
          sleep 15
          echo "UI build is done..."
 
@@ -22,8 +22,8 @@ do
          docker-compose up -d --build
          echo "uploading the mongo script..."
          sleep 50
-         docker cp mongo.js mongo-6765:/data/db/
-         docker exec -ti mongo-6765 mongo -u admin -p 'password' --authenticationDatabase 'admin' stagecheck_6765 /data/db/mongo.js
+         docker cp mongo.js mongo-7467:/data/db/
+         docker exec -ti mongo-7467 mongo -u admin -p 'password' --authenticationDatabase 'admin' redtemplate_7467 /data/db/mongo.js
          sleep 10
          echo "Process completed"
          echo " Your application is deployed here the link, http://localhost:5055 "
@@ -31,21 +31,21 @@ do
     d)
          echo "Now Deleting all containers and images"
          docker-compose down -v --rmi all 
-         docker rm -f stagecheckui-6765
-         docker rmi stagecheckui-6765
+         docker rm -f redtemplateui-7467
+         docker rmi redtemplateui-7467
          echo "Process completed"
          ;;
     r)
          echo "Now Re-starting the stopped containers"
          docker-compose start
-         docker restart stagecheckui-6765
+         docker restart redtemplateui-7467
          sleep 35
          echo "Process completed"
          ;;
     s)
          echo "Now stopping the running containers"
          docker-compose stop
-         docker stop stagecheckui-6765
+         docker stop redtemplateui-7467
          echo "Process completed"
          ;;
     *)

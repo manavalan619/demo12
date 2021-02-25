@@ -1,7 +1,0 @@
-{
-  "name": "stagecheck",
-  "integrations": {
-    "cordova": {}
-  },
-  "type": "ionic-angular"
-}
