@@ -1,4 +1,4 @@
-name: aws_ec2_deployments_for_crudstage
+name: aws_ec2_deployments_for_stagehptemplate
 on:
   push:
     branches: 
@@ -19,8 +19,8 @@ env:
   AWS_VPC_SUBNET: ${{  secrets.AWS_VPC_SUBNET  }}
   AWS_VPC_SECURITY_GROUP: ${{  secrets.AWS_VPC_SECURITY_GROUP  }}
   AWS_ECS_CLUSTER_NAME: ${{  secrets.AWS_ECS_CLUSTER_NAME  }}
-  PROJECT_NAME: crudstage-8681
-  AWS_S3_BUCKET_NAME: crudstage-8681
+  PROJECT_NAME: stagehptemplate-4651
+  AWS_S3_BUCKET_NAME: stagehptemplate-4651
 
 jobs:
   Prerequisites:
@@ -36,11 +36,11 @@ jobs:
         run: aws s3api create-bucket --bucket ${{ env.AWS_S3_BUCKET_NAME }} --region us-east-1
       - name: Creating the aws ECR for each micro service
         run: |
-          aws ecr create-repository --repository-name geppetto-generatedcode-crudstage-8681-apigateway  --image-scanning-configuration scanOnPush=true  --region us-east-1
-          aws ecr create-repository --repository-name geppetto-generatedcode-crudstage-8681-authproxy  --image-scanning-configuration scanOnPush=true  --region us-east-1
-          aws ecr create-repository --repository-name geppetto-generatedcode-crudstage-8681-camunda  --image-scanning-configuration scanOnPush=true  --region us-east-1
-          aws ecr create-repository --repository-name geppetto-generatedcode-crudstage-8681-securitymanager  --image-scanning-configuration scanOnPush=true  --region us-east-1
-          aws ecr create-repository --repository-name geppetto-generatedcode-crudstage-8681-college  --image-scanning-configuration scanOnPush=true  --region us-east-1
+          aws ecr create-repository --repository-name geppetto-generatedcode-stagehptemplate-4651-apigateway  --image-scanning-configuration scanOnPush=true  --region us-east-1
+          aws ecr create-repository --repository-name geppetto-generatedcode-stagehptemplate-4651-authproxy  --image-scanning-configuration scanOnPush=true  --region us-east-1
+          aws ecr create-repository --repository-name geppetto-generatedcode-stagehptemplate-4651-camunda  --image-scanning-configuration scanOnPush=true  --region us-east-1
+          aws ecr create-repository --repository-name geppetto-generatedcode-stagehptemplate-4651-securitymanager  --image-scanning-configuration scanOnPush=true  --region us-east-1
+          aws ecr create-repository --repository-name geppetto-generatedcode-stagehptemplate-4651-school  --image-scanning-configuration scanOnPush=true  --region us-east-1
   Build_and_upload_docker_iamges_to_ECR:
     needs: Prerequisites
     runs-on: ubuntu-latest
@@ -63,29 +63,29 @@ jobs:
         run: |
      
           cd application/services/default_services/authproxy
-          docker build -t $ECR_REGISTRY/geppetto-generatedcode-crudstage-8681-authproxy:$IMAGE_TAG .
-          docker push $ECR_REGISTRY/geppetto-generatedcode-crudstage-8681-authproxy:$IMAGE_TAG
+          docker build -t $ECR_REGISTRY/geppetto-generatedcode-stagehptemplate-4651-authproxy:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/geppetto-generatedcode-stagehptemplate-4651-authproxy:$IMAGE_TAG
           echo "Successfully build the docker image for authproxy  and pushed to aws ecr"
 
           cd ../camunda
-          docker build -t $ECR_REGISTRY/geppetto-generatedcode-crudstage-8681-camunda:$IMAGE_TAG .
-          docker push $ECR_REGISTRY/geppetto-generatedcode-crudstage-8681-camunda:$IMAGE_TAG
+          docker build -t $ECR_REGISTRY/geppetto-generatedcode-stagehptemplate-4651-camunda:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/geppetto-generatedcode-stagehptemplate-4651-camunda:$IMAGE_TAG
           echo "Successfully build the docker image for camunda  and pushed to aws ecr"
 
           cd ../securitymanager
-          docker build -t $ECR_REGISTRY/geppetto-generatedcode-crudstage-8681-securitymanager:$IMAGE_TAG .
-          docker push $ECR_REGISTRY/geppetto-generatedcode-crudstage-8681-securitymanager:$IMAGE_TAG
+          docker build -t $ECR_REGISTRY/geppetto-generatedcode-stagehptemplate-4651-securitymanager:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/geppetto-generatedcode-stagehptemplate-4651-securitymanager:$IMAGE_TAG
           echo "Successfully build the  docker image for securitymanager and pushed to aws ecr"
 
           cd ../../custom_services/apigateway
-          docker build -t $ECR_REGISTRY/geppetto-generatedcode-crudstage-8681-apigateway:$IMAGE_TAG .
-          docker push $ECR_REGISTRY/geppetto-generatedcode-crudstage-8681-apigateway:$IMAGE_TAG
+          docker build -t $ECR_REGISTRY/geppetto-generatedcode-stagehptemplate-4651-apigateway:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/geppetto-generatedcode-stagehptemplate-4651-apigateway:$IMAGE_TAG
           echo "Successfully build the docker image for apigateway and pushed to aws ecr"
 
-          cd ../college
-          docker build -t $ECR_REGISTRY/geppetto-generatedcode-crudstage-8681-college:$IMAGE_TAG .
-          docker push $ECR_REGISTRY/geppetto-generatedcode-crudstage-8681-college:$IMAGE_TAG
-          echo "Successfully build the docker image for college and pushed to aws ecr"
+          cd ../school
+          docker build -t $ECR_REGISTRY/geppetto-generatedcode-stagehptemplate-4651-school:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/geppetto-generatedcode-stagehptemplate-4651-school:$IMAGE_TAG
+          echo "Successfully build the docker image for school and pushed to aws ecr"
      
   Deploy_backend:
     needs: Build_and_upload_docker_iamges_to_ECR
@@ -114,7 +114,7 @@ jobs:
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
           task-definition: .github/workflows/task-definition.json
-          container-name: mongo-8681
+          container-name: mongo-4651
           image: geppettotest/mongo-local:april2020
       - name: Deploy Amazon ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
@@ -125,7 +125,7 @@ jobs:
       - name: Run the ECS task definition
         id: networkInterfaceId
         run: |
-          run_task=$(aws ecs run-task --cluster ${{  env.AWS_ECS_CLUSTER_NAME  }}  --task-definition crudstage --launch-type FARGATE --network-configuration "awsvpcConfiguration={subnets=[${{  env.AWS_VPC_SUBNET  }}],securityGroups=[${{  env.AWS_VPC_SECURITY_GROUP  }}],assignPublicIp=ENABLED}" | jq  -r '.tasks[].taskArn')
+          run_task=$(aws ecs run-task --cluster ${{  env.AWS_ECS_CLUSTER_NAME  }}  --task-definition stagehptemplate --launch-type FARGATE --network-configuration "awsvpcConfiguration={subnets=[${{  env.AWS_VPC_SUBNET  }}],securityGroups=[${{  env.AWS_VPC_SECURITY_GROUP  }}],assignPublicIp=ENABLED}" | jq  -r '.tasks[].taskArn')
           sleep 20s
           echo "::set-output name=NETWORK_ID::$(aws ecs describe-tasks --cluster ${{  env.AWS_ECS_CLUSTER_NAME  }} --tasks $run_task | jq '.tasks[].attachments[].details[1].value')"
           echo "::set-output name=PUBLIC_IP_ADDRESS::$(aws ec2 describe-network-interfaces --network-interface-ids ${{  steps.networkInterfaceId.outputs.NETWORK_ID  }}  | jq -r '.NetworkInterfaces[].PrivateIpAddresses[].Association.PublicIp')"
@@ -142,17 +142,17 @@ jobs:
       - name: Installing angular/cli
         run: npm install -g @angular/cli
       - name: Installing the node modules
-        working-directory: ./application/client/desktop/crudstage
+        working-directory: ./application/client/desktop/stagehptemplate
         run: |
           npm install
           npm i @ng-select/ng-select
       - name: Link the backend apigateway
-        working-directory: ./application/client/desktop/crudstage/src/environments
+        working-directory: ./application/client/desktop/stagehptemplate/src/environments
         run: |
           rm -rf environment.prod.ts
           echo 'export const environment = { DESKTOP_API: `http://${{  needs.Deploy_backend.outputs.public_ip  }}:8000/desktop`, MOBILE_API: `http://<Your Domain Name or Live IP address>`, production: true };' >> environment.prod.ts
       - name: Production build
-        working-directory: ./application/client/desktop/crudstage
+        working-directory: ./application/client/desktop/stagehptemplate
         run: ng build --configuration=production
       - uses: jakejarvis/s3-sync-action@v0.5.1
         with:
@@ -162,6 +162,6 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{  env.AWS_ACCESS_KEY_ID  }}
           AWS_SECRET_ACCESS_KEY: ${{  env.AWS_SECRET_ACCESS_KEY  }}
           AWS_REGION: ${{  env.AWS_REGION  }}
-          SOURCE_DIR: "application/client/desktop/crudstage/dist/crudstage"
+          SOURCE_DIR: "application/client/desktop/stagehptemplate/dist/stagehptemplate"
       - name: Enable the static webhosting
         run: aws s3 website s3://${{ env.AWS_S3_BUCKET_NAME }}/ --index-document index.html --error-document error.html

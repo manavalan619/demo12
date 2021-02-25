@@ -1,6 +1,6 @@
 #!bin/bash
 
-DESKTOPCODE='../../../application/client/desktop/crudstage'
+DESKTOPCODE='../../../application/client/desktop/stagehptemplate'
 
 COMPOSEPATH='../../../../devops/local/docker/'
 
@@ -13,8 +13,8 @@ do
     c)  
          echo "Creating new docker images and containers"
          cd $DESKTOPCODE
-         docker build -t crudstageui-8681 .
-         docker run --name crudstageui-8681 --restart=unless-stopped -d -p 5055:5000 crudstageui-8681
+         docker build -t stagehptemplateui-4651 .
+         docker run --name stagehptemplateui-4651 --restart=unless-stopped -d -p 5055:5000 stagehptemplateui-4651
          sleep 15
          echo "UI build is done..."
 
@@ -22,8 +22,8 @@ do
          docker-compose up -d --build
          echo "uploading the mongo script..."
          sleep 50
-         docker cp mongo.js mongo-8681:/data/db/
-         docker exec -ti mongo-8681 mongo -u admin -p 'password' --authenticationDatabase 'admin' crudstage_8681 /data/db/mongo.js
+         docker cp mongo.js mongo-4651:/data/db/
+         docker exec -ti mongo-4651 mongo -u admin -p 'password' --authenticationDatabase 'admin' stagehptemplate_4651 /data/db/mongo.js
          sleep 10
          echo "Process completed"
          echo " Your application is deployed here the link, http://localhost:5055 "
@@ -31,21 +31,21 @@ do
     d)
          echo "Now Deleting all containers and images"
          docker-compose down -v --rmi all 
-         docker rm -f crudstageui-8681
-         docker rmi crudstageui-8681
+         docker rm -f stagehptemplateui-4651
+         docker rmi stagehptemplateui-4651
          echo "Process completed"
          ;;
     r)
          echo "Now Re-starting the stopped containers"
          docker-compose start
-         docker restart crudstageui-8681
+         docker restart stagehptemplateui-4651
          sleep 35
          echo "Process completed"
          ;;
     s)
          echo "Now stopping the running containers"
          docker-compose stop
-         docker stop crudstageui-8681
+         docker stop stagehptemplateui-4651
          echo "Process completed"
          ;;
     *)

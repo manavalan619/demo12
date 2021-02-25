@@ -2,13 +2,13 @@ version: "3.8"
 services:
   mongo:
     image: geppettotest/mongo-local:april2020
-    container_name: mongo-8681
+    container_name: mongo-4651
     restart: unless-stopped
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=password
     volumes:
-      - crudstage_8681-volume:/data/db
+      - stagehptemplate_4651-volume:/data/db
     ports:
       - "27018:27017"
     healthcheck:
@@ -20,14 +20,14 @@ services:
 
   camunda:
     image: geppettodistribution/camunda-local:Jan2021
-    container_name: camunda-8681
+    container_name: camunda-4651
     ports:
       - "0000:8080"
 
   authproxy:
     build: ../../../application/services/default_services/authproxy
-    image: authproxy-8681
-    container_name: authproxy-8681
+    image: authproxy-4651
+    container_name: authproxy-4651
     ports:
       - "0000:8001"
     env_file: .env
@@ -37,8 +37,8 @@ services:
 
   securitymanager:
     build: ../../../application/services/default_services/securitymanager
-    image: securitymanager-8681
-    container_name: securitymanager-8681
+    image: securitymanager-4651
+    container_name: securitymanager-4651
     ports:
       - "8003:8003"
     env_file: .env
@@ -48,8 +48,8 @@ services:
 
   camundaservice:
     build: ../../../application/services/default_services/camunda
-    image: camundaservice-8681
-    container_name: camundasvc-8681
+    image: camundaservice-4651
+    container_name: camundasvc-4651
     ports:
       - "8002:8002"
     env_file: .env
@@ -60,8 +60,8 @@ services:
 
   apigateway:
     build: ../../../application/services/custom_services/apigateway
-    image: apigateway-8681
-    container_name: apigateway-8681
+    image: apigateway-4651
+    container_name: apigateway-4651
     ports:
       - "8000:8000"
     env_file: .env
@@ -70,21 +70,21 @@ services:
       - camundaservice
       - authproxy
       - securitymanager
-      - college
+      - school
 
 
 
-  college: 
-    build: ../../../application/services/custom_services/college
-    image: college-8681
-    container_name: college-8681
+  school: 
+    build: ../../../application/services/custom_services/school
+    image: school-4651
+    container_name: school-4651
     ports: 
-      - 8005:8005
+      - 8006:8006
     env_file: .env
     depends_on:
       - mongo
 
 
 volumes:
-  crudstage_8681-volume:
+  stagehptemplate_4651-volume:
     driver: local
