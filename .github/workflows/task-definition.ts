@@ -146,7 +146,7 @@ module.exports = {
                     "condition": "START"
                 },
                 {
-                    "containerName": "mano-1814",
+                    "containerName": "mano-8527",
                     "condition": "START"
                 }
             ],       
