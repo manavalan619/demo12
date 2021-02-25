@@ -151,7 +151,7 @@ jobs:
           rm -rf environment.prod.ts
           echo 'export const environment = { DESKTOP_API: `http://${{  needs.Deploy_backend.outputs.public_ip  }}:8000/desktop`, MOBILE_API: `http://<Your Domain Name or Live IP address>`, production: true };' >> environment.prod.ts
           cat environment.prod.ts
-          - name: Production build
+      - name: Production build
         working-directory: ./application/client/desktop/cruddev
         run: ng build --configuration=production
       - uses: jakejarvis/s3-sync-action@v0.5.1

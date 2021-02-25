@@ -190,6 +190,9 @@ module.exports = {
             "dependsOn": [{
                 "containerName": "camundasvc-8527",
                 "condition": "START"
+            },{
+                "containerName": "mongo-8527",
+                "condition": "START"
             }],
             "repositoryCredentials": {
                 "credentialsParameter": ""
