@@ -1,10 +1,10 @@
-# Default values for stagehptemplate.
+# Default values for stagespot.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 app:
-  prefix: stagehptemplate
-  namespace: stagehptemplate
+  prefix: stagespot
+  namespace: stagespot
 
 service:
   type: NodePort
@@ -51,11 +51,6 @@ service:
     type: NodePort
     port: 8080
     targetPort: 8080
-  school: 
-    name: school
-    type: NodePort
-    port: 8006
-    targetPort: 8006
 
 
 deployment:
@@ -63,7 +58,7 @@ deployment:
   customImagePullPolicy: Always
   apigateway:
      name: apigateway
-     image: geppettotest/stagehptemplate-apigateway:1.0
+     image: geppettotest/stagespot-apigateway:1.0
   mongo:
      name: mongo
      image: mongo:3.2   
@@ -81,10 +76,7 @@ deployment:
      image: geppettodistribution/default-adminmanager:2.0
   desktop:
      name: desktop
-     image: geppettotest/stagehptemplate-desktop:1.0
-  school: 
-    name: school
-    image: geppettotest/stagehptemplate-school:1.0
+     image: geppettotest/stagespot-desktop:1.0
 
   camundapod:
      name: camundapod
@@ -92,7 +84,7 @@ deployment:
 
 config:
   vault:
-    rootToken: vault-stagehptemplate-2021
+    rootToken: vault-stagespot-2021
 
 persistentVolume:
   mongo:

@@ -1,7 +1,0 @@
-{
-  "name": "stagehptemplate",
-  "integrations": {
-    "cordova": {}
-  },
-  "type": "ionic-angular"
-}
