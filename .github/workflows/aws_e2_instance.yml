@@ -125,7 +125,7 @@ jobs:
       - name: Run the ECS task definition
         id: networkInterfaceId
         run: |
-          run_task=$(aws ecs run-task --cluster ${{  env.AWS_ECS_CLUSTER_NAME  }}  --task-definition geppettotemplate --launch-type FARGATE --network-configuration "awsvpcConfiguration={subnets=[${{  env.AWS_VPC_SUBNET  }}],securityGroups=[${{  env.AWS_VPC_SECURITY_GROUP  }}],assignPublicIp=ENABLED}" | jq  -r '.tasks[].taskArn')
+          run_task=$(aws ecs run-task  --capacity-provider-strategy capacityProvider=FARGATE_SPOT --cluster ${{  env.AWS_ECS_CLUSTER_NAME  }}  --task-definition geppettotemplate  --network-configuration "awsvpcConfiguration={subnets=[${{  env.AWS_VPC_SUBNET  }}],securityGroups=[${{  env.AWS_VPC_SECURITY_GROUP  }}],assignPublicIp=ENABLED}" | jq  -r '.tasks[].taskArn')
           sleep 20s
           echo "::set-output name=NETWORK_ID::$(aws ecs describe-tasks --cluster ${{  env.AWS_ECS_CLUSTER_NAME  }} --tasks $run_task | jq '.tasks[].attachments[].details[1].value')"
           echo "::set-output name=PUBLIC_IP_ADDRESS::$(aws ec2 describe-network-interfaces --network-interface-ids ${{  steps.networkInterfaceId.outputs.NETWORK_ID  }}  | jq -r '.NetworkInterfaces[].PrivateIpAddresses[].Association.PublicIp')"
@@ -151,6 +151,7 @@ jobs:
         run: |
           rm -rf environment.prod.ts
           echo 'export const environment = { DESKTOP_API: `http://${{  needs.Deploy_backend.outputs.public_ip  }}:8000/desktop`, MOBILE_API: `http://<Your Domain Name or Live IP address>`, production: true };' >> environment.prod.ts
+          cat environment.prod.ts
       - name: Production build
         working-directory: ./application/client/desktop/geppettotemplate
         run: ng build --configuration=production
