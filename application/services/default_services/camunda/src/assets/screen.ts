@@ -4,7 +4,7 @@
     ,
 {"resources":"admin", "role":"Guest"}
     ,
-{"resources":"create", "role":"Guest"}
+{"resources":"go", "role":"Guest"}
     ,
 {"resources":"getall", "role":"Guest"}
     

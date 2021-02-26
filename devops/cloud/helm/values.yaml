@@ -1,13 +1,13 @@
-# Default values for crudred.
+# Default values for geppettotemplate.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 app:
-  prefix: crudred
-  namespace: crudred
+  prefix: geppettotemplate
+  namespace: geppettotemplate
 
 logging:
-  namespace: crudred-logging
+  namespace: geppettotemplate-logging
 
 service:
   type: NodePort
@@ -54,11 +54,11 @@ service:
     type: NodePort
     port: 8080
     targetPort: 8080
-  school: 
-    name: school
+  mano: 
+    name: mano
     type: NodePort
-    port: 8011
-    targetPort: 8011
+    port: 8012
+    targetPort: 8012
 
 
 deployment:
@@ -66,7 +66,7 @@ deployment:
   customImagePullPolicy: Always
   apigateway:
      name: apigateway
-     image: geppettotest/crudred-apigateway:1.0
+     image: geppettotest/geppettotemplate-apigateway:1.0
   mongo:
      name: mongo
      image: mongo:3.2   
@@ -84,10 +84,10 @@ deployment:
      image: geppettodistribution/default-adminmanager:2.0
   desktop:
      name: desktop
-     image: geppettotest/crudred-desktop:1.0
-  school: 
-    name: school
-    image: geppettotest/crudred-school:1.0
+     image: geppettotest/geppettotemplate-desktop:1.0
+  mano: 
+    name: mano
+    image: geppettotest/geppettotemplate-mano:1.0
 
   camundapod:
      name: camundapod
@@ -95,7 +95,7 @@ deployment:
 
 config:
   vault:
-    rootToken: vault-crudred-2019
+    rootToken: vault-geppettotemplate-2019
 
 persistentVolume:
   mongo:
