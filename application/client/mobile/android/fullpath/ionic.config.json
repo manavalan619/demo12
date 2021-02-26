@@ -1,0 +1,7 @@
+{
+  "name": "fullpath",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

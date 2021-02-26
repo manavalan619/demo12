@@ -1,13 +1,13 @@
-# Default values for geppettotemplate.
+# Default values for fullpath.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 app:
-  prefix: geppettotemplate
-  namespace: geppettotemplate
+  prefix: fullpath
+  namespace: fullpath
 
 logging:
-  namespace: geppettotemplate-logging
+  namespace: fullpath-logging
 
 service:
   type: NodePort
@@ -54,11 +54,11 @@ service:
     type: NodePort
     port: 8080
     targetPort: 8080
-  mano: 
-    name: mano
+  school: 
+    name: school
     type: NodePort
-    port: 8012
-    targetPort: 8012
+    port: 8013
+    targetPort: 8013
 
 
 deployment:
@@ -66,7 +66,7 @@ deployment:
   customImagePullPolicy: Always
   apigateway:
      name: apigateway
-     image: geppettotest/geppettotemplate-apigateway:1.0
+     image: geppettotest/fullpath-apigateway:1.0
   mongo:
      name: mongo
      image: mongo:3.2   
@@ -84,10 +84,10 @@ deployment:
      image: geppettodistribution/default-adminmanager:2.0
   desktop:
      name: desktop
-     image: geppettotest/geppettotemplate-desktop:1.0
-  mano: 
-    name: mano
-    image: geppettotest/geppettotemplate-mano:1.0
+     image: geppettotest/fullpath-desktop:1.0
+  school: 
+    name: school
+    image: geppettotest/fullpath-school:1.0
 
   camundapod:
      name: camundapod
@@ -95,7 +95,7 @@ deployment:
 
 config:
   vault:
-    rootToken: vault-geppettotemplate-2019
+    rootToken: vault-fullpath-2019
 
 persistentVolume:
   mongo:
