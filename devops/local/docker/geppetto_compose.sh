@@ -1,6 +1,6 @@
 #!bin/bash
 
-DESKTOPCODE='../../../application/client/desktop/stagespot'
+DESKTOPCODE='../../../application/client/desktop/crudred'
 
 COMPOSEPATH='../../../../devops/local/docker/'
 
@@ -13,8 +13,8 @@ do
     c)  
          echo "Creating new docker images and containers"
          cd $DESKTOPCODE
-         docker build -t stagespotui-8629 .
-         docker run --name stagespotui-8629 --restart=unless-stopped -d -p 5055:5000 stagespotui-8629
+         docker build -t crudredui-2178 .
+         docker run --name crudredui-2178 --restart=unless-stopped -d -p 5055:5000 crudredui-2178
          sleep 15
          echo "UI build is done..."
 
@@ -22,8 +22,8 @@ do
          docker-compose up -d --build
          echo "uploading the mongo script..."
          sleep 50
-         docker cp mongo.js mongo-8629:/data/db/
-         docker exec -ti mongo-8629 mongo -u admin -p 'password' --authenticationDatabase 'admin' stagespot_8629 /data/db/mongo.js
+         docker cp mongo.js mongo-2178:/data/db/
+         docker exec -ti mongo-2178 mongo -u admin -p 'password' --authenticationDatabase 'admin' crudred_2178 /data/db/mongo.js
          sleep 10
          echo "Process completed"
          echo " Your application is deployed here the link, http://localhost:5055 "
@@ -31,21 +31,21 @@ do
     d)
          echo "Now Deleting all containers and images"
          docker-compose down -v --rmi all 
-         docker rm -f stagespotui-8629
-         docker rmi stagespotui-8629
+         docker rm -f crudredui-2178
+         docker rmi crudredui-2178
          echo "Process completed"
          ;;
     r)
          echo "Now Re-starting the stopped containers"
          docker-compose start
-         docker restart stagespotui-8629
+         docker restart crudredui-2178
          sleep 35
          echo "Process completed"
          ;;
     s)
          echo "Now stopping the running containers"
          docker-compose stop
-         docker stop stagespotui-8629
+         docker stop crudredui-2178
          echo "Process completed"
          ;;
     *)

@@ -1,0 +1,7 @@
+{
+  "name": "crudred",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

@@ -1,7 +1,0 @@
-{
-  "name": "stagespot",
-  "integrations": {
-    "cordova": {}
-  },
-  "type": "ionic-angular"
-}

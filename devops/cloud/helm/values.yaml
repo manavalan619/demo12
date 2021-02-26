@@ -1,13 +1,13 @@
-# Default values for stagespot.
+# Default values for crudred.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 app:
-  prefix: stagespot
-  namespace: stagespot
+  prefix: crudred
+  namespace: crudred
 
 logging:
-  namespace: stagespot-logging
+  namespace: crudred-logging
 
 service:
   type: NodePort
@@ -54,6 +54,11 @@ service:
     type: NodePort
     port: 8080
     targetPort: 8080
+  school: 
+    name: school
+    type: NodePort
+    port: 8011
+    targetPort: 8011
 
 
 deployment:
@@ -61,7 +66,7 @@ deployment:
   customImagePullPolicy: Always
   apigateway:
      name: apigateway
-     image: geppettotest/stagespot-apigateway:1.0
+     image: geppettotest/crudred-apigateway:1.0
   mongo:
      name: mongo
      image: mongo:3.2   
@@ -79,7 +84,10 @@ deployment:
      image: geppettodistribution/default-adminmanager:2.0
   desktop:
      name: desktop
-     image: geppettotest/stagespot-desktop:1.0
+     image: geppettotest/crudred-desktop:1.0
+  school: 
+    name: school
+    image: geppettotest/crudred-school:1.0
 
   camundapod:
      name: camundapod
@@ -87,7 +95,7 @@ deployment:
 
 config:
   vault:
-    rootToken: vault-stagespot-2019
+    rootToken: vault-crudred-2019
 
 persistentVolume:
   mongo:

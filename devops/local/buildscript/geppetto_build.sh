@@ -1,14 +1,14 @@
 #!bin/bash
 
-APPLICATION='/stagespot'
+APPLICATION='/crudred'
 
 CUSTOMSERVICEPATH='../../../services/custom_services'
 
 HELMPATH='../devops/local'
 
 
-DESKTOPCODE='../../../application/client/desktop/stagespot'
-DESKTOPIMAGENAME='geppettotest/stagespot-desktop:1.0'
+DESKTOPCODE='../../../application/client/desktop/crudred'
+DESKTOPIMAGENAME='geppettotest/crudred-desktop:1.0'
 
 echo "Started to build docker images for pod...."
 
@@ -76,7 +76,7 @@ helm_install () {
 
 cd $HELMPATH
 helm install --dry-run --debug ./helm
-helm install --name stagespot-8629 ./helm
+helm install --name crudred-2178 ./helm
 if [ $? -eq 0 ]; then
     echo "App Deployment is Done"
 else

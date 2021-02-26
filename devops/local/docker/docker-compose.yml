@@ -2,13 +2,13 @@ version: "3.8"
 services:
   mongo:
     image: geppettotest/mongo-local:april2020
-    container_name: mongo-8629
+    container_name: mongo-2178
     restart: unless-stopped
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=password
     volumes:
-      - stagespot_8629-volume:/data/db
+      - crudred_2178-volume:/data/db
     ports:
       - "27018:27017"
     healthcheck:
@@ -20,14 +20,14 @@ services:
 
   camunda:
     image: geppettodistribution/camunda-local:Jan2021
-    container_name: camunda-8629
+    container_name: camunda-2178
     ports:
       - "0000:8080"
 
   authproxy:
     build: ../../../application/services/default_services/authproxy
-    image: authproxy-8629
-    container_name: authproxy-8629
+    image: authproxy-2178
+    container_name: authproxy-2178
     ports:
       - "0000:8001"
     env_file: .env
@@ -37,8 +37,8 @@ services:
 
   securitymanager:
     build: ../../../application/services/default_services/securitymanager
-    image: securitymanager-8629
-    container_name: securitymanager-8629
+    image: securitymanager-2178
+    container_name: securitymanager-2178
     ports:
       - "8003:8003"
     env_file: .env
@@ -48,8 +48,8 @@ services:
 
   camundaservice:
     build: ../../../application/services/default_services/camunda
-    image: camundaservice-8629
-    container_name: camundasvc-8629
+    image: camundaservice-2178
+    container_name: camundasvc-2178
     ports:
       - "8002:8002"
     env_file: .env
@@ -60,8 +60,8 @@ services:
 
   apigateway:
     build: ../../../application/services/custom_services/apigateway
-    image: apigateway-8629
-    container_name: apigateway-8629
+    image: apigateway-2178
+    container_name: apigateway-2178
     ports:
       - "8000:8000"
     env_file: .env
@@ -70,11 +70,21 @@ services:
       - camundaservice
       - authproxy
       - securitymanager
+      - school
 
 
 
+  school: 
+    build: ../../../application/services/custom_services/school
+    image: school-2178
+    container_name: school-2178
+    ports: 
+      - 8011:8011
+    env_file: .env
+    depends_on:
+      - mongo
 
 
 volumes:
-  stagespot_8629-volume:
+  crudred_2178-volume:
     driver: local
