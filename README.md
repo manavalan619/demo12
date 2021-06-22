@@ -3,6 +3,10 @@
 ## Prerequisites:
 - [Docker -v 18.09.7](https://docs.docker.com/engine/install/)
 - [Docker-compose -v 1.27.3](https://docs.docker.com/compose/install/)
+
+
+
+
 - [bash](https://fossbytes.com/installing-gnu-bash-4-4-linux-distros/)
 
 
