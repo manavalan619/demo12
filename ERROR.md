@@ -17,3 +17,6 @@ $ docker-compose -v
 - If you docker-compose version have below `1.22` please update the docker-compose version.
 - ## [Solution](https://docs.docker.com/compose/install/#upgrading)
 - Once you successfully updated the docker-compose run the bash file again.
+
+
+
