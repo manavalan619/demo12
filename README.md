@@ -1,67 +1,30 @@
-# Run Generated application in local
-![Geppetto logo](https://readmegeppetto.s3.amazonaws.com/banner_home.svg)
-## Prerequisites:
-- [Docker -v 18.09.7](https://docs.docker.com/engine/install/)
-- [Docker-compose -v 1.27.3](https://docs.docker.com/compose/install/)
+# Bambe DevOps Architecture
 
+### AWS ECS(Farget) Service-to-Service Communication by Using Service Discovery
 
+[Architecture Diagram](https://drive.google.com/file/d/1u-1x-HUfBP0Xaib6iXiyoTzrMuS_dDhC/view?usp=sharing)
 
+* Service discovery uses AWS Cloud Map API actions to manage HTTP and DNS namespaces for your Amazon ECS services.
+So each service uses Route 53 DNS to call another ECS service as internally.
 
-- [bash](https://fossbytes.com/installing-gnu-bash-4-4-linux-distros/)
+* Created AWS ECS Service for each container so that deploying service as microservice-based architecture without disturbing others.
 
+### Blue-Green Deployment By Using AWS CodeDeploy
 
+[Architecture Diagram](https://drive.google.com/file/d/1p0iABjTuWuvwUjGK5NO1Smc6lbq9haLl/view?usp=sharing)
 
+* Blue-green deployment is a technique that reduces downtime and risk by running two identical production environments called Blue and Green. At any time, only one of the environments is live, with the live environment serving all production traffic. For this example, Blue is currently live and Green is idle.
 
+* Added the 443(HTTPS Port) for the production target group on each AWS ECS service. In the application load balancer, all production target groups are added under the 443 rules.
 
+* Here we use the AWS CodeDeploy for Blue-Green Deployment and configured 10% traffic shifted to new Blue(Latest Deployment) and also set termination time as 30 mins. In case we found any run time issue found on the latest Blue deployment we have the option to "Rollback of the Previous Deployment"
 
-### Steps Followed to run application in docker-compose:
-- To run the generated application in docker follow the below steps .
+### Auto-Deployment By Using CodeBuild
 
-- Once the generated code is cloned the desired directory to run the application is reached using the below commands in the terminal .
+[Architecture Diagram](https://drive.google.com/file/d/1p0iABjTuWuvwUjGK5NO1Smc6lbq9haLl/view?usp=sharing)
 
-```sh
-$ cd devops/local/docker
-```
+* Created AWS CodeBuild & separate buildspec.yml for each service. Here code build should trigger only any commits on specific folders and use its buildspec.yml to build and push the docker image to AWS ECR. Once the latest docker image is pushed to AWS ECR, using AWS CLI to deploy the specific ECS service through the CodeDeploy.
 
-- To check the list of available files in the present directory use the below command in the terminal .
-```sh
-$ ls - for ubuntu or mac
+### AWS MSK(Apache Kafka Event Driven)
 
-$ dir - for windows
-```
-- The command list outputs showing the following files as shown below .
-
-```sh
-docker-compose.yml  geppetto_compose.sh  mongo.js
-```
-- Now run the script file by using the below command.
-```sh
-$ bash geppetto_compose.sh
-```
-- You will see the list avabile method like below,
-```
-These are the usage options for help.
-Flag c - To Create new containers and images.
-Flag d - To Delete all the containers and images.
-Flag r - To Restart the stopped containers.
-Flag s - To Stop the running containers.
-Here's the usage statement:
-
-bash geppetto_compose.sh -c (or) bash geppetto_compose.sh -d (or) bash geppetto_compose.sh -r (or) bash geppetto_compose.sh -s
-```
-- From the above list of above files to run the generated application use the below command in the terminal .The -c flag indicates creating new docker images for the very first installation of the generated application .
-```sh
-bash geppetto_compose.sh -c
-```
-- On the successful completion of the script execution the application, you get the URL for that.
-- Once script execution is completed make sure to check the all docker container status is `up` by using below command. Like below image.
-```sh
-docker ps -a
-```
-![docker conatiner status](https://readmegeppetto.s3.amazonaws.com/readme.png)
-
-- Once the status of all containers are up, then your app is running in http://localhost:5055
-
-- In cause if you have face any issue, please refer the [ERROR.md](./ERROR.md) for your reference.
-
-Thanks for using [Geppetto Builder](https://stage.app.geppettosoftware.com).
+AWS Apache Kafka was used for internal event-driven for our application. Currently using version 2.6.1 for POC. 
