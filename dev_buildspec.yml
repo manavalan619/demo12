@@ -4,4 +4,4 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - echo Now works fine------>>>
+      - echo Build started on `date`
