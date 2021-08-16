@@ -10,7 +10,7 @@ So each service uses Route 53 DNS to call another ECS service as internally.
 * Created AWS ECS Service for each container so that deploying service as microservice-based architecture without disturbing others.
 
 ### Blue-Green Deployment By Using AWS CodeDeploy
-
+manoano
 [Architecture Diagram](https://drive.google.com/file/d/1p0iABjTuWuvwUjGK5NO1Smc6lbq9haLl/view?usp=sharing)
 
 * Blue-green deployment is a technique that reduces downtime and risk by running two identical production environments called Blue and Green. At any time, only one of the environments is live, with the live environment serving all production traffic. For this example, Blue is currently live and Green is idle.
